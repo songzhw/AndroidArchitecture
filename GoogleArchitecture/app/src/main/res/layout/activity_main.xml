@@ -9,8 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sample.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <Button android:onClick="onClickMainMvp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAllCaps="false"
+        android:text="MVP_Basic" />
+
+    <Button android:onClick="onClickMainMvpLoader" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAllCaps="false"
+        android:text="MVP_Loader" android:layout_marginLeft="120dp"/>
+
+    <Button android:onClick="onClickMainMvpBinding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAllCaps="false"
+        android:text="MVP_DataBinding" android:layout_marginTop="60dp"/>
+
 </RelativeLayout>
