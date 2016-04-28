@@ -19,7 +19,7 @@ package com.example.android.architecture.blueprints.todoapp.data;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.source.ITasksDataSource;
 import com.google.common.collect.Lists;
 
 import java.util.Iterator;
@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * Implementation of a remote data source with static access to the data for easy testing.
  */
-public class FakeTasksRemoteDataSource implements TasksDataSource {
+public class FakeTasksRemoteDataSource implements ITasksDataSource {
 
     private static FakeTasksRemoteDataSource INSTANCE;
 

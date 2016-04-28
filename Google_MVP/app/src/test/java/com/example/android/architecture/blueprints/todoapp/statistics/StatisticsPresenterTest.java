@@ -17,7 +17,7 @@
 package com.example.android.architecture.blueprints.todoapp.statistics;
 
 import com.example.android.architecture.blueprints.todoapp.data.Task;
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.source.ITasksDataSource;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository;
 import com.google.common.collect.Lists;
 
@@ -51,7 +51,7 @@ public class StatisticsPresenterTest {
      * perform further actions or assertions on them.
      */
     @Captor
-    private ArgumentCaptor<TasksDataSource.LoadTasksCallback> mLoadTasksCallbackCaptor;
+    private ArgumentCaptor<ITasksDataSource.LoadTasksCallback> mLoadTasksCallbackCaptor;
 
 
     private StatisticsPresenter mStatisticsPresenter;

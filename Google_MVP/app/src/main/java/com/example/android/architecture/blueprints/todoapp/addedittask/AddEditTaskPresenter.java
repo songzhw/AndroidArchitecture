@@ -20,7 +20,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.example.android.architecture.blueprints.todoapp.data.Task;
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.source.ITasksDataSource;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -29,10 +29,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * the UI as required.
  */
 public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
-        TasksDataSource.GetTaskCallback {
+        ITasksDataSource.GetTaskCallback {
 
     @NonNull
-    private final TasksDataSource mTasksRepository;
+    private final ITasksDataSource mTasksRepository;
 
     @NonNull
     private final AddEditTaskContract.View mAddTaskView;
@@ -47,7 +47,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
      * @param tasksRepository a repository of data for tasks
      * @param addTaskView the add/edit view
      */
-    public AddEditTaskPresenter(@Nullable String taskId, @NonNull TasksDataSource tasksRepository,
+    public AddEditTaskPresenter(@Nullable String taskId, @NonNull ITasksDataSource tasksRepository,
             @NonNull AddEditTaskContract.View addTaskView) {
         mTaskId = taskId;
         mTasksRepository = checkNotNull(tasksRepository);

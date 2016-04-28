@@ -35,7 +35,7 @@ public final class Task {
     @Nullable
     private final String mDescription;
 
-    private final boolean mCompleted;
+    private final boolean isCompleted;
     /**
      * Use this constructor to create a new active Task.
      *
@@ -46,7 +46,7 @@ public final class Task {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
-        mCompleted = false;
+        isCompleted = false;
     }
 
     /**
@@ -61,7 +61,7 @@ public final class Task {
         mId = id;
         mTitle = title;
         mDescription = description;
-        mCompleted = false;
+        isCompleted = false;
     }
 
     /**
@@ -75,7 +75,7 @@ public final class Task {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
-        mCompleted = completed;
+        isCompleted = completed;
     }
 
     /**
@@ -91,7 +91,7 @@ public final class Task {
         mId = id;
         mTitle = title;
         mDescription = description;
-        mCompleted = completed;
+        isCompleted = completed;
     }
 
     public String getId() {
@@ -118,11 +118,11 @@ public final class Task {
     }
 
     public boolean isCompleted() {
-        return mCompleted;
+        return isCompleted;
     }
 
     public boolean isActive() {
-        return !mCompleted;
+        return !isCompleted;
     }
 
     public boolean isEmpty() {

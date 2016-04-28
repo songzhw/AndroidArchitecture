@@ -20,7 +20,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.example.android.architecture.blueprints.todoapp.data.Task;
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.source.ITasksDataSource;
 import com.google.common.collect.Lists;
 
 import java.util.Iterator;
@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * Implementation of the data source that adds a latency simulating network.
  */
-public class TasksRemoteDataSource implements TasksDataSource {
+public class TasksRemoteDataSource implements ITasksDataSource {
 
     private static TasksRemoteDataSource INSTANCE;
 

@@ -30,7 +30,7 @@ import java.util.List;
  * For example, when a new task is created, it's synchronously stored in cache but usually every
  * operation on database or network should be executed in a different thread.
  */
-public interface TasksDataSource {
+public interface ITasksDataSource {
 
     interface LoadTasksCallback {
 

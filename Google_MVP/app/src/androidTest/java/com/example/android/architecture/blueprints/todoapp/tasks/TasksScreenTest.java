@@ -50,7 +50,7 @@ import android.widget.ListView;
 import com.example.android.architecture.blueprints.todoapp.Injection;
 import com.example.android.architecture.blueprints.todoapp.R;
 import com.example.android.architecture.blueprints.todoapp.TestUtils;
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.source.ITasksDataSource;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -84,7 +84,7 @@ public class TasksScreenTest {
 
                 /**
                  * To avoid a long list of tasks and the need to scroll through the list to find a
-                 * task, we call {@link TasksDataSource#deleteAllTasks()} before each test.
+                 * task, we call {@link ITasksDataSource#deleteAllTasks()} before each test.
                  */
                 @Override
                 protected void beforeActivityLaunched() {

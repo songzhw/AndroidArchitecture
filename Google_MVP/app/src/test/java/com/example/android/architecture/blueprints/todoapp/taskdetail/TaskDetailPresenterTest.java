@@ -17,7 +17,7 @@
 package com.example.android.architecture.blueprints.todoapp.taskdetail;
 
 import com.example.android.architecture.blueprints.todoapp.data.Task;
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.source.ITasksDataSource;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository;
 
 import org.junit.Before;
@@ -58,7 +58,7 @@ public class TaskDetailPresenterTest {
      * perform further actions or assertions on them.
      */
     @Captor
-    private ArgumentCaptor<TasksDataSource.GetTaskCallback> mGetTaskCallbackCaptor;
+    private ArgumentCaptor<ITasksDataSource.GetTaskCallback> mGetTaskCallbackCaptor;
 
     private TaskDetailPresenter mTaskDetailPresenter;
 

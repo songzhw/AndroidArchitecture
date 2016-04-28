@@ -57,33 +57,33 @@ public class TasksRepositoryTest {
     private TasksRepository mTasksRepository;
 
     @Mock
-    private TasksDataSource mTasksRemoteDataSource;
+    private ITasksDataSource mTasksRemoteDataSource;
 
     @Mock
-    private TasksDataSource mTasksLocalDataSource;
+    private ITasksDataSource mTasksLocalDataSource;
 
     @Mock
     private Context mContext;
 
     @Mock
-    private TasksDataSource.GetTaskCallback mGetTaskCallback;
+    private ITasksDataSource.GetTaskCallback mGetTaskCallback;
 
     @Mock
-    private TasksDataSource.LoadTasksCallback mLoadTasksCallback;
+    private ITasksDataSource.LoadTasksCallback mLoadTasksCallback;
 
     /**
      * {@link ArgumentCaptor} is a powerful Mockito API to capture argument values and use them to
      * perform further actions or assertions on them.
      */
     @Captor
-    private ArgumentCaptor<TasksDataSource.LoadTasksCallback> mTasksCallbackCaptor;
+    private ArgumentCaptor<ITasksDataSource.LoadTasksCallback> mTasksCallbackCaptor;
 
     /**
      * {@link ArgumentCaptor} is a powerful Mockito API to capture argument values and use them to
      * perform further actions or assertions on them.
      */
     @Captor
-    private ArgumentCaptor<TasksDataSource.GetTaskCallback> mTaskCallbackCaptor;
+    private ArgumentCaptor<ITasksDataSource.GetTaskCallback> mTaskCallbackCaptor;
 
     @Before
     public void setupTasksRepository() {
@@ -108,7 +108,7 @@ public class TasksRepositoryTest {
         twoTasksLoadCallsToRepository(mLoadTasksCallback);
 
         // Then tasks were only requested once from Service API
-        verify(mTasksRemoteDataSource).getTasks(any(TasksDataSource.LoadTasksCallback.class));
+        verify(mTasksRemoteDataSource).getTasks(any(ITasksDataSource.LoadTasksCallback.class));
     }
 
     @Test
@@ -117,7 +117,7 @@ public class TasksRepositoryTest {
         mTasksRepository.getTasks(mLoadTasksCallback);
 
         // Then tasks are loaded from the local data source
-        verify(mTasksLocalDataSource).getTasks(any(TasksDataSource.LoadTasksCallback.class));
+        verify(mTasksLocalDataSource).getTasks(any(ITasksDataSource.LoadTasksCallback.class));
     }
 
     @Test
@@ -205,7 +205,7 @@ public class TasksRepositoryTest {
 
         // Then the task is loaded from the database
         verify(mTasksLocalDataSource).getTask(eq(TASK_TITLE), any(
-                TasksDataSource.GetTaskCallback.class));
+                ITasksDataSource.GetTaskCallback.class));
     }
 
     @Test
@@ -349,7 +349,7 @@ public class TasksRepositoryTest {
     /**
      * Convenience method that issues two calls to the tasks repository
      */
-    private void twoTasksLoadCallsToRepository(TasksDataSource.LoadTasksCallback callback) {
+    private void twoTasksLoadCallsToRepository(ITasksDataSource.LoadTasksCallback callback) {
         // When tasks are requested from repository
         mTasksRepository.getTasks(callback); // First call to API
 
@@ -369,22 +369,22 @@ public class TasksRepositoryTest {
         mTasksRepository.getTasks(callback); // Second call to API
     }
 
-    private void setTasksNotAvailable(TasksDataSource dataSource) {
+    private void setTasksNotAvailable(ITasksDataSource dataSource) {
         verify(dataSource).getTasks(mTasksCallbackCaptor.capture());
         mTasksCallbackCaptor.getValue().onDataNotAvailable();
     }
 
-    private void setTasksAvailable(TasksDataSource dataSource, List<Task> tasks) {
+    private void setTasksAvailable(ITasksDataSource dataSource, List<Task> tasks) {
         verify(dataSource).getTasks(mTasksCallbackCaptor.capture());
         mTasksCallbackCaptor.getValue().onTasksLoaded(tasks);
     }
 
-    private void setTaskNotAvailable(TasksDataSource dataSource, String taskId) {
+    private void setTaskNotAvailable(ITasksDataSource dataSource, String taskId) {
         verify(dataSource).getTask(eq(taskId), mTaskCallbackCaptor.capture());
         mTaskCallbackCaptor.getValue().onDataNotAvailable();
     }
 
-    private void setTaskAvailable(TasksDataSource dataSource, Task task) {
+    private void setTaskAvailable(ITasksDataSource dataSource, Task task) {
         verify(dataSource).getTask(eq(task.getId()), mTaskCallbackCaptor.capture());
         mTaskCallbackCaptor.getValue().onTaskLoaded(task);
     }

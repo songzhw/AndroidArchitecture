@@ -20,7 +20,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.source.ITasksDataSource;
 import com.example.android.architecture.blueprints.todoapp.data.source.local.TasksDbHelper;
 import com.example.android.architecture.blueprints.todoapp.data.source.local.TasksLocalDataSource;
 
@@ -42,7 +42,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 /**
- * Integration test for the {@link TasksDataSource}, which uses the {@link TasksDbHelper}.
+ * Integration test for the {@link ITasksDataSource}, which uses the {@link TasksDbHelper}.
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -81,7 +81,7 @@ public class TasksLocalDataSourceTest {
         mLocalDataSource.saveTask(newTask);
 
         // Then the task can be retrieved from the persistent repository
-        mLocalDataSource.getTask(newTask.getId(), new TasksDataSource.GetTaskCallback() {
+        mLocalDataSource.getTask(newTask.getId(), new ITasksDataSource.GetTaskCallback() {
             @Override
             public void onTaskLoaded(Task task) {
                 assertThat(task, is(newTask));
@@ -97,7 +97,7 @@ public class TasksLocalDataSourceTest {
     @Test
     public void completeTask_retrievedTaskIsComplete() {
         // Initialize mock for the callback.
-        TasksDataSource.GetTaskCallback callback = mock(TasksDataSource.GetTaskCallback.class);
+        ITasksDataSource.GetTaskCallback callback = mock(ITasksDataSource.GetTaskCallback.class);
         // Given a new task in the persistent repository
         final Task newTask = new Task(TITLE, "");
         mLocalDataSource.saveTask(newTask);
@@ -106,7 +106,7 @@ public class TasksLocalDataSourceTest {
         mLocalDataSource.completeTask(newTask);
 
         // Then the task can be retrieved from the persistent repository and is complete
-        mLocalDataSource.getTask(newTask.getId(), new TasksDataSource.GetTaskCallback() {
+        mLocalDataSource.getTask(newTask.getId(), new ITasksDataSource.GetTaskCallback() {
             @Override
             public void onTaskLoaded(Task task) {
                 assertThat(task, is(newTask));
@@ -123,7 +123,7 @@ public class TasksLocalDataSourceTest {
     @Test
     public void activateTask_retrievedTaskIsActive() {
         // Initialize mock for the callback.
-        TasksDataSource.GetTaskCallback callback = mock(TasksDataSource.GetTaskCallback.class);
+        ITasksDataSource.GetTaskCallback callback = mock(ITasksDataSource.GetTaskCallback.class);
 
         // Given a new completed task in the persistent repository
         final Task newTask = new Task(TITLE, "");
@@ -145,9 +145,9 @@ public class TasksLocalDataSourceTest {
     @Test
     public void clearCompletedTask_taskNotRetrievable() {
         // Initialize mocks for the callbacks.
-        TasksDataSource.GetTaskCallback callback1 = mock(TasksDataSource.GetTaskCallback.class);
-        TasksDataSource.GetTaskCallback callback2 = mock(TasksDataSource.GetTaskCallback.class);
-        TasksDataSource.GetTaskCallback callback3 = mock(TasksDataSource.GetTaskCallback.class);
+        ITasksDataSource.GetTaskCallback callback1 = mock(ITasksDataSource.GetTaskCallback.class);
+        ITasksDataSource.GetTaskCallback callback2 = mock(ITasksDataSource.GetTaskCallback.class);
+        ITasksDataSource.GetTaskCallback callback3 = mock(ITasksDataSource.GetTaskCallback.class);
 
         // Given 2 new completed tasks and 1 active task in the persistent repository
         final Task newTask1 = new Task(TITLE, "");
@@ -184,7 +184,7 @@ public class TasksLocalDataSourceTest {
         // Given a new task in the persistent repository and a mocked callback
         Task newTask = new Task(TITLE, "");
         mLocalDataSource.saveTask(newTask);
-        TasksDataSource.LoadTasksCallback callback = mock(TasksDataSource.LoadTasksCallback.class);
+        ITasksDataSource.LoadTasksCallback callback = mock(ITasksDataSource.LoadTasksCallback.class);
 
         // When all tasks are deleted
         mLocalDataSource.deleteAllTasks();
@@ -205,7 +205,7 @@ public class TasksLocalDataSourceTest {
         mLocalDataSource.saveTask(newTask2);
 
         // Then the tasks can be retrieved from the persistent repository
-        mLocalDataSource.getTasks(new TasksDataSource.LoadTasksCallback() {
+        mLocalDataSource.getTasks(new ITasksDataSource.LoadTasksCallback() {
             @Override
             public void onTasksLoaded(List<Task> tasks) {
                 assertNotNull(tasks);
