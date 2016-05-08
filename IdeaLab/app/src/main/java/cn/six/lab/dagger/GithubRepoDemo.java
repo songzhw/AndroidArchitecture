@@ -49,3 +49,12 @@ public class GithubRepoDemo extends Activity {
         }
     };
 }
+
+/*
+szw : Repo{id=42987127, name='groovy-android-gradle-plugin', size=231}
+szw : Repo{id=50723416, name='infinity-loading', size=1462}
+szw : Repo{id=40647821, name='Kotlin-Java-Demo', size=15432}
+szw : Repo{id=53929937, name='Learn-Google-API', size=60}
+szw : Repo{id=53385756, name='Python-Practice', size=17}
+... ...
+ */

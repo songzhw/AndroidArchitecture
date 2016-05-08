@@ -11,12 +11,15 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import cn.six.lab.R;
 import cn.six.lab.http.SimpleInterceptor;
+import cn.six.lab.utils.StethoUtils;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.OkHttpClient;
@@ -58,15 +61,16 @@ public class OkHttpDemo extends AppCompatActivity {
 
 
     private void startHttp() throws IOException {
-        File cachedDir = new File(this.getApplication().getExternalCacheDir(), "HttpCache");
+        File cachedDir =  new File(this.getApplication().getExternalCacheDir(), "HttpCache");
         Cache cache = new Cache(cachedDir, 10240);
 
-        OkHttpClient okhttp = new OkHttpClient.Builder()
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .addInterceptor(new SimpleInterceptor())
-                .cache(cache)
-                .build();
+                .cache(cache);
+        StethoUtils.addStethoInterceptor(builder);
+        OkHttpClient okhttp = builder.build();
         Request req = new Request.Builder()
-                .cacheControl(new CacheControl.Builder().maxStale(30, TimeUnit.SECONDS).build())
+                .cacheControl(new CacheControl.Builder().maxStale(30, TimeUnit.DAYS).build())
                 .url("http://www.publicobject.com/helloworld.txt")
                 .header("User-Agent", "OkHttp Example")
                 .build();
@@ -74,14 +78,14 @@ public class OkHttpDemo extends AppCompatActivity {
 
         Response resp = okhttp.newCall(req)
                 .execute();
-        if(resp.code() != 504) {
+        if (resp.code() != 504){
             // resource was cached. Show it
             Log.d("szw", "cached!");
-        } else {
+        } else{
             // resource was not cached.
             Log.d("szw", "not cached!");
         }
-
+        resp.body().close();
     }
 
 
