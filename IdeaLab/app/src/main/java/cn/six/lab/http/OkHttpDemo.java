@@ -1,4 +1,4 @@
-package cn.six.lab;
+package cn.six.lab.http;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import cn.six.lab.R;
 import cn.six.lab.http.SimpleInterceptor;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -22,7 +23,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class OkHttpDemo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
