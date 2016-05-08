@@ -1,5 +1,6 @@
 package cn.six.lab;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.io.IOException;
+
+import cn.six.lab.http.SimpleInterceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,24 +30,36 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                task.execute();
             }
         });
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    private AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                startHttp();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
-        return super.onOptionsItemSelected(item);
+    };
+
+    private void startHttp() throws IOException {
+        OkHttpClient okhttp = new OkHttpClient.Builder()
+                .addInterceptor(new SimpleInterceptor())
+                .build();
+        Request req = new Request.Builder()
+                .url("http://www.publicobject.com/helloworld.txt")
+                .header("User-Agent", "OkHttp Example")
+                .build();
+        Response resp = okhttp.newCall(req)
+                .execute();
+        resp.body().close();
     }
+
+
 }
