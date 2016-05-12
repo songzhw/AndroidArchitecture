@@ -18,4 +18,11 @@ public class Task {
         this.isCompleted = isCompleted;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "content='" + content + '\'' +
+                ", isCompleted=" + isCompleted +
+                '}';
+    }
 }
