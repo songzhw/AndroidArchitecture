@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(self, AddTaskActivity.class));
+                startActivityForResult(new Intent(self, AddTaskActivity.class), 21);
             }
         });
 
@@ -54,5 +54,12 @@ public class HomeActivity extends AppCompatActivity {
         adapter.data = tasks;
         adapter.notifyDataSetChanged();
         L.d(" size = "+tasks.size());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 21 && resultCode == RESULT_OK){
+            presenter.getTasks();
+        }
     }
 }
