@@ -14,9 +14,13 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".add_task.AddTaskActivity" android:label="@string/title_activity_add_task"
+            android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize"/>
+
     </application>
 
 </manifest>

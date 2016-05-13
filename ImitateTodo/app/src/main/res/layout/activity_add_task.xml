@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".home.HomeActivity">
+    tools:context="ca.six.todo.add_task.AddTaskActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,10 +21,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView android:id="@+id/rvHome" android:layout_width="match_parent" android:layout_height = "match_parent"
+    <!-- Content -->
+    <EditText android:id="@+id/etAddTask" android:layout_width="match_parent" android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:hint="what do you need to write down?" android:gravity="top"
         />
 
+
+    <!-- Fab -->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
