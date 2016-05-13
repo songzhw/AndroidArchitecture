@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface ITaskManager {
     List<Task> getTasks();
+
+    void saveTask(String text);
 }
