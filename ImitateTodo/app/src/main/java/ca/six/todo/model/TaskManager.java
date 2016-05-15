@@ -27,6 +27,10 @@ public class TaskManager implements ITaskManager {
         return instance;
     }
 
+    public static void clear(){
+        instance = null;
+    }
+
 
     @Override
     public List<Task> getTasks() {
