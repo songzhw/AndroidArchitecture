@@ -9,18 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.List;
 
-import ca.six.todo.model.Task;
 import ca.six.todo.model.TaskManager;
 import ca.six.util.L;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
 
 /**
  * Created by songzhw on 2016-05-15.
@@ -51,9 +45,19 @@ public class ModelTest {
     @Test
     public void testSize(){
         L.d("pre");
-        // When I write this test, I already added 5 tasks in the db
-        assertEquals(5, taskMgr.getTasks().size());
+        // When I write this test, I already added 6 tasks in the db
+        assertEquals(6, taskMgr.getTasks().size());
     }
+
+
+
+    /** JUnit is not sure about the call sequence !!! */
+//    @Test
+//    public void testAdd(){
+//        L.d("222");
+//        taskMgr.saveTask("add by test");
+//        assertEquals(7, taskMgr.getTasks().size());
+//    }
 
 
 }
