@@ -12,7 +12,7 @@ import ca.six.util.L;
  * Created by songzhw on 2016-05-12.
  */
 public class HomePresenter {
-    private ITaskManager model;
+    public ITaskManager model;
     private HomeActivity view;
 
     public HomePresenter(HomeActivity view) {
