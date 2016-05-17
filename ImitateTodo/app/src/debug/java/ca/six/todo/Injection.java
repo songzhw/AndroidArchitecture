@@ -12,6 +12,6 @@ import ca.six.todo.model.TaskManager;
 public class Injection {
     public static ITaskManager getModel(Context ctx) {
         // TODO: 2016-05-14 : switch to FakeManager !!!
-        return TaskManager.getInstance(ctx);
+        return FakeTaskManager.getInstance();
     }
 }
