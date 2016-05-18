@@ -24,7 +24,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
         final EditText et = (EditText) findViewById(R.id.etAddTask);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAdd);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
