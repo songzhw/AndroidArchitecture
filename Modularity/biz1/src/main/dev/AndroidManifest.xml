@@ -13,6 +13,13 @@
             </intent-filter>
         </activity>
         -->
+        <activity android:name=".StockActivity" />
+        <activity android:name=".PreStockActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
