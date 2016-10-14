@@ -26,6 +26,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
                 if(Session.getInstance().user == null){
                     Intent it = new Intent(this, LoginActivity.class);
                     startActivityForResult(it, 11);
+                } else {
+                    jump2Stock();
                 }
                 break;
         }

@@ -32,8 +32,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if("123".equals(pwd) && "szw".equals(name)) {
             Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
             Session.getInstance().user = new User("szw", true);
+
+            setResult(RESULT_OK);
+            this.finish();
         } else {
             Toast.makeText(this, "Error name/pwd", Toast.LENGTH_SHORT).show();
+            setResult(RESULT_CANCELED);
         }
     }
 }
