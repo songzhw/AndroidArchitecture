@@ -11,10 +11,10 @@
     tools:context="ca.six.common.LoginActivity">
 
     <EditText android:id="@+id/etName" android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:hint="Password"/>
+        android:hint="Name"/>
 
     <EditText android:id="@+id/etPwd" android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:hint="User Name"  android:layout_below="@id/etName"/>
+        android:hint="Password"  android:layout_below="@id/etName"/>
 
     <Button android:id="@+id/btnLogin" android:layout_width="fill_parent" android:layout_height="wrap_content"
         android:text="Login"   android:layout_below="@id/etPwd" android:textAllCaps="false"/>

@@ -7,6 +7,7 @@ import android.view.View;
 
 import ca.six.common.LoginActivity;
 import ca.six.common.Session;
+import ca.six.common.utils.JumpUtils;
 
 public class AppHomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,8 +32,9 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void jump2Stock(){
-        Intent it = new Intent(this, StockActivity.class);
-        startActivity(it);
+//        Intent it = new Intent(this, StockActivity.class);
+//        startActivity(it);
+        JumpUtils.jump2(this, "ca.six.biz1","StockActivity");
     }
 
     @Override
@@ -46,3 +48,5 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 }
+
+
