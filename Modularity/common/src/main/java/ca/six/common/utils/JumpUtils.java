@@ -27,5 +27,9 @@ public class JumpUtils {
         jump2(from, toPakcage+"."+toClassName);
     }
 
+    public static void jumpImplicit2 (Activity from, String action){
+        Intent it = new Intent(action);
+        from.startActivity(it);
+    }
 
 }
