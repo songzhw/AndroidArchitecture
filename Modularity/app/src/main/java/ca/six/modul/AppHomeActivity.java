@@ -17,6 +17,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_app_home);
 
         findViewById(R.id.tvHomeStock).setOnClickListener(this);
+        findViewById(R.id.tvHomeOption).setOnClickListener(this);
     }
 
     @Override
@@ -30,6 +31,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
                     jump2Stock();
                 }
                 break;
+            case R.id.tvHomeOption:
+                jump2Option();
         }
     }
 
@@ -37,6 +40,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
 //        Intent it = new Intent(this, StockActivity.class);
 //        startActivity(it);
         JumpUtils.jump2(this, "ca.six.biz1","StockActivity");
+    }
+
+    private void jump2Option(){
+        JumpUtils.jumpImplicit2(this, "ca.six.biz2.OptionActivity");
     }
 
     @Override
