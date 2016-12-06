@@ -17,6 +17,35 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "cpu", "isPaid"
+    productFlavors {
+        free {
+            dimension "isPaid"
+        }
+
+        paid {
+            dimension "isPaid"
+        }
+
+        arm {
+            dimension "cpu"
+        }
+
+        x86 {
+            dimension "cpu"
+        }
+
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (!names.contains("arm")) {
+            variant.ignore = true
+        }
+    }
+
+
 }
 
 dependencies {
