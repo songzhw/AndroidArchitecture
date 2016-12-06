@@ -35,12 +35,11 @@ android {
         x86 {
             dimension "cpu"
         }
-
     }
 
     variantFilter { variant ->
         def names = variant.flavors*.name
-        if (!names.contains("arm")) {
+        if (!names.contains("arm") && variant.buildType.name == "release" ) {
             variant.ignore = true
         }
     }
