@@ -18,7 +18,7 @@ android {
         }
     }
 
-    flavorDimensions "cpu", "isPaid"
+    flavorDimensions "cpu", "isPaid","xx"
     productFlavors {
         free {
             dimension "isPaid"
@@ -34,6 +34,13 @@ android {
 
         x86 {
             dimension "cpu"
+        }
+
+        apple {
+            dimension "xx"
+        }
+        peach {
+            dimension "xx"
         }
     }
 
