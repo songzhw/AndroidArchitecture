@@ -9,7 +9,7 @@ import android.os.Bundle;
  */
 
 public abstract class ZBaseActivity extends Activity {
-    private ActivityDelegateHelper delegater;
+    protected ActivityDelegateHelper delegater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

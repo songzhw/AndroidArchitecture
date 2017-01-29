@@ -33,6 +33,10 @@ public class ActivityDelegate {
     protected void onDestroy() {
     }
 
+    /*
+      不是每个页面的onActivityResult()都要写入ActivityDelegate
+      是公共组件，即有多个Activity要用的onActivityResult()特性，才写入delegate
+    */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 
