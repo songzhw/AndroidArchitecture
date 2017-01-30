@@ -18,6 +18,10 @@ public class ActivityDelegate {
     protected void onCreate(Bundle savedInstanceState) {
     }
 
+    protected void onPostCreate(){
+
+    }
+
     protected void onStart() {
     }
 

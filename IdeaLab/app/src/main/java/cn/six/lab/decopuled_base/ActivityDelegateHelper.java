@@ -35,6 +35,13 @@ public class ActivityDelegateHelper extends ActivityDelegate {
     }
 
     @Override
+    protected void onPostCreate() {
+        for(Map.Entry<Class<? extends ActivityDelegate>, ActivityDelegate> item :delegateMap.entrySet()) {
+            item.getValue().onPostCreate();
+        }
+    }
+
+    @Override
     protected void onStart() {
         for(Map.Entry<Class<? extends ActivityDelegate>, ActivityDelegate> item :delegateMap.entrySet()) {
             item.getValue().onStart();

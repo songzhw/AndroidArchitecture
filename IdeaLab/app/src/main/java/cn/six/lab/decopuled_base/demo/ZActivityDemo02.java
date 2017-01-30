@@ -6,17 +6,20 @@ import android.widget.Button;
 
 import cn.six.lab.decopuled_base.ZBaseActivity;
 import cn.six.lab.decopuled_base.delegate.GetPhotoActivityDelegate;
+import cn.six.lab.decopuled_base.delegate.IRefreshActionListener;
 import cn.six.lab.decopuled_base.delegate.NetworkActivityDelegate;
+import cn.six.lab.decopuled_base.delegate.RefreshActivityDelegate;
 import cn.six.lab.decopuled_base.model.HttpCallback;
 
 /**
  * Created by songzhw on 2017-01-28
  */
 
-public class ZActivityDemo02 extends ZBaseActivity implements View.OnClickListener, HttpCallback {
+public class ZActivityDemo02 extends ZBaseActivity implements View.OnClickListener, HttpCallback, IRefreshActionListener {
     private Button btn;
     private NetworkActivityDelegate http;
     private GetPhotoActivityDelegate getPhotoActivityDelegate;
+    private RefreshActivityDelegate refreshActivityDelegate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,10 @@ public class ZActivityDemo02 extends ZBaseActivity implements View.OnClickListen
     public void initDelegater() {
         http = new NetworkActivityDelegate(this);
         getPhotoActivityDelegate = new GetPhotoActivityDelegate(this, null);
+        refreshActivityDelegate = new RefreshActivityDelegate(this, this);
         delegater.put(http);
         delegater.put(getPhotoActivityDelegate);
+        delegater.put(refreshActivityDelegate);
     }
 
     @Override
@@ -43,5 +48,10 @@ public class ZActivityDemo02 extends ZBaseActivity implements View.OnClickListen
     @Override
     public void onResponse(String response) {
         // show the UI when response is successful
+    }
+
+    @Override
+    public void onRefresh() {
+
     }
 }

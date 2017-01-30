@@ -23,6 +23,12 @@ public abstract class ZBaseActivity extends Activity {
     public abstract void initDelegater();
 
     @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        delegater.onPostCreate();
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         delegater.onStart();
