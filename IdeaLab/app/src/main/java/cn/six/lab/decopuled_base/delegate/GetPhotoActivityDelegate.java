@@ -44,6 +44,7 @@ public class GetPhotoActivityDelegate extends ActivityDelegate {
                     cursor.close();
                 }
                 listener.onGotPhoto(result);
+                //EventBus.getDefault().post(result); // another way to do that.
             }
         }
     }
