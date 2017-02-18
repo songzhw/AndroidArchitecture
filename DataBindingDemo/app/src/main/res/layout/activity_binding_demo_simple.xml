@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable name="user" type="ca.six.bindingdemo.tmp.TmpUser"/>
+        <variable name="handler" type="ca.six.bindingdemo.tmp.Demo01Handler"/>
     </data>
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:textSize="22dp" android:text="@{user.name}"/>
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="22dp" android:text="@{user.desp}"/>
+
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="22dp" android:text="GetEditTextVlaue"
+            android:onClick="@{handler.click01}"/>
     </LinearLayout>
 
 </layout>
