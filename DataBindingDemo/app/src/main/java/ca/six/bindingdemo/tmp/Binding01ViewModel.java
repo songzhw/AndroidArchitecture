@@ -22,4 +22,9 @@ public class Binding01ViewModel {
         System.out.println("szw click01 : " + user);
     }
 
+    public void onChecked(boolean isChecked){
+        user.name = user.name + (isChecked?" Y ":" N ");
+        System.out.println("szw click02 : " + user);
+    }
+
 }

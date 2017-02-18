@@ -13,11 +13,18 @@
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:textSize="22dp" android:text="@={user.desp}"/>
         <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textSize="22dp" android:text="isMale" android:checked="@={user.isMale}"/>
+            android:textSize="22dp" android:text="isMale" android:checked="@={user.isMale}"
+            android:onCheckedChanged="@{(view, isChecked) -> handler.onChecked(isChecked)}"
+            />
 
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:textSize="22dp" android:text="GetEditTextVlaue"
-            android:onClick="@{handler::click01}"/>
+            android:onClick="@{handler::click01}"
+            />
+
+
     </LinearLayout>
 
 </layout>
+
+

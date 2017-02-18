@@ -4,6 +4,8 @@ package ca.six.bindingdemo.tmp;
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import ca.six.bindingdemo.R;
 import ca.six.bindingdemo.databinding.ActivityBindingDemoSimpleBinding;
