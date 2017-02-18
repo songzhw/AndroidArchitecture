@@ -18,8 +18,8 @@ public class Binding01ViewModel {
         binding.setHandler(this);
     }
 
-    public void click01(View v){
-        System.out.println("szw click01 : "+user.desp);
+    public void click01(View v) {
+        System.out.println("szw click01 : " + user);
     }
 
 }

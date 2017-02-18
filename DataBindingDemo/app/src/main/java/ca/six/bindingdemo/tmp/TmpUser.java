@@ -14,4 +14,13 @@ public class TmpUser {
         this.isMale = isMale;
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "TmpUser{" +
+                "desp='" + desp + '\'' +
+                ", name='" + name + '\'' +
+                ", isMale=" +  (isMale ? "Male" : "Female") +
+                '}';
+    }
 }
