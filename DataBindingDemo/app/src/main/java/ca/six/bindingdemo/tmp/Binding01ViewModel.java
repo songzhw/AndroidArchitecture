@@ -31,8 +31,8 @@ public class Binding01ViewModel {
                   // (but when you check isMale, only show tvWonderWoman. The name is still the same)
                   // (you may have to use setName(), not just user.name(). Then the name will change too)
     public void onChecked(boolean isChecked){
-        user.name = user.name + (isChecked?" Y ":" N ");
-        binding.invalidateAll(); // show/disappear tvWonderWoman, and update the tvName
+        user.setName(user.name + (isChecked?" Y ":" N "));
+//        binding.invalidateAll(); // show/disappear tvWonderWoman, and update the tvName
 //        binding.notifyPropertyChanged(BR.user); // does not work
         System.out.println("szw click02 : " + user);
     }
