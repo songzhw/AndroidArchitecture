@@ -4,6 +4,7 @@
     <data>
         <variable name="user" type="ca.six.bindingdemo.tmp.TmpUser"/>
         <variable name="handler" type="ca.six.bindingdemo.tmp.Binding01ViewModel"/>
+        <import type="android.view.View"/>
     </data>
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
@@ -16,6 +17,9 @@
             android:textSize="22dp" android:text="isMale" android:checked="@={user.isMale}"
             android:onCheckedChanged="@{(view, isChecked) -> handler.onChecked(isChecked)}"
             />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="16dp" android:text="Wonder Woman"
+            android:visibility="@{user.isMale ? View.GONE : View.VISIBLE}" />
 
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:textSize="22dp" android:text="GetEditTextVlaue"

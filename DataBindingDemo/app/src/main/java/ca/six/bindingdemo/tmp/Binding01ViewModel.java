@@ -2,6 +2,7 @@ package ca.six.bindingdemo.tmp;
 
 import android.view.View;
 
+import ca.six.bindingdemo.BR;
 import ca.six.bindingdemo.databinding.ActivityBindingDemoSimpleBinding;
 
 /**
@@ -10,10 +11,12 @@ import ca.six.bindingdemo.databinding.ActivityBindingDemoSimpleBinding;
 
 public class Binding01ViewModel {
 
+    private final ActivityBindingDemoSimpleBinding binding;
     private TmpUser user;
 
     public Binding01ViewModel(ActivityBindingDemoSimpleBinding binding) {
         user = new TmpUser("name2", "desp2", true);
+        this.binding = binding;
         binding.setUser(user);
         binding.setHandler(this);
     }
@@ -24,6 +27,8 @@ public class Binding01ViewModel {
 
     public void onChecked(boolean isChecked){
         user.name = user.name + (isChecked?" Y ":" N ");
+        binding.invalidateAll();
+//        binding.notifyPropertyChanged(BR.user); // does not work
         System.out.println("szw click02 : " + user);
     }
 
