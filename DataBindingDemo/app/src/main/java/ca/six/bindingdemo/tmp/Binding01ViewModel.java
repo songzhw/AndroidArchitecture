@@ -25,9 +25,10 @@ public class Binding01ViewModel {
         System.out.println("szw click01 : " + user);
     }
 
+    // TODO-list 001 : how to make UI change when I update the model (invalidateAll() seems a little heavey.)
     public void onChecked(boolean isChecked){
         user.name = user.name + (isChecked?" Y ":" N ");
-        binding.invalidateAll();
+//        binding.invalidateAll();
 //        binding.notifyPropertyChanged(BR.user); // does not work
         System.out.println("szw click02 : " + user);
     }
