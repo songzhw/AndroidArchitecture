@@ -1,14 +1,10 @@
 package ca.six.bindingdemo.tmp;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import ca.six.bindingdemo.BR;
-
 /**
  * Created by songzhw on 2017-02-18
  */
 
-public class TmpUser extends BaseObservable {
+public class TmpUser {
     public String name;
     public String desp;
     public boolean isMale;
@@ -26,35 +22,5 @@ public class TmpUser extends BaseObservable {
                 ", name='" + name + '\'' +
                 ", isMale=" +  (isMale ? "Male" : "Female") +
                 '}';
-    }
-
-    public void setDesp(String desp) {
-        this.desp = desp;
-        notifyPropertyChanged(BR.desp);
-    }
-
-    public void setMale(boolean male) {
-        isMale = male;
-        notifyPropertyChanged(BR.male);
-    }
-
-    public void setName(String name) {
-        this.name = name;
-        notifyPropertyChanged(BR.name);
-    }
-
-    @Bindable
-    public String getDesp() {
-        return desp;
-    }
-
-    @Bindable
-    public boolean isMale() {
-        return isMale;
-    }
-
-    @Bindable
-    public String getName() {
-        return name;
     }
 }

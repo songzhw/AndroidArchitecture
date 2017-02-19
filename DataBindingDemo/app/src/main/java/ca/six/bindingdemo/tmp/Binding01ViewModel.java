@@ -25,10 +25,14 @@ public class Binding01ViewModel {
         System.out.println("szw click01 : " + user);
     }
 
-    // TODO-list 001 : how to make UI change when I update the model (invalidateAll() seems a little heavey.)
+    // how to make UI change when I update the model
+    //      : 01. binding.invalidateAll()
+    //      : 02. Make TmepUser class a subclass of BaseObservable
+                  // (but when you check isMale, only show tvWonderWoman. The name is still the same)
+                  // (you may have to use setName(), not just user.name(). Then the name will change too)
     public void onChecked(boolean isChecked){
         user.name = user.name + (isChecked?" Y ":" N ");
-//        binding.invalidateAll();
+        binding.invalidateAll(); // show/disappear tvWonderWoman, and update the tvName
 //        binding.notifyPropertyChanged(BR.user); // does not work
         System.out.println("szw click02 : " + user);
     }
