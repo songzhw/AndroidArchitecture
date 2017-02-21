@@ -10,20 +10,22 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textSize="22dp" android:text="@{user.name}"/>
+            android:textSize="20dp" android:text="@{user.name}"/>
         <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textSize="22dp" android:text="@={user.desp}"/>
+            android:textSize="20dp" android:text="@={user.desp}"/>
         <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textSize="22dp" android:text="isMale" android:checked="@={user.isMale}"
+            android:textSize="20dp" android:text="isMale" android:checked="@={user.isMale}"
             android:onCheckedChanged="@{(view, isChecked) -> handler.onChecked(isChecked)}"
             />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textSize="16dp" android:text="Wonder Woman"
+            android:textSize="14dp" android:text="Wonder Woman"
             android:visibility="@{user.isMale ? View.GONE : View.VISIBLE}" />
-
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textSize="22dp" android:text="GetEditTextVlaue"
+            android:textSize="20dp" android:text="GetEditTextVlaue"
             android:onClick="@{handler::click01}"
+            />
+
+        <android.support.v7.widget.RecyclerView  android:layout_width="fill_parent" android:layout_height="wrap_content"
             />
 
 
