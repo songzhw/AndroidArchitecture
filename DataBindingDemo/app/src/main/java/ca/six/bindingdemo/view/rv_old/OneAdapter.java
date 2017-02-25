@@ -40,5 +40,4 @@ public abstract class OneAdapter<T> extends RecyclerView.Adapter<RvViewHolder> {
 
     protected abstract void apply(RvViewHolder vh, T t, int position);
 
-
 }

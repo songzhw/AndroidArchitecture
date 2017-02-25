@@ -41,8 +41,4 @@ how to make UI change when I update the model
         System.out.println("szw click02 : " + user);
     }
 
-
-
-
-
 }
