@@ -3,6 +3,7 @@ package ca.six.bindingdemo.tmp;
 import android.view.View;
 
 import ca.six.bindingdemo.BR;
+import ca.six.bindingdemo.R;
 import ca.six.bindingdemo.databinding.ActivityBindingDemoSimpleBinding;
 import ca.six.bindingdemo.view.OneBindingAdapter;
 
@@ -16,7 +17,7 @@ public class Binding01ViewModel {
     private TmpUser user;
 
     public Binding01ViewModel(ActivityBindingDemoSimpleBinding binding) {
-        user = new TmpUser("name2", "desp2", true);
+        user = new TmpUser("name2", "desp2", true, R.drawable.ic_face);
         this.binding = binding;
         binding.setUser(user);
         binding.setHandler(this);

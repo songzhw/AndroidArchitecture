@@ -12,19 +12,22 @@ public class TmpUser extends BaseObservable {
     public String name;
     public String desp;
     public boolean isMale;
+    public int avatar;
 
-    public TmpUser(String name, String desp, boolean isMale) {
+    public TmpUser(String name, String desp, boolean isMale, int avatar ) {
         this.desp = desp;
         this.isMale = isMale;
         this.name = name;
+        this.avatar = avatar;
     }
 
     @Override
     public String toString() {
         return "TmpUser{" +
-                "desp='" + desp + '\'' +
+                "avatar=" + avatar +
                 ", name='" + name + '\'' +
-                ", isMale=" +  (isMale ? "Male" : "Female") +
+                ", desp='" + desp + '\'' +
+                ", isMale=" + isMale +
                 '}';
     }
 
@@ -56,5 +59,10 @@ public class TmpUser extends BaseObservable {
     @Bindable
     public String getName() {
         return name;
+    }
+
+    @Bindable
+    public int getAvatar(){
+        return avatar;
     }
 }
