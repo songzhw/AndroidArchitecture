@@ -3,9 +3,7 @@ package ca.six.todo.biz.tasks;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
 import ca.six.todo.databinding.ActivityTasksBinding;
 import ca.six.todo.model.Task;
@@ -21,4 +19,7 @@ public class TasksViewModel extends BaseObservable {
         binding.setVm(this);
     }
 
+    public void addNewTask(View v){
+        System.out.println("szw Add New Task");
+    }
 }
