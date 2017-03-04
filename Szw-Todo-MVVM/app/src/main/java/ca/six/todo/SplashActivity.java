@@ -19,7 +19,7 @@ public class SplashActivity extends Activity {
         self = this;
         setContentView(R.layout.activity_splash);
 
-        handler.sendEmptyMessageDelayed(11, 2000);
+        handler.sendEmptyMessageDelayed(11, 500);
     }
 
     private Handler handler = new Handler(){
