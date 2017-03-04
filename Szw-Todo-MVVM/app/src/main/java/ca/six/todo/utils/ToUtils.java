@@ -1,5 +1,6 @@
 package ca.six.todo.utils;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import ca.six.todo.core.TodoApp;
@@ -9,8 +10,8 @@ import ca.six.todo.core.TodoApp;
  */
 
 public class ToUtils {
-    public static void jump(Class clz){
-        Intent it = new Intent(TodoApp.ctx, clz);
-        TodoApp.ctx.startActivity(it);
+    public static void jump(Activity actv, Class clz){
+        Intent it = new Intent(actv, clz);
+        actv.startActivity(it);//光是Context， 如Application， 可能会crash (AndroidRuntimeException)
     }
 }
