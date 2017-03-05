@@ -5,5 +5,6 @@ package ca.six.todo.biz.add_task;
  */
 
 public interface IAddTaskView {
-    public void addedTask(String name, String desp);
+    void addedTask(String name, String desp);
+    void addedFailed();
 }

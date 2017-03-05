@@ -36,4 +36,9 @@ public class AddTaskActivity extends BaseActivity implements IAddTaskView {
         setResult(RESULT_OK, it);
         this.finish();
     }
+
+    @Override
+    public void addedFailed() {
+
+    }
 }

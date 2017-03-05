@@ -18,24 +18,29 @@ public class AddTaskViewModel implements Callback {
     public ObservableField<String> desp = new ObservableField<>();
 
     private IAddTaskView view;
+    public ToRequest req;
 
     public AddTaskViewModel(IAddTaskView view){
         this.view = view;
+        req = new ToRequest();
     }
 
     public void addedNewTask(View v) {
-        ToRequest req = new ToRequest();
         req.addParam("name", name.get());
         req.addParam("desp", desp.get());
         req.sendRequest(ToRequest.ADD_TASK_URL, this);
     }
 
     @Override
-    public void onFailure(Call call, IOException e) {}
+    public void onFailure(Call call, IOException e) {
+        view.addedFailed();
+    }
 
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-        System.out.println("szw addTask Response = " + response.body().string());
+        if(response != null) {
+            System.out.println("szw addTask Response = " + response.body().string());
+        }
         view.addedTask(name.get(), desp.get());
     }
 
