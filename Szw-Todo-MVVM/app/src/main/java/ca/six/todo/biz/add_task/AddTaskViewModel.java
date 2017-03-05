@@ -11,8 +11,7 @@ public class AddTaskViewModel {
     public ObservableField<String> name = new ObservableField<>();
     public ObservableField<String> desp = new ObservableField<>();
 
-    public void addedNewTask(View v){
-
+    public void addedNewTask(View v) {
     }
 
 }

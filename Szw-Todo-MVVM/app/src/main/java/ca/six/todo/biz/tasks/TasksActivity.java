@@ -1,5 +1,6 @@
 package ca.six.todo.biz.tasks;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import ca.six.todo.utils.ToUtils;
 
 // TODO: 2017-03-04 add switch animation for swithcing all/complete/activie
 public class TasksActivity extends BaseActivity implements ITasksView {
+    public static final int REQ = 11;
     private ActivityTasksBinding binding;
     private TasksViewModel vm;
 
@@ -29,6 +31,14 @@ public class TasksActivity extends BaseActivity implements ITasksView {
 
     @Override
     public void addNewTask() {
-        ToUtils.jump(this, AddTaskActivity.class);
+        ToUtils.jumpForResult(this, AddTaskActivity.class, REQ);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+
+        }
     }
 }
