@@ -11,7 +11,7 @@
             android:src="@drawable/empty" android:layout_centerInParent="true"
             android:visibility="@{vm.tasks.isEmpty() ? View.VISIBLE : View.GONE}"
             />
-        <android.support.v7.widget.RecyclerView  android:layout_width="match_parent" android:layout_height="match_parent"
+        <android.support.v7.widget.RecyclerView android:id="@+id/rv_tasks" android:layout_width="match_parent" android:layout_height="match_parent"
             android:visibility="@{vm.tasks.isEmpty() ? View.GONE : View.VISIBLE}"
             />
         <ImageView android:layout_width="50dp" android:layout_height="50dp"

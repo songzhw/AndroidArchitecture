@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="task" type="ca.six.todo.data.Task"/>
+    </data>
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <CheckBox android:id="@+id/cbTasksFinish" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:checked="@{task.isFinished}"
+            />
+        <TextView android:id="@+id/tvTasksName" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="23dp" android:text="@{task.name}"
+            />
+        <TextView android:id="@+id/tvTasksDesp" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="18dp" android:text="@{task.desp}"
+            />
+    </RelativeLayout>
+</layout>

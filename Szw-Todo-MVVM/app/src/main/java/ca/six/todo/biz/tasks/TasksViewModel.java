@@ -5,10 +5,8 @@ import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
 import android.view.View;
 
-import ca.six.todo.biz.add_task.AddTaskViewModel;
 import ca.six.todo.databinding.ActivityTasksBinding;
 import ca.six.todo.data.Task;
-import ca.six.todo.utils.ToUtils;
 
 /**
  * Created by songzhw on 2017-03-04
@@ -25,6 +23,12 @@ public class TasksViewModel extends BaseObservable {
     }
 
     public void addNewTask(View v){
-        view.addNewTask();
+        view.gotoAddTask();
+    }
+
+    public void getNewTaskInfo(String name, String desp) {
+        Task task = new Task(name, desp, false);
+        tasks.add(task);
+        view.refresh(tasks.subList(0, tasks.size()));
     }
 }

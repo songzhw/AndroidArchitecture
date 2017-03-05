@@ -8,13 +8,11 @@ import android.os.Parcelable;
  */
 
 public class Task {
-    public long id;
     public String name;
     public String desp;
     public boolean isFinished;
 
-    public Task(long id, String name, String desp, boolean isFinished) {
-        this.id = id;
+    public Task(String name, String desp, boolean isFinished) {
         this.name = name;
         this.desp = desp;
         this.isFinished = isFinished;
