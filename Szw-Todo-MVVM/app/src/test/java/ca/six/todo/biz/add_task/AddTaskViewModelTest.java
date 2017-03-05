@@ -48,4 +48,17 @@ public class AddTaskViewModelTest {
         verify(view).addedTask(anyString(), anyString());
     }
 
+    @Test
+    public void addedNewTask_Fail() throws Exception {
+        AddTaskViewModel vm = new AddTaskViewModel(view);
+        ToRequest req = mock(ToRequest.class);
+        vm.req = req;
+
+        vm.addedNewTask(null);
+
+        verify(req).sendRequest(anyString(), captor.capture());
+        captor.getValue().onFailure(null, null);
+
+        verify(view).addedFailed();
+    }
 }
