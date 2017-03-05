@@ -14,10 +14,9 @@
         <android.support.v7.widget.RecyclerView  android:layout_width="match_parent" android:layout_height="match_parent"
             android:visibility="@{vm.tasks.isEmpty() ? View.GONE : View.VISIBLE}"
             />
-        <ImageButton android:layout_width="50dp" android:layout_height="50dp" android:elevation="10dp"
+        <ImageView android:layout_width="50dp" android:layout_height="50dp"
             android:layout_margin="40dp" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"
-            android:src="@drawable/add" style="@style/Widget.Design.FloatingActionButton"
-            android:onClick="@{vm::addNewTask}"
+            android:onClick="@{vm::addNewTask}" android:src="@drawable/add"
             />
     </RelativeLayout>
 </layout>

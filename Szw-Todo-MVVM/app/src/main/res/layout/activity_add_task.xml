@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="vm" type="ca.six.todo.biz.add_task.AddTaskViewModel"/>
+    </data>
+
+    <RelativeLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <EditText android:id="@+id/etAddTaskName" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@={vm.name}" android:hint="task name" android:layout_margin="20dp" android:singleLine="true"/>
+        <EditText android:id="@+id/etAddTaskDesp" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@={vm.desp}" android:hint="task description" android:layout_below="@id/etAddTaskName"
+            android:layout_marginLeft="20dp" android:layout_marginRight="20dp"/>
+        <ImageView android:layout_width="50dp" android:layout_height="50dp" android:elevation="10dp"
+            android:layout_margin="40dp" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"
+            android:onClick="@{vm::addedNewTask}" android:src="@drawable/done"
+            />
+    </RelativeLayout>
+</layout>

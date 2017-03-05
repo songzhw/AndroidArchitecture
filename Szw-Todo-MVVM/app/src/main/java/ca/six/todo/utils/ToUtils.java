@@ -14,4 +14,9 @@ public class ToUtils {
         Intent it = new Intent(actv, clz);
         actv.startActivity(it);//光是Context， 如Application， 可能会crash (AndroidRuntimeException)
     }
+
+    public static void jumpForResult(Activity actv, Class clz, int req){
+        Intent it = new Intent(actv, clz);
+        actv.startActivityForResult(it, req);
+    }
 }

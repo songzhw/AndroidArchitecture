@@ -1,4 +1,4 @@
-package ca.six.todo.model;
+package ca.six.todo.data;
 
 /**
  * Created by songzhw on 2017-03-04
