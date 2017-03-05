@@ -1,5 +1,8 @@
 package ca.six.todo.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by songzhw on 2017-03-04
  */
@@ -16,4 +19,5 @@ public class Task {
         this.desp = desp;
         this.isFinished = isFinished;
     }
+
 }

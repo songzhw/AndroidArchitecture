@@ -9,9 +9,13 @@ import okhttp3.Request;
 
 /**
  * Created by songzhw on 2017-03-05
+ *
+ * Uses the Mock API
  */
 
 public class ToRequest {
+    public static final String ADD_TASK_URL = "58bc38f61000005118109ec8";
+
     private HashMap<String, String> params;
     public static final String URL = "http://www.mocky.io/v2/";
 
