@@ -2,11 +2,9 @@ package ca.six.bindingdemo.tmp;
 
 import android.view.View;
 
-import ca.six.bindingdemo.BR;
 import ca.six.bindingdemo.R;
 import ca.six.bindingdemo.databinding.ActivityBindingDemoSimpleBinding;
 import ca.six.bindingdemo.tmp.custom.ICustomListener;
-import ca.six.bindingdemo.view.OneBindingAdapter;
 
 /**
  * Created by songzhw on 2017-02-18
@@ -15,10 +13,10 @@ import ca.six.bindingdemo.view.OneBindingAdapter;
 public class Binding01ViewModel implements ICustomListener{
 
     private final ActivityBindingDemoSimpleBinding binding;
-    private TmpUser user;
+    private User user;
 
     public Binding01ViewModel(ActivityBindingDemoSimpleBinding binding) {
-        user = new TmpUser("name2", "desp2", true, R.drawable.ic_face);
+        user = new User("name2", "desp2", true, R.drawable.ic_face);
         this.binding = binding;
         binding.setUser(user);
         binding.setHandler(this);
@@ -37,7 +35,7 @@ public class Binding01ViewModel implements ICustomListener{
           (you may have to use setName(), not just user.name(). Then the name will change too)
     */
     public void onChecked(boolean isChecked) {
-        user.setName(user.name + (isChecked ? " Y " : " N "));
+        user.name.set(user.name.get() + (isChecked ? " Y ": " N "));
 //        binding.invalidateAll(); // show/disappear tvWonderWoman, and update the tvName
 //        binding.notifyPropertyChanged(BR.user); // does not work
         System.out.println("szw click02 : " + user);

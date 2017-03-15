@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="user" type="ca.six.bindingdemo.tmp.TmpUser"/>
+        <variable name="user" type="ca.six.bindingdemo.tmp.User"/>
         <variable name="handler" type="ca.six.bindingdemo.tmp.Binding01ViewModel"/>
         <import type="android.view.View"/>
     </data>
