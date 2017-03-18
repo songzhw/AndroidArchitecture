@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "ca.six.modul"
         minSdkVersion 18
@@ -18,6 +18,7 @@ android {
         }
     }
 }
+
 
 dependencies {
     testCompile 'junit:junit:4.12'
@@ -36,6 +37,8 @@ dependencies {
         compile project(':biz2')
     }
     // always needs common library
-    compile project(':common')
+//    compile project(':common')
+    releaseCompile project(path: ':common', configuration: 'release')
+    debugCompile project(path: ':common', configuration: 'debug')
 
 }

@@ -1,15 +1,16 @@
 package ca.six.modul;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import ca.six.common.L;
 import ca.six.common.LoginActivity;
 import ca.six.common.Session;
 import ca.six.common.utils.JumpUtils;
 
-public class AppHomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class AppHomeActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
 
         findViewById(R.id.tvHomeStock).setOnClickListener(this);
         findViewById(R.id.tvHomeOption).setOnClickListener(this);
+        L.d("AppHomeActivity onCreate()");
     }
 
     @Override

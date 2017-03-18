@@ -1,6 +1,6 @@
 package ca.six.biz2;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -11,7 +11,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import ca.six.common.utils.JumpUtils;
 
-public class OptionActivity extends AppCompatActivity implements View.OnClickListener {
+public class OptionActivity extends Activity implements View.OnClickListener {
     private TextView tv;
 
     @Override

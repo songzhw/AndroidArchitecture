@@ -1,9 +1,9 @@
 package ca.six.biz2;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class PreOptionActivity extends AppCompatActivity {
+public class PreOptionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

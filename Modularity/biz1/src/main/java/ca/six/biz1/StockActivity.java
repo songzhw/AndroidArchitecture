@@ -1,16 +1,11 @@
 package ca.six.biz1;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import ca.six.common.utils.JumpUtils;
 
 // option 1: check login here
 // option 2: check login in the AppHomeActivity.
