@@ -9,8 +9,5 @@ public class L {
         if(BuildConfig.DEBUG){
             System.out.println("szw "+msg);
         }
-        else{
-            System.out.println("szw not a debug mode");
-        }
     }
 }
