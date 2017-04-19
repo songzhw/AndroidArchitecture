@@ -23,3 +23,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(view);
     }
 }
+
+
+/*
+1. Emualtor is okay. But the app on Nexus 6p will crash. Crash info is :
+dlopen failed: "/data/data/ca.six.lithodemo/lib-main/libgnustl_shared.so" is 32-bit instead of 64-bi
+
+2. LithoView is a ViewGroup (according to UI Automator View)
+
+3.
+
+ */
