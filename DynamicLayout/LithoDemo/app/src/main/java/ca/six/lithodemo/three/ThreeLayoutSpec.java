@@ -9,6 +9,7 @@ import com.facebook.litho.ComponentLayout;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
 import com.facebook.litho.annotations.Prop;
+import com.facebook.litho.annotations.ResType;
 import com.facebook.litho.widget.Text;
 import com.facebook.yoga.YogaEdge;
 
@@ -17,7 +18,8 @@ public class ThreeLayoutSpec {
 
     @OnCreateLayout
     static ComponentLayout onCreateLayout(ComponentContext ctx,
-        @Prop int color, @Prop String title, @Prop String subtitle){
+          @Prop int color, @Prop String title, @Prop String subtitle,
+          @Prop(optional = true, resType = ResType.DIMEN_OFFSET) int shadowRadius){
         Component.Builder<Text> c1 = Text.create(ctx)
                 .text(title)
                 .textSizeSp(40);

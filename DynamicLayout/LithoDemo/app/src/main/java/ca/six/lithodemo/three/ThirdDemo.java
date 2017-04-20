@@ -31,6 +31,7 @@ public class ThirdDemo extends Activity {
                     .color(i % 2 == 0 ? Color.WHITE : Color.LTGRAY)
                     .title("Title "+i)
                     .subtitle("text "+(10+i))
+                    .shadowRadiusDip(i)
                     .build();
             binder.insertItemAt(i, ComponentInfo.create().component(item).build());
         }
