@@ -22,8 +22,16 @@ public class SecondDemo extends Activity {
         final ComponentContext ctx = new ComponentContext(this);
         final Component text = ListItem.create(ctx).build();
 
+        final RecyclerBinder binder = new RecyclerBinder(ctx,
+                new LinearLayoutInfo(this, OrientationHelper.VERTICAL, false));
+        final Component component = Recycler.create(ctx)
+                .binder(binder).build();
 
-        final LithoView view = LithoView.create(this, text);
+        for(int i = 0 ; i < 23; i++){
+            binder.insertItemAt(i, ComponentInfo.create().component(text).build());
+        }
+
+        final LithoView view = LithoView.create(this, component);
         setContentView(view);
     }
 }
