@@ -33,11 +33,12 @@ dependencies {
 
     // if it is not debug mode, add all the biz module to build
     if(! isDev.toBoolean()){
-        compile project(':biz1')
-        compile project(':biz2')
+        releaseCompile project(path: ':biz1', configuration: 'release')
+        debugCompile project(path: ':biz1', configuration: 'debug')
+        releaseCompile project(path: ':biz2', configuration: 'release')
+        debugCompile project(path: ':biz2', configuration: 'debug')
     }
     // always needs common library
-//    compile project(':common')
     releaseCompile project(path: ':common', configuration: 'release')
     debugCompile project(path: ':common', configuration: 'debug')
 

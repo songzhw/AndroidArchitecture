@@ -7,6 +7,7 @@ if(isDev.toBoolean()){
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.2"
+    publishNonDefault true
 
     defaultConfig {
         minSdkVersion 18
@@ -37,7 +38,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:24.2.1'
-    compile project(':common')
+
+    releaseCompile project(path: ':common', configuration: 'release')
+    debugCompile project(path: ':common', configuration: 'debug')
 
     testCompile 'junit:junit:4.12'
 
