@@ -7,7 +7,13 @@ import dagger.Provides;
 @Module
 public class ActivitiesModule {
     @Provides
-    User fetchUser(){
-        return new User("testName");
+    User fetchUser(String name){
+        return new User(name);
     }
+
+    @Provides
+    String getName(){
+        return "bing bong";
+    }
+
 }
