@@ -6,6 +6,12 @@ import dagger.Provides;
 
 @Module
 public class ActivitiesModule {
+    String name;
+
+    public ActivitiesModule(String name){
+        this.name = name;
+    }
+
     @Provides
     User fetchUser(String name){
         return new User(name);
@@ -13,7 +19,6 @@ public class ActivitiesModule {
 
     @Provides
     String getName(){
-        return "bing bong";
+        return this.name;
     }
-
 }

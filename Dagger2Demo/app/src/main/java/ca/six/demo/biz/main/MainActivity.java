@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 先build下， DaggerActivitiesComponent这个类才会出来
         ActivitiesComponent component = DaggerActivitiesComponent.builder()
-                .activitiesModule(new ActivitiesModule())
+                .activitiesModule(new ActivitiesModule("CF Inject"))
                 .build();
         component.injectMain(this);
 
