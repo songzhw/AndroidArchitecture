@@ -29,8 +29,7 @@ public class AddTweetPresenterTest {
 
         presenter.save("test", true);
 
-        // 为了验证是否同一Tweet， 这就得保证Tweet是实现了equals(), hashCode()
-        Tweet tweet = new Tweet("test", true);
+        // Tweet创建是会用new Date()， 所以不能直接比较Tweet对象。 得用ArgumentCaptor
         verify(useCase).execute(captor.capture());
 
         Tweet realTweet = captor.getValue();

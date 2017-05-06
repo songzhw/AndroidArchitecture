@@ -1,6 +1,5 @@
 package ca.six.clean.domain.entity;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class Tweet {
