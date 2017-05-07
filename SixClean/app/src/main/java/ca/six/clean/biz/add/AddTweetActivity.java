@@ -15,7 +15,6 @@ import ca.six.clean.domain.usecase.AddTweetUseCase;
 
 public class AddTweetActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-
     private CheckBox cb;
     private EditText et;
     private FloatingActionButton fab;
