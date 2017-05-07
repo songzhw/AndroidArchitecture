@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -31,9 +33,18 @@ public class AddTweetActivity extends AppCompatActivity implements View.OnClickL
         cb = (CheckBox) findViewById(R.id.cbAddTweet);
         cb.setOnCheckedChangeListener(this);
         et = (EditText) findViewById(R.id.etAddTweet);
+        et.addTextChangedListener(textWatcher);
         fab = (FloatingActionButton) findViewById(R.id.fabAddTweet);
         fab.setOnClickListener(this);
     }
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+        @Override public void onTextChanged(CharSequence s, int start, int before, int count) { }
+        @Override public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     @Override
     public void onClick(View v) {
