@@ -38,4 +38,20 @@ public class AddTweetPresenterTest {
         assertEquals(true, realTweet.isTech);
     }
 
+    @Test
+    public void rate_data1() {
+        AddTweetPresenter presenter = new AddTweetPresenter(view, useCase);
+
+        presenter.rate("abcd", false);
+        verify(view).onRateChanged(1);
+    }
+
+    @Test
+    public void rate_data2() {
+        AddTweetPresenter presenter = new AddTweetPresenter(view, useCase);
+
+        presenter.rate("abcdcdefg", true);
+        verify(view).onRateChanged(3);
+    }
+
 }
