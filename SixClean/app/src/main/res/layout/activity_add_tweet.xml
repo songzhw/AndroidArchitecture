@@ -4,7 +4,7 @@
 
     <RatingBar android:id="@+id/rbAddTweet" android:layout_margin="16dp"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true"
-        android:rating="3" android:isIndicator="true"
+        android:rating="0" android:isIndicator="true"
         />
 
     <CheckBox android:id="@+id/cbAddTweet" android:layout_below="@id/rbAddTweet"

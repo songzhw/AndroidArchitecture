@@ -15,6 +15,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class AddTweetPresenterTest {
+    @Mock IAddTweetView view;
     @Mock AddTweetUseCase useCase;
     @Captor ArgumentCaptor<Tweet> captor;
 
@@ -25,7 +26,7 @@ public class AddTweetPresenterTest {
 
     @Test
     public void save() throws Exception {
-        AddTweetPresenter presenter = new AddTweetPresenter(useCase);
+        AddTweetPresenter presenter = new AddTweetPresenter(view, useCase);
 
         presenter.save("test", true);
 
