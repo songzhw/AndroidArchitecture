@@ -17,6 +17,10 @@ public class SimpleDemo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        DaggerSimpleComponent.builder()
+                .build()
+                .inject(this);
+
         TextView tv = (TextView) findViewById(R.id.tvHome);
         tv.setText(apple.toString());
 
