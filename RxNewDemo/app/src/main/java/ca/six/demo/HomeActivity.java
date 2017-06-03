@@ -32,29 +32,9 @@ public class HomeActivity extends AppCompatActivity {
                 });
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+        Binds.nav(navigation)
+                .subscribe( (item) -> tvMessage.setText(item.getTitle()));
+
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    tvMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    tvMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    tvMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-
-    };
-
 
 }
