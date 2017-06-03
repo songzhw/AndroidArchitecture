@@ -11,11 +11,14 @@ import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 import ca.six.demo.rx.binding.Binds;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
 public class HomeActivity extends AppCompatActivity {
 
     private TextView tvMessage;
+    private CompositeDisposable allDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +28,34 @@ public class HomeActivity extends AppCompatActivity {
         tvMessage = (TextView) findViewById(R.id.message);
         Button btn = (Button)findViewById(R.id.btnHome);
 
-        Binds.clicks(btn)
+        Disposable disposableClick = Binds.clicks(btn)
                 .throttleFirst(2, TimeUnit.SECONDS)
                 .subscribe( (obj) -> {
                         System.out.println("szw click btn1 "+ System.currentTimeMillis());
                 });
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        Binds.nav(navigation)
+        Disposable disposableNav = Binds.nav(navigation)
                 .subscribe( (item) -> tvMessage.setText(item.getTitle()));
 
+        allDisposable = new CompositeDisposable();
+        allDisposable.addAll(disposableClick, disposableNav);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        allDisposable.clear();
+    }
 }
+
+/*
+[CompositeDisposable]
+
+// Using clear will clear all, but can accept new disposable
+disposables.clear();
+
+// Using dispose will clear all and set isDisposed = true, so it will not accept any new disposable
+disposables.dispose();
+
+ */
