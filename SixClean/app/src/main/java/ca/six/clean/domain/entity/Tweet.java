@@ -6,7 +6,7 @@ public class Tweet {
     public String content;
     public Date time;
     public boolean isTech;
-    public int rating;
+    public float rating;
 
     public Tweet(String content) {
         this(content, false);
@@ -20,7 +20,14 @@ public class Tweet {
         this.content = content;
         this.time = time;
         this.isTech = isTech;
-        this.rating = 0; // TODO: 2017-05-06 change to a evaluation
+        this.rating = getRating();
+    }
+
+    public float getRating() {
+        int len = content.length();
+        int techRate = isTech ? 1 : 0;
+        rating = len / 4 + techRate;
+        return rating;
     }
 
     @Override
@@ -31,9 +38,9 @@ public class Tweet {
         Tweet tweet = (Tweet) o;
 
         if (isTech != tweet.isTech) return false;
-        if (rating != tweet.rating) return false;
+        if (Float.compare(tweet.rating, rating) != 0) return false;
         if (!content.equals(tweet.content)) return false;
-        return time.equals(tweet.time); //Date类自己有实现自己的equals()方法
+        return time.equals(tweet.time);
 
     }
 
@@ -42,7 +49,7 @@ public class Tweet {
         int result = content.hashCode();
         result = 31 * result + time.hashCode();
         result = 31 * result + (isTech ? 1 : 0);
-        result = 31 * result + rating;
+        result = 31 * result + (rating != +0.0f ? Float.floatToIntBits(rating) : 0);
         return result;
     }
 }

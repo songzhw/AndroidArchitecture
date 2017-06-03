@@ -16,4 +16,9 @@ public class FakeEntityGateway implements IEntityGateway {
     public void createTweet(Tweet tweet) {
         list.add(tweet);
     }
+
+    @Override
+    public void updateTweet(Tweet newTweet) {
+
+    }
 }

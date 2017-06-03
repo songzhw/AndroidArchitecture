@@ -6,6 +6,7 @@ import ca.six.clean.domain.usecase.AddTweetUseCase;
 public class AddTweetPresenter {
     private IAddTweetView view;
     private AddTweetUseCase addTweetUseCase;
+    private Tweet tweet;
 
     public AddTweetPresenter(IAddTweetView view, AddTweetUseCase addTweetUseCase) {
         this.view = view;
@@ -17,9 +18,8 @@ public class AddTweetPresenter {
         addTweetUseCase.execute(tweet);
     }
 
-    public void rate(String str, boolean isTech) {
-        int len = str.length();
-        int techRate = isTech ? 1 : 0;
-        view.onRateChanged(len / 4 + techRate);
+    public void rate(String content, boolean isTech) {
+        Tweet tweet = new Tweet(content, isTech);
+        view.onRateChanged(tweet.getRating());
     }
 }
