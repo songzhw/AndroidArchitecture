@@ -33,7 +33,15 @@ public class NavItemSelectObservable extends Observable<MenuItem> {
         observer.onSubscribe(listener);
         view.setOnNavigationItemSelectedListener(listener);
 
+        // emit initial checked item
         Menu menu = view.getMenu();
+        for (int i = 0, count = menu.size(); i < count; i++) {
+            MenuItem item = menu.getItem(i);
+            if (item.isChecked()) { // initial item
+                observer.onNext(item);
+                break;
+            }
+        }
     }
 
 
