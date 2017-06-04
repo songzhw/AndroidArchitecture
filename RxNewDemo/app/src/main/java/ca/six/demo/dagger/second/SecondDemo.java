@@ -1,4 +1,4 @@
-package six.ca.demo.dagger2.second;
+package ca.six.demo.dagger.second;
 
 import android.app.Activity;
 import android.os.Bundle;

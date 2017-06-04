@@ -1,4 +1,4 @@
-package six.ca.demo.dagger2.simple;
+package ca.six.demo.dagger.simple;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,22 +7,22 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import six.ca.demo.R;
+import ca.six.demo.R;
+
 
 public class SimpleDemo extends Activity {
-    @Inject Apple apple;
+    @Inject
+    Apple apple;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
 
         DaggerSimpleComponent.builder()
                 .build()
                 .inject(this);
 
-        TextView tv = (TextView) findViewById(R.id.tvHome);
-        tv.setText(apple.toString());
+        System.out.println("szw : apple = " + apple.toString());
 
     }
 }

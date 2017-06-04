@@ -1,4 +1,4 @@
-package six.ca.demo.dagger2.simple;
+package ca.six.demo.dagger.simple;
 
 import dagger.Component;
 
