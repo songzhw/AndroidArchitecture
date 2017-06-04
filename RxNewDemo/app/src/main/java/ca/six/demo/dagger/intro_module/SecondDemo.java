@@ -1,28 +1,23 @@
-package ca.six.demo.dagger.simple;
+package ca.six.demo.dagger.intro_module;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import ca.six.demo.R;
-
-
-public class SimpleDemo extends Activity {
-    @Inject
-    Apple apple;
+public class SecondDemo extends Activity {
+    @Inject Banana banana;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DaggerSimpleComponent.builder()
+        DaggerSecondComponent.builder()
+                .secondModule(new SecondModule())
                 .build()
                 .inject(this);
 
-        System.out.println("szw : apple = " + apple.toString());
-
+        System.out.println("banana = "+banana.toString());
     }
 }

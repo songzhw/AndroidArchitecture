@@ -1,4 +1,4 @@
-package ca.six.demo.dagger.simple;
+package ca.six.demo.dagger.intro_inject_component;
 
 import javax.inject.Inject;
 

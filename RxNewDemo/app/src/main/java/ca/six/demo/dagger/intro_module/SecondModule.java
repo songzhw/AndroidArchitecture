@@ -1,4 +1,4 @@
-package ca.six.demo.dagger.second;
+package ca.six.demo.dagger.intro_module;
 
 import dagger.Module;
 import dagger.Provides;
