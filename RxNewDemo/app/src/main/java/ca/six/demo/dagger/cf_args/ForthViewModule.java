@@ -5,14 +5,14 @@ import dagger.Provides;
 
 @Module
 public class ForthViewModule {
-    private ForthPresenter view;
+    private IForthView view;
 
-    public ForthViewModule(ForthPresenter view) {
+    public ForthViewModule(IForthView view) {
         this.view = view;
     }
 
     @Provides
-    ForthPresenter getView(){
+    IForthView getView(){
         return view;
     }
 }

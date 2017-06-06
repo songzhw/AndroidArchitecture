@@ -16,10 +16,10 @@ public class ForthActivity extends Activity implements IForthView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        DaggerSamplePresenterComponent.builder()
-//                .sampleViewModule(new SampleViewModule(this))
-//                .build()
-//                .inject(this);
+        DaggerForthPresenterComponent.builder()
+                .forthViewModule(new ForthViewModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override
