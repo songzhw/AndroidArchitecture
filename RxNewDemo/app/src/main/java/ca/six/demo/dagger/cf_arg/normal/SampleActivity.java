@@ -1,26 +1,19 @@
-package ca.six.demo.dagger.cf_arg;
+package ca.six.demo.dagger.cf_arg.normal;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import javax.inject.Inject;
 
 public class SampleActivity extends Activity implements ISampleView {
-
-    @Inject
-    SamplePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        DaggerSamplePresenterComponent.builder()
-                .build()
-                .inject(this);
+        new SamplePresenter(this);
     }
 
     @Override
     public void viewReady() {
-        System.out.println("szw viewReady()");
+
     }
 }

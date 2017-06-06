@@ -1,11 +1,8 @@
-package ca.six.demo.dagger.cf_arg;
-
-import javax.inject.Inject;
+package ca.six.demo.dagger.cf_arg.normal;
 
 public class SamplePresenter {
     private ISampleView view;
 
-    @Inject
     public SamplePresenter(ISampleView view) {
         this.view = view;
         view.viewReady();
