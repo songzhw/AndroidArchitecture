@@ -5,8 +5,6 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import ca.six.demo.dagger.cf_arg.DaggerSamplePresenterComponent;
-
 public class ForthActivity extends Activity implements IForthView {
 
     @Inject
@@ -16,10 +14,10 @@ public class ForthActivity extends Activity implements IForthView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DaggerForthPresenterComponent.builder()
-                .forthViewModule(new ForthViewModule(this))
-                .build()
-                .inject(this);
+//        DaggerForthPresenterComponent.builder()
+//                .forthViewModule(new ForthViewModule(this))
+//                .build()
+//                .inject(this);
     }
 
     @Override
