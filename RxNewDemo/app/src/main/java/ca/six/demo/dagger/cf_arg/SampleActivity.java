@@ -15,6 +15,7 @@ public class SampleActivity extends Activity implements ISampleView {
         super.onCreate(savedInstanceState);
 
         DaggerSamplePresenterComponent.builder()
+                .sampleViewModule(new SampleViewModule(this))
                 .build()
                 .inject(this);
     }
