@@ -8,4 +8,5 @@ import dagger.Component;
 @Component(modules = UserModel.class)
 public interface ScopeComponent {
     void inject(DemoA actv);
+    void inject(DemoB actv);
 }
