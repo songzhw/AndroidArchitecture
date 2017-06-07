@@ -7,16 +7,15 @@ import android.view.MotionEvent;
 
 import javax.inject.Inject;
 
+import ca.six.demo.dagger.scope.c.DemoC;
+
 public class DemoB extends Activity {
     @Inject User lucy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//
-//        DaggerScopeComponent.builder()
-//                .build()
-//                .inject(this);
+
         ((ScopeApp)getApplication()).getScopeComponent().inject(this);
 
         System.out.println("szw DemoB : lucy = " + lucy);
@@ -25,6 +24,10 @@ public class DemoB extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if(MotionEvent.ACTION_UP == event.getAction()) {
+            Intent it = new Intent(this, DemoC.class);
+            startActivity(it);
+        }
         return super.onTouchEvent(event);
     }
 }

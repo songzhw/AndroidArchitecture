@@ -1,4 +1,3 @@
-
 package ca.six.demo.dagger.scope;
 
 import android.app.Activity;
@@ -16,9 +15,6 @@ public class DemoA extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        DaggerScopeComponent.builder()
-//            .build()
-//            .inject(this);
         ((ScopeApp)getApplication()).getScopeComponent().inject(this);
 
         System.out.println("szw DemoA : bob  = " + bob);
