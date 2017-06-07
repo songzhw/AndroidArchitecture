@@ -17,6 +17,8 @@ public class BindsActivity extends Activity {
         DaggerBindsComponent.builder()
                 .build()
                 .inject(this);
+
+        presenter.init();
     }
 
 }

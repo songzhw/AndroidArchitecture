@@ -6,7 +6,7 @@
         android:label="@string/app_name" android:theme="@style/AppTheme"
         android:name=".dagger.scope.ScopeApp">
 
-        <activity android:name=".dagger.scope.DemoA" android:label="Home Page">
+        <activity android:name=".dagger.binds.BindsActivity" android:label="Home Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
