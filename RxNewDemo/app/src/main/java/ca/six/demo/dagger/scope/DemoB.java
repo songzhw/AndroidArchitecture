@@ -8,16 +8,16 @@ import android.view.MotionEvent;
 import javax.inject.Inject;
 
 public class DemoB extends Activity {
-    @Inject
-    User lucy;
+    @Inject User lucy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        DaggerScopeComponent.builder()
-                .build()
-                .inject(this);
+//
+//        DaggerScopeComponent.builder()
+//                .build()
+//                .inject(this);
+        ((ScopeApp)getApplication()).getScopeComponent().inject(this);
 
         System.out.println("szw DemoB : lucy = " + lucy);
 

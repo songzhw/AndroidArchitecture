@@ -8,7 +8,7 @@ import dagger.Provides;
 @Module
 public class UserModel {
 
-    @Singleton
+    @UserScope
     @Provides
     public User getUser(){
         return new User();

@@ -16,12 +16,13 @@ public class DemoA extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DaggerScopeComponent.builder()
-            .build()
-            .inject(this);
+//        DaggerScopeComponent.builder()
+//            .build()
+//            .inject(this);
+        ((ScopeApp)getApplication()).getScopeComponent().inject(this);
 
-        System.out.println("szw DemoA : bob = " + bob);
-        System.out.println("szw DemoA : jim = " + jim);
+        System.out.println("szw DemoA : bob  = " + bob);
+        System.out.println("szw DemoA : jim  = " + jim);
     }
 
     @Override
