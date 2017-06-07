@@ -15,7 +15,6 @@ public class BindsActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         DaggerBindsComponent.builder()
-                .bindsModule(new BindsModule())
                 .build()
                 .inject(this);
     }
