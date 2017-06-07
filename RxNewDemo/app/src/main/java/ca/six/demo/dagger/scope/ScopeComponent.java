@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component
+@Component(modules = UserModel.class)
 public interface ScopeComponent {
     void inject(DemoA actv);
 }
