@@ -3,13 +3,15 @@ package ca.six.demo.dagger.binds;
 import javax.inject.Inject;
 
 public class BindsPresenter implements IBindsPresenter{
-    @Inject BindsDataService dataService; // 新加个@Inject
+    @Inject BindsDataService dataService;
+    @Inject User user;
 
-    @Inject  public BindsPresenter() { // CF干掉了参数
+    @Inject  public BindsPresenter() {
     }
 
     @Override
     public void init() {
-        System.out.println("szw init();"+dataService.id);
+        System.out.println("szw init() : service = "+dataService.id);
+        System.out.println("szw init() : user = "+user.id);
     }
 }
