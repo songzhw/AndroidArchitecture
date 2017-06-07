@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 public class ForthActivity extends Activity implements IForthView {
 
-    @Inject
+//    @Inject
     ForthPresenter presenter;
 
     @Override
