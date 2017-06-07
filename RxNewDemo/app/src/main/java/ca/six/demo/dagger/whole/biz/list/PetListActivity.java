@@ -9,7 +9,6 @@ import android.view.MotionEvent;
 
 import javax.inject.Inject;
 
-import ca.six.demo.dagger.whole.biz.DaggerActivityComponent;
 import ca.six.demo.dagger.whole.biz.detail.PetDetailActivity;
 import ca.six.demo.dagger.whole.core.WholeApp;
 import okhttp3.OkHttpClient;
@@ -24,7 +23,7 @@ public class PetListActivity extends Activity implements IPetListView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DaggerActivityComponent.builder()
+        DaggerPetListComponent.builder()
                 .appComponent( ((WholeApp) getApplication()).getAppComponent())
                 .petListModule(new PetListModule(this))
                 .build()

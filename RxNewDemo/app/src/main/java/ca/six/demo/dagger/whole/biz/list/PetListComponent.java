@@ -1,4 +1,4 @@
-package ca.six.demo.dagger.whole.biz;
+package ca.six.demo.dagger.whole.biz.list;
 
 import ca.six.demo.dagger.whole.biz.detail.PetDetailActivity;
 import ca.six.demo.dagger.whole.biz.list.PetListActivity;
@@ -9,7 +9,6 @@ import dagger.Component;
 
 @PerActivity
 @Component(dependencies = AppComponent.class, modules = {PetListModule.class} )
-public interface ActivityComponent {
+public interface PetListComponent {
     void inject(PetListActivity activity);
-    void inject(PetDetailActivity activity);
 }

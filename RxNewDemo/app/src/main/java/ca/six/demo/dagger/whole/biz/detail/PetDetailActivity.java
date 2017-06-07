@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 
 import javax.inject.Inject;
 
+import ca.six.demo.dagger.whole.core.WholeApp;
 import okhttp3.OkHttpClient;
 
 
@@ -20,7 +21,10 @@ public class PetDetailActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        getActivityComponent().inject(this);
+        DaggerPetDetailComponent.builder()
+                .appComponent( ((WholeApp)getApplication()).getAppComponent())
+                .build()
+                .inject(this);
 
         System.out.println("szw PetDetailPage : app = " + app);
         System.out.println("szw PetDetailPage : http = " + http);
