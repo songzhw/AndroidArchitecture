@@ -7,6 +7,6 @@ public class BindsDataService {
 
     @Inject
     public BindsDataService() {
-        id = 23;
+        id = 22;
     }
 }
