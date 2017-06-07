@@ -9,8 +9,7 @@ import android.view.MotionEvent;
 import javax.inject.Inject;
 
 public class DemoA extends Activity {
-    @Inject
-    User bob;
+    @Inject User bob;
     @Inject User jim;
 
     @Override
