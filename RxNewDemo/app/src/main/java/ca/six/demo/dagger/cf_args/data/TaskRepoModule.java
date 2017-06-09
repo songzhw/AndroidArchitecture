@@ -11,7 +11,7 @@ public abstract class TaskRepoModule {
     abstract IDataSource getLocalRepo(LocalTaskRepo dataSource);
 
     @Binds
-    @LocalRepo
+    @RemoteRepo
     abstract IDataSource getRemoteRepo(RemoteTaskRepo dataSource);
    
 }
