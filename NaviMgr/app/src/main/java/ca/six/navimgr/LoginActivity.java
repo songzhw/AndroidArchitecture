@@ -122,6 +122,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginTask.cancel(true);
+        loginTask = null;
+    }
 
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
