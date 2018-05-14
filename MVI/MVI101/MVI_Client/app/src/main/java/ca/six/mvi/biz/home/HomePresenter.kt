@@ -8,7 +8,7 @@ class HomePresenter {
 
     fun onCreate(){
         HttpEngine().get("http://localhost:8899/todos")
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{ resp ->
                     println("presenter : $resp")
