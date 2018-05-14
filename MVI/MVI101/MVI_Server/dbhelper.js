@@ -16,7 +16,11 @@ function doDB(callback){
 
 DB.prototype.insert = function (data) {
       doDB(function(){
-            db.collection(col).insertOne(data)// insertOne(), insertMany()可不能混用, 不然会插入不成功
+            db.collection(col).insertOne(data, function(err, result){
+                  if(err) throw err
+                  consolog.log("insert : ", result)
+
+            })
       })
 }
 
