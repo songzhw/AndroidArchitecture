@@ -18,8 +18,7 @@ DB.prototype.insert = function (data) {
       doDB(function(){
             db.collection(col).insertOne(data, function(err, result){
                   if(err) throw err
-                  consolog.log("insert : ", result)
-
+                  // console.log("insert : ", result)
             })
       })
 }

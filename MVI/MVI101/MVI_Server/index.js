@@ -16,33 +16,29 @@ app.get('/todos', function (req, resp) {
                   data.forEach(function (aItem, pos) {
                         var obj = {
                               "pos": pos,
-                              "desp":aItem.item
+                              "desp": aItem.item
                         }
                         ary.push(obj)
                   })
-                  var ret = {"code":2000, "msg":"", "todos":ary}
+                  var ret = { "code": 2000, "msg": "", "todos": ary }
                   resp.json(ret) // 若用resp.json(JSON.stringify(ret)), 则最终发出起的 " 变成了 /"
             })
       })
 })
 
 app.post('/addTodo', function (req, resp) {
-      var item = ''
-      req.setEncoding('utf-8')
-      req.on('data', function (chunk) {
-            console.log('post chunk = ' + chunk)
-            item += chunk
-      })
-      req.on('end', function () {
-            console.log("szw insert : ", item)
-            var obj = { "item": item }
+      if (req.body.add == null) {
+            resp.json({ "code": 500, "msg": "the todo item is null" })
+      } else {
+            var obj = { "item": req.body.add }
             db.insert(obj)
-            resp.json({"code":2000, "msg":"add successfully"})
-      })
+            resp.json({ "code": 2000, "msg": "add successfully" })
+      }
 })
 
 app.delete('/delTodo', function (req, resp) {
-
+      // TODO
+      resp.end("delete functionality to be finished")
 })
 
 app.listen(8899, function () {
