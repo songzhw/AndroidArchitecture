@@ -5,24 +5,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class HomePresenter {
+    val model = HomeModel()
 
     fun onCreate() {
-        HttpEngine().get("http://192.168.2.26:8899/todos")
+        model.getTodoList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { err ->
-                    println("szw err1 = $err")
+                .subscribe { data ->
+                    println("szw presenter ${data.toString()}")
                 }
-                .subscribe(
-                        //onNext
-                        { resp ->
-                            println("szw presenter : $resp")
-                            println("szw p2 : ${resp.body()?.string()}")
-                        },
-                        //onError
-                        { err ->
-                            println("szw 2 err = $err")
-                        }
-                )
+
     }
 }

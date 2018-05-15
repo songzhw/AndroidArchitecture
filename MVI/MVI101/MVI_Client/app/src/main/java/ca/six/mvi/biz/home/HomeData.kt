@@ -19,6 +19,11 @@ class HomeData {
         this.todos = todos
     }
 
+    override fun toString(): String {
+        return "HomeData(isError=$isError, isLoading=$isLoading, error=$error, todos=$todos)"
+    }
+
+
 //    class Empty : HomeData{}
 //    class Loading : HomeData {}
 //    class TodoList(val todos: ArrayList<Todos>) : HomeData { }
