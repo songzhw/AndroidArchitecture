@@ -25,3 +25,10 @@ class HttpEngine {
     }
 
 }
+
+internal interface HttpCode {
+    companion object {
+        val OK = 2000
+        val ERROR_NO_CONNECTION = 1001
+    }
+}
