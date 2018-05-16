@@ -1,6 +1,5 @@
 package ca.six.mvi.biz.home
 
-import ca.six.mvi.utils.http.HttpEngine
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
