@@ -10,10 +10,10 @@ import six.ca.dagger101.eight.IEggPresenter
 @Module
 abstract class EggModule {
 
-    @Provides
-    fun eggService(): EggService {
-        return EggService()
-    }
+//    @Provides
+//    fun eggService(): EggService {
+//        return EggService()
+//    }
 
 //    @Provides
 //    fun eggPresenter(eggService: EggService): IEggPresenter {
