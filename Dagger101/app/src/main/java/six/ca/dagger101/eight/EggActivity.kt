@@ -13,6 +13,7 @@ class EggActivity : Activity() {
         super.onCreate(savedInstanceState)
 
         DaggerEggComponent.builder()
+                .eggModule(EggModule())
                 .build()
                 .inject(this)
 
