@@ -14,7 +14,7 @@ class DogModule {
     }
 
     @Provides
-    fun dogHouse() : DogHouse{
-        return DogHouse("five")
+    fun dogHouse(name: String): DogHouse {
+        return DogHouse(name)
     }
 }
