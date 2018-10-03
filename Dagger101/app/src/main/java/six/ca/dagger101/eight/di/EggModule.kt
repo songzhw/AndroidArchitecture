@@ -10,11 +10,11 @@ import six.ca.dagger101.eight.IEggPresenter
 @Module
 abstract class EggModule {
 
-//    @Provides
-//    fun eggService(): EggService {
-//        return EggService()
-//    }
-//
+    @Provides
+    fun eggService(): EggService {
+        return EggService()
+    }
+
 //    @Provides
 //    fun eggPresenter(eggService: EggService): IEggPresenter {
 //        return EggPresenter(eggService)
@@ -27,7 +27,7 @@ abstract class EggModule {
     abstract fun eggPresenter(presenter: EggPresenter): IEggPresenter
 
     // Error: @binds method must have exactly one parameter, whose type is assignable to the return type
-    @Binds
-    abstract fun eggService() : EggService
+//    @Binds
+//    abstract fun eggService() : EggService
 
 }
