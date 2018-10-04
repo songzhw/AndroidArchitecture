@@ -22,8 +22,17 @@ class WindModule {
     }
 }
 
+@Module
+class SunnyModule{
+    @Provides @IntoSet
+    fun getSun(): Boolean {
+        return true
+    }
+}
 
-@Component(modules = [ThunderModule::class, WindModule::class])
+
+@Component(modules = [ThunderModule::class, WindModule::class,
+    SunnyModule::class])
 interface WeatherComponent {
     fun inject(receiver: ThirteenDemo)
 }
