@@ -30,9 +30,16 @@ class SunnyModule{
     }
 }
 
+@Module
+class UnknowWeatherModule {
+    @Provides @ElementsIntoSet
+    fun getWeathers() : Set<String> {
+        return hashSetOf("zoo", "apple", "java")
+    }
+}
 
 @Component(modules = [ThunderModule::class, WindModule::class,
-    SunnyModule::class])
+    SunnyModule::class, UnknowWeatherModule::class])
 interface WeatherComponent {
     fun inject(receiver: ThirteenDemo)
 }
