@@ -1,7 +1,9 @@
-package ca.six.demo
+package ca.six.demo.biz.splash
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import io.reactivex.Observable
+import six.ca.inject1810.R
 
 class SplashActivity : AppCompatActivity() {
 
@@ -9,4 +11,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
     }
+
 }
+
