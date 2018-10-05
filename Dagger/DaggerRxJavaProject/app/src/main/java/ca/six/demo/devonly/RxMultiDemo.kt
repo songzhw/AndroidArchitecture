@@ -11,10 +11,16 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import ca.six.demo.util.disposedBy
+import java.util.concurrent.TimeUnit
 
 object DummyNetwork {
     fun query(): Observable<String> = Observable.just("Hello")
-    fun queryWithBackpressure(): Flowable<String> = Flowable.just("test")
+
+    fun queryWithBackpressure(): Flowable<Int> {
+        return Flowable.timer(3, TimeUnit.SECONDS)
+                .flatMap { Flowable.just(3000) }
+    }
+
 }
 
 fun Disposable.disposedBy(lifecycle: Lifecycle, lifecycleEvent: Lifecycle.Event) {

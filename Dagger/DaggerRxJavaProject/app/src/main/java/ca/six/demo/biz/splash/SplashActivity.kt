@@ -2,8 +2,9 @@ package ca.six.demo.biz.splash
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import ca.six.demo.R
 import io.reactivex.Observable
-import six.ca.inject1810.R
+
 
 class SplashActivity : AppCompatActivity() {
 
