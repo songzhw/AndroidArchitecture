@@ -10,6 +10,7 @@ class SeventeenDemo : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        DaggerSenseComponent.create().inject(this)
 
         map.forEach{ k, v ->
             println("szw 17 $k, $v")
