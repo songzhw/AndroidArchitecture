@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class FifteenActivity : Activity() {
     @Inject @BeijingOpera lateinit var operaSingers : Set<String>
-//    @Inject lateinit var popSingers: Set<String>
+    @Inject lateinit var popSingers: Set<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +15,7 @@ class FifteenActivity : Activity() {
                 .inject(this)
 
         operaSingers.forEach { println("szw opera: $it") }
-//        popSingers.forEach { println("szw pop: $it") }
+        popSingers.forEach { println("szw pop: $it") }
     }
 
 }
