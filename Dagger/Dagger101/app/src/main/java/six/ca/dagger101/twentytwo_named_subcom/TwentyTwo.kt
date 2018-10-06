@@ -36,7 +36,7 @@ class LampModule {
 
 @Component(modules = [LampModule::class])
 interface LampComponent {
-    fun lamp(): String
+    @Named("parent") fun lamp(): String
     fun bulbComponentBuilder(): BulbComponent.Builder
 }
 
