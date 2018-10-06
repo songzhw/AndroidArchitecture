@@ -36,7 +36,7 @@ class DrinkModule {
 @Component(modules = [DrinkModule::class])
 interface DrinkComponent {
     fun drink(): Boolean
-    fun teaComponent(): TeaComponent
+    fun teaComponentBuilder(): TeaComponent.Builder
 }
 
 // = = = = = = = = =
@@ -47,7 +47,7 @@ class TwentySolution02 : Activity() {
         super.onCreate(savedInstanceState)
 
         DaggerDrinkComponent.create()
-                .teaComponent()
+                .teaComponentBuilder()
                 .teaId(321)
                 .build()
                 .inject(this)
