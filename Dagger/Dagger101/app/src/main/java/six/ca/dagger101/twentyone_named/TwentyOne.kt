@@ -36,8 +36,8 @@ interface MyContextComponent {
 
 // = = = = = = = = =
 class TwentyOneDemo : Activity() {
-    @Inject @Named("app") lateinit var app: MyContext
-    @Inject @Named("activity") lateinit var actv: MyContext
+    @field: [Inject Named("app")] lateinit var app: MyContext
+    @field: [Inject Named("activity")] lateinit var actv: MyContext
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
