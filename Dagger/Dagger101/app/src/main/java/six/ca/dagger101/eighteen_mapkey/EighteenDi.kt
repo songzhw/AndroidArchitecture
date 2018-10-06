@@ -25,7 +25,7 @@ kapt "com.google.auto.value:auto-value:1.6.2"
 
 
 
-
+/*
 @MapKey(unwrapValue = false)
 annotation class Key18(
         val name: String,
@@ -60,3 +60,4 @@ class EighteenDemo : Activity() {
 
     }
 }
+*/
