@@ -18,6 +18,7 @@ fun Disposable.disposedBy(lifecycle: Lifecycle, lifecycleEvent: Lifecycle.Event 
         @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
         fun onAny(source: LifecycleOwner, event: Lifecycle.Event) {
             if (event == lifecycleEvent) {
+                println("szw this@disposedBy.isDisposed? = ${this@disposedBy.isDisposed}. Now dispose it.")
                 this@disposedBy.dispose()
             }
         }
