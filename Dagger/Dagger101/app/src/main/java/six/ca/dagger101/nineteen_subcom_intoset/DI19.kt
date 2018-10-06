@@ -37,8 +37,7 @@ class ChildModule {
 
 @Subcomponent(modules = [ChildModule::class])
 interface ChildComponent {
-    fun foods(): Set<String>
-//    fun inject(receiver : NineteenDemo)
+    fun inject(receiver : NineteenDemo)
 }
 
 
@@ -54,9 +53,9 @@ class NineteenDemo : Activity() {
         set1.forEach { println("szw parent : $it") }
 
 
-        foods = DaggerParentComponent.create()
+        DaggerParentComponent.create()
                 .child()
-                .foods()
+                .inject(this)
 
         foods.forEach { println("szw child : $it") }
     }
