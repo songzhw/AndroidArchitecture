@@ -5,7 +5,7 @@ import android.os.Bundle
 import javax.inject.Inject
 
 class FifteenActivity : Activity() {
-    @Inject @BeijingOpera lateinit var operaSingers : Set<String>
+    @field:[Inject BeijingOpera] lateinit var operaSingers : Set<String>
     @Inject lateinit var popSingers: Set<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,3 +19,10 @@ class FifteenActivity : Activity() {
     }
 
 }
+
+/*
+log:
+    szw opera: Dang
+    szw opera: Sheng
+    szw pop: pop
+ */
