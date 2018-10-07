@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="six.ca.dagger101"
+<manifest package="ca.six.demo"
           xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".twentythree_scope_peractivity.Application23"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,14 +11,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".twentythree_scope_peractivity.Page23One">
+        <activity android:name=".lifecycle.DisposeDemo1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".twentythree_scope_peractivity.Page23Two"/>
+        <activity android:name=".lifecycle.DisposeDemo2"/>
+        <activity android:name=".lifecycle.DisposeDemo3"/>
 
     </application>
 
