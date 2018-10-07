@@ -10,7 +10,10 @@ class Page23Two : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        DaggerTwo23Component.create()
+        val commonComponent = (application as Application23).commonComponent
+        DaggerTwo23Component.builder()
+                .common23Component(commonComponent) //关键就在这行, 除了@Scope, 还得用同一个Common23Component
+                .build()
                 .inject(this)
 
         println("szw PageTwo : $http")
