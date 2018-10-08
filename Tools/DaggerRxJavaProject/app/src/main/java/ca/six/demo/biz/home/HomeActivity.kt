@@ -14,7 +14,7 @@ class HomeActivity : BaseActivity() {
         val appComponent = (application as BaseApp).appComponent
         DaggerHttpComponent.builder()
                 .appComponent(appComponent)
-                .httpModule(HttpModule("https://api.github.com"))
+                .baseHttpUrl("https://api.github.com")
                 .build()
                 .inject(this)
 

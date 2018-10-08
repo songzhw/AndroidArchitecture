@@ -2,6 +2,7 @@ package ca.six.demo.core.di
 
 import android.app.Application
 import ca.six.demo.core.BaseActivity
+import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -11,12 +12,11 @@ import retrofit2.Retrofit
 import javax.inject.Singleton
 
 
-
 @Module
-class HttpModule(val baseUrl : String) {
+class HttpModule() {
 
     @Provides @PerActivity
-    fun retorfit(okhttp : OkHttpClient): Retrofit {
+    fun retorfit(baseUrl : String, okhttp : OkHttpClient): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(okhttp)
@@ -42,4 +42,11 @@ class HttpModule(val baseUrl : String) {
 @Component(modules = [HttpModule::class], dependencies = [AppComponent::class])
 interface HttpComponent {
     fun inject(receiver: BaseActivity)
+
+    @Component.Builder
+    interface Builder {
+        fun build() : HttpComponent
+        fun appComponent(appComponent: AppComponent) : Builder
+        @BindsInstance fun baseHttpUrl(url : String) : Builder
+    }
 }

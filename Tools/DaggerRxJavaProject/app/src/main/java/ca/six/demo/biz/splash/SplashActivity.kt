@@ -8,7 +8,6 @@ import ca.six.demo.biz.home.HomeActivity
 import ca.six.demo.core.BaseActivity
 import ca.six.demo.core.BaseApp
 import ca.six.demo.core.di.DaggerHttpComponent
-import ca.six.demo.core.di.HttpModule
 
 
 class SplashActivity : BaseActivity() {
@@ -20,7 +19,7 @@ class SplashActivity : BaseActivity() {
         val appComponent = (application as BaseApp).appComponent
         DaggerHttpComponent.builder()
                 .appComponent(appComponent)
-                .httpModule(HttpModule("https://api.github.com"))
+                .baseHttpUrl("https://api.github.com")
                 .build()
                 .inject(this)
 
