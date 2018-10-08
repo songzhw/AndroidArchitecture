@@ -7,7 +7,6 @@ import ca.six.demo.R
 import ca.six.demo.biz.home.HomeActivity
 import ca.six.demo.core.BaseActivity
 import ca.six.demo.core.BaseApp
-import ca.six.demo.core.di.DaggerHttpComponent
 
 
 class SplashActivity : BaseActivity() {
@@ -17,12 +16,10 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
 
         val appComponent = (application as BaseApp).appComponent
-        val retrofit = DaggerHttpComponent.builder()
-                .appComponent(appComponent)
+        val retrofit = appComponent.httpComponent()
                 .baseHttpUrl("https://api.github.com")
                 .build()
                 .retrofit()
-
 
         println("szw SplashPage : $retrofit")
 

@@ -20,4 +20,5 @@ class AppModule(val app : Application) {
 @Component(modules = [AppModule::class])
 interface AppComponent {
     fun app() : Application
+    fun httpComponent() : HttpComponent.Builder
 }
