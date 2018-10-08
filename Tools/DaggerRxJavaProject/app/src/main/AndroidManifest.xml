@@ -13,12 +13,14 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <!--<activity android:name=".biz.splash.SplashActivity">-->
-        <activity android:name=".devonly.RxMultiDemo">
+        <activity android:name=".biz.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".biz.home.HomeActivity"/>
 
     </application>
 
