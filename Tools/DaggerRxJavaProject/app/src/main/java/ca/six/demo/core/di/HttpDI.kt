@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Module
 class HttpModule(val baseUrl : String) {
 
-    @Provides @Singleton
+    @Provides @PerActivity
     fun retorfit(okhttp : OkHttpClient): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -23,14 +23,14 @@ class HttpModule(val baseUrl : String) {
                 .build()
     }
 
-    @Provides @Singleton
+    @Provides @PerActivity
     fun okhttp(cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
                 .cache(cache)
                 .build()
     }
 
-    @Provides @Singleton
+    @Provides @PerActivity
     fun okHttpCache(app: Application) : Cache {
         val cacheSize = 12L * 1024 * 1024 //12MB
         return Cache(app.cacheDir, cacheSize)
@@ -38,7 +38,7 @@ class HttpModule(val baseUrl : String) {
 
 }
 
-@Singleton
+@PerActivity
 @Component(modules = [HttpModule::class], dependencies = [AppComponent::class])
 interface HttpComponent {
     fun inject(receiver: BaseActivity)
