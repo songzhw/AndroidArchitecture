@@ -41,7 +41,7 @@ class HttpModule() {
 @PerActivity
 @Component(modules = [HttpModule::class], dependencies = [AppComponent::class])
 interface HttpComponent {
-    fun inject(receiver: BaseActivity)
+    fun retrofit() : Retrofit
 
     @Component.Builder
     interface Builder {

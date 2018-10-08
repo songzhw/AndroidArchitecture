@@ -17,11 +17,12 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
 
         val appComponent = (application as BaseApp).appComponent
-        DaggerHttpComponent.builder()
+        val retrofit = DaggerHttpComponent.builder()
                 .appComponent(appComponent)
                 .baseHttpUrl("https://api.github.com")
                 .build()
-                .inject(this)
+                .retrofit()
+
 
         println("szw SplashPage : $retrofit")
 
