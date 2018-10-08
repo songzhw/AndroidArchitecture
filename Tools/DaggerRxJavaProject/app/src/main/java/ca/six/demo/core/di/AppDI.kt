@@ -20,4 +20,22 @@ class AppModule(val app : Application) {
 @Component(modules = [AppModule::class])
 interface AppComponent {
     fun app() : Application
+    fun httpComponentBuilder() : HttpComponent.Builder
 }
+
+/*
+这种写法也行. 就是不再需要AppModule类了.
+
+@Singleton
+@Component
+interface AppComponent {
+    fun app(): Application
+
+    @Component.Builder
+    interface Builder {
+        fun build(): AppComponent
+        @BindsInstance
+        fun application(app: Application): AppComponent.Builder
+    }
+}
+*/

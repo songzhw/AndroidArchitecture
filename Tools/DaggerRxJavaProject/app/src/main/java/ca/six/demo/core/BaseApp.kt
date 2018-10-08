@@ -18,3 +18,11 @@ class BaseApp : Application() {
     }
 
 }
+
+/*
+        appComponent = DaggerAppComponent.builder()
+                .application(this)
+                .build()
+ */
+
+
