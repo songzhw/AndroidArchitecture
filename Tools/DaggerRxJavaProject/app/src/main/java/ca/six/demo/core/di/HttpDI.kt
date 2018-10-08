@@ -2,7 +2,10 @@ package ca.six.demo.core.di
 
 import android.app.Application
 import ca.six.demo.core.BaseActivity
-import dagger.*
+import dagger.BindsInstance
+import dagger.Component
+import dagger.Module
+import dagger.Provides
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -36,13 +39,14 @@ class HttpModule() {
 }
 
 @PerActivity
-@Subcomponent(modules = [HttpModule::class])
+@Component(modules = [HttpModule::class], dependencies = [AppComponent::class])
 interface HttpComponent {
     fun retrofit() : Retrofit
 
-    @Subcomponent.Builder
+    @Component.Builder
     interface Builder {
         fun build() : HttpComponent
+        fun appComponent(appComponent: AppComponent) : Builder
         @BindsInstance fun baseHttpUrl(url : String) : Builder
     }
 }

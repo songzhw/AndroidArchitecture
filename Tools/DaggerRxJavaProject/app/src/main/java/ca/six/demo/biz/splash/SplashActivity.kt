@@ -6,7 +6,6 @@ import android.view.MotionEvent
 import ca.six.demo.R
 import ca.six.demo.biz.home.HomeActivity
 import ca.six.demo.core.BaseActivity
-import ca.six.demo.core.BaseApp
 
 
 class SplashActivity : BaseActivity() {
@@ -14,12 +13,6 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-        val appComponent = (application as BaseApp).appComponent
-        val retrofit = appComponent.httpComponent()
-                .baseHttpUrl("https://api.github.com")
-                .build()
-                .retrofit()
 
         println("szw SplashPage : $retrofit")
 
