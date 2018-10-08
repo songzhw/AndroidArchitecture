@@ -10,6 +10,8 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
+
+
 @Module
 class HttpModule(val baseUrl : String) {
 
@@ -36,6 +38,7 @@ class HttpModule(val baseUrl : String) {
 
 }
 
+@Singleton
 @Component(modules = [HttpModule::class], dependencies = [AppComponent::class])
 interface HttpComponent {
     fun inject(receiver: BaseActivity)

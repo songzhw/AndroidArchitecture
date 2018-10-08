@@ -16,7 +16,7 @@ class AppModule(val app : Application) {
 
 }
 
-
+@Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
     fun app() : Application
