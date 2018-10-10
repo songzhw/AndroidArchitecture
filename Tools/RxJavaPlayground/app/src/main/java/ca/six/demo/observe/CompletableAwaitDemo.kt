@@ -19,6 +19,11 @@ class CompletableAwaitDemo : Activity() {
         tv_simple.text = "Completable blockingAwait"
 
         val success = Completable.fromAction(this::bgwork)
+                .onErrorResumeNext {
+                    Completable.fromAction {
+                        println("szw errors $it")
+                    }
+                }
                 .subscribeOn(Schedulers.io())
                 .blockingAwait()
 
@@ -41,8 +46,13 @@ class CompletableAwaitDemo : Activity() {
 
     fun bgwork() {
         println("szw bgwork() start() : ${Thread.currentThread().name}")
+        val resp = request(URL("https://api.github.com/"))
+        println("szw bgwork() done : $resp")
     }
 
+    fun request(url: URL): String {
+        throw NetworkOnMainThreadException()
+    }
 
 
 }
