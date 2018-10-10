@@ -10,6 +10,7 @@ import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_tv_btn.*
 import java.net.URL
+import java.util.concurrent.TimeUnit
 
 class CompletableAwaitDemo : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,7 @@ class CompletableAwaitDemo : Activity() {
                     }
                 }
                 .subscribeOn(Schedulers.io())
-                .blockingAwait()
+                .blockingAwait(4, TimeUnit.SECONDS)
 
         println("szw actv.onCreate() 222 : $success")
     }
@@ -51,6 +52,7 @@ class CompletableAwaitDemo : Activity() {
     }
 
     fun request(url: URL): String {
+        Thread.sleep(6000)
         throw NetworkOnMainThreadException()
     }
 
