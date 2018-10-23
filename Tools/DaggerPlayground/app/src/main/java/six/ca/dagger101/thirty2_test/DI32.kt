@@ -1,5 +1,6 @@
 package six.ca.dagger101.thirty2_test
 
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
@@ -41,4 +42,10 @@ class LoginModule {
 @Component(modules = [LoginModule::class])
 interface LoginComponent {
 	fun inject(activity: LoginActivity)
+
+	@Component.Builder
+	interface Builder {
+		fun build(): LoginComponent
+		@BindsInstance fun app(ctx: Context) : Builder
+	}
 }
