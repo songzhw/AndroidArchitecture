@@ -28,8 +28,9 @@ class LoginActivityTest {
 	fun clickOne(){
 		val activity : LoginActivity= Robolectric.buildActivity(LoginActivity::class.java).create().get()
 		activity.presenter = presenter
+
 		activity.clickOne()
 
-		verify(presenter).init()
+		verify(presenter).two()
 	}
 }

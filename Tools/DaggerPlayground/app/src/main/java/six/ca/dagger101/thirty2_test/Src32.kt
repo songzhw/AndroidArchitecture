@@ -26,9 +26,10 @@ class UserManager(val sp: SharedPreferences, val api: UserApiService)
 
 class PasswordValidator
 
-class LoginPresenter(val mgr: UserManager, val validator: PasswordValidator) {
-	fun init(){
-	}
+// add "open" because Mockito can not mock a final class
+open class LoginPresenter(val mgr: UserManager, val validator: PasswordValidator) {
+	fun init() {}
+	fun two() {}
 }
 
 // kotlin中一个全局object就解决的问题, 真没必要用Dagger.
@@ -60,7 +61,15 @@ class LoginActivity : AppCompatActivity() {
 		println("szw presenter = $presenter")
 	}
 
-	fun clickOne(){
+	fun clickOne() {
 		presenter.init()
 	}
 }
+
+/*
+Errors I got before:
+Mockito cannot mock/spy following:
+  - final classes  (In this case, this requires us to add an "open" to LoginPrsenter)
+  - anonymous classes
+  - primitive types
+ */
