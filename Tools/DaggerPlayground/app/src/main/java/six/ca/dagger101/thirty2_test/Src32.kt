@@ -26,7 +26,10 @@ class UserManager(val sp: SharedPreferences, val api: UserApiService)
 
 class PasswordValidator
 
-class LoginPresenter(val mgr: UserManager, val validator: PasswordValidator)
+class LoginPresenter(val mgr: UserManager, val validator: PasswordValidator) {
+	fun init(){
+	}
+}
 
 // kotlin中一个全局object就解决的问题, 真没必要用Dagger.
 object HttpEngine {
@@ -49,12 +52,15 @@ class LoginActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		DaggerLoginComponent.builder()
+				.app(this.application)
+				.build()
+				.inject(this)
+
 		println("szw presenter = $presenter")
-		//		val retrofit = HttpEngine.retrofit()
-		//		val userApiService = retrofit.create(UserApiService::class.java)
-		//		val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-		//		val userManager = UserManager(preferences, userApiService)
-		//		val passwordValidator = PasswordValidator()
-		//		presenter = LoginPresenter(userManager, passwordValidator)
+	}
+
+	fun clickOne(){
+		presenter.init()
 	}
 }
