@@ -4,7 +4,7 @@
           xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".twentythree_scope_peractivity.Application23"
+        android:name=".thirty1_test.TheoryApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".twenty4_qualifier.TwentyFourDemo">
+        <activity android:name=".thirty1_test.TheoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

@@ -14,13 +14,8 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val appComponent = (application as BaseApp).appComponent
-        val builder = appComponent
-                .httpComponentBuilder()
-        println("szw $this: [$appComponent,  $builder]") // so this is the problem: builder is not the same
-        retrofit = builder
-                .baseHttpUrl("https://api.github.com")
-                .build()
-                .retrofit()
+        val app = application as BaseApp
+        println("szw $this: [${app.httpComponent}")
+        retrofit = app.httpComponent.retrofit()
     }
 }
