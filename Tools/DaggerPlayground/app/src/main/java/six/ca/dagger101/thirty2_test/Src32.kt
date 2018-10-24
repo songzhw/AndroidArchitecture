@@ -28,8 +28,12 @@ class PasswordValidator
 
 // add "open" because Mockito can not mock a final class
 open class LoginPresenter(val mgr: UserManager, val validator: PasswordValidator) {
-	fun init() {}
-	fun two() {}
+	fun init() {
+		println("szw p init(${this.javaClass.name} - ${this.hashCode()})")
+	}
+	fun two() {
+		println("szw p two(${this.javaClass.name} - ${this.hashCode()})")
+	}
 }
 
 // kotlin中一个全局object就解决的问题, 真没必要用Dagger.
@@ -62,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
 	}
 
 	fun clickOne() {
+		println("szw click one()")
 		presenter.init()
 	}
 }

@@ -6,7 +6,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
@@ -17,7 +17,7 @@ import six.ca.dagger101.thirty1_test.TheoryApp
 @RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class, sdk = [Build.VERSION_CODES.LOLLIPOP], application = TheoryApp::class)
 class LoginActivityTest {
-	@Mock lateinit var presenter : LoginPresenter
+	@Mock lateinit var mockedPresenter : LoginPresenter
 
 	@Before
 	fun setup(){
@@ -27,10 +27,12 @@ class LoginActivityTest {
 	@Test
 	fun clickOne(){
 		val activity : LoginActivity= Robolectric.buildActivity(LoginActivity::class.java).create().get()
-		activity.presenter = presenter
+		activity.presenter = mockedPresenter
 
+		println("szw actv.presenter = ${activity.presenter}")
+		println("szw mock.presenter = $mockedPresenter")
 		activity.clickOne()
 
-		verify(presenter).two()
+		verify(mockedPresenter).two()
 	}
 }
