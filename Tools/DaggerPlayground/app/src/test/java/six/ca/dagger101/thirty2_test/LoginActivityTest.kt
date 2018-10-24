@@ -29,10 +29,9 @@ class LoginActivityTest {
 		val activity : LoginActivity= Robolectric.buildActivity(LoginActivity::class.java).create().get()
 		activity.presenter = mockedPresenter
 
-		println("szw actv.presenter = ${activity.presenter}")
-		println("szw mock.presenter = $mockedPresenter")
 		activity.clickOne()
 
-		verify(mockedPresenter).two()
+		verify(mockedPresenter).init()
+//		verify(mockedPresenter).fetch() // will failed
 	}
 }

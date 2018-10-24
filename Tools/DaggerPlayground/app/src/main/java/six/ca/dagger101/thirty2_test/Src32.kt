@@ -8,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.Retrofit
 import okhttp3.OkHttpClient
+import six.ca.dagger101.Mockable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -26,14 +27,10 @@ class UserManager(val sp: SharedPreferences, val api: UserApiService)
 
 class PasswordValidator
 
-// add "open" because Mockito can not mock a final class
-open class LoginPresenter(val mgr: UserManager, val validator: PasswordValidator) {
-	fun init() {
-		println("szw p init(${this.javaClass.name} - ${this.hashCode()})")
-	}
-	fun two() {
-		println("szw p two(${this.javaClass.name} - ${this.hashCode()})")
-	}
+@Mockable
+class LoginPresenter(val mgr: UserManager, val validator: PasswordValidator) {
+	fun init() {}
+	fun fetch() {}
 }
 
 // kotlin中一个全局object就解决的问题, 真没必要用Dagger.
@@ -62,7 +59,6 @@ class LoginActivity : AppCompatActivity() {
 				.build()
 				.inject(this)
 
-		println("szw presenter = $presenter")
 	}
 
 	fun clickOne() {
