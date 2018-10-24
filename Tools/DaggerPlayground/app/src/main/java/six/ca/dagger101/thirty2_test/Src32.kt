@@ -54,16 +54,16 @@ class LoginActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		println("szw actv : app = ${this.application}")
 		DaggerLoginComponent.builder()
 				.app(this.application)
 				.build()
 				.inject(this)
-
+		presenter.init()
 	}
 
 	fun clickOne() {
-		println("szw click one()")
-		presenter.init()
+		presenter.fetch()
 	}
 }
 
