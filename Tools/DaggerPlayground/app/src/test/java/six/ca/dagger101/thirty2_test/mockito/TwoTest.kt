@@ -1,6 +1,5 @@
-package six.ca.dagger101.thirty2_test
+package six.ca.dagger101.thirty2_test.mockito
 
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -25,6 +24,6 @@ class TwoTest {
 
 		two.bar()
 
-		verify(one).second()
+		verify(one).foo()
 	}
 }

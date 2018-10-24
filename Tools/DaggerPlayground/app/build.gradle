@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-allopen'
+
+
 
 android {
     compileSdkVersion 28
@@ -57,5 +57,11 @@ dependencies {
 }
 
 kapt {
+    // EventBus 3
     generateStubs = true
+}
+
+// kotlin all-open plugin
+allOpen {
+    annotation('six.ca.dagger101.Mockable')
 }
