@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import dagger.BindsInstance
 import dagger.Component
+import dagger.MembersInjector
 import dagger.Module
 import dagger.Provides
 import javax.inject.Inject
@@ -24,7 +25,7 @@ class SichuangModule {
 }
 
 @Component(modules = [SichuangModule::class])
-interface SichuangComponent {
+interface SichuangComponent : MembersInjector<Twenty7Activity>{
 	@Component.Builder
 	interface Builder{
 		fun build() : SichuangComponent
@@ -38,9 +39,10 @@ class Twenty7Activity : AppCompatActivity(){
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		DaggerSichuangComponent.builder()
+		val component = DaggerSichuangComponent.builder()
 				.apple(Apple())
 				.build()
+		component.injectMembers(this)
 
 		println("szw panda = $panda")
 	}
