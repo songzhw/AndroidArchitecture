@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
     val two = Observable.interval(2, TimeUnit.SECONDS)
       .map { num -> "two$num" }
     disposable = Observable.merge(one, two)
-      .subscribe { anyData -> println("szw receives $anyData  -  ${sdf.format(Date())}") }
+      .doOnNext { str -> if (str.startsWith("one")) println("  szw doOnNext1($str)") }
+      .doOnNext { str -> if (str.startsWith("two")) println("  szw doOnNext2($str)") }
+      .subscribe { anyData -> println("szw receives $anyData  -  ${sdf.format(Date())}\n") }
   }
 
   override fun onDestroy() {
