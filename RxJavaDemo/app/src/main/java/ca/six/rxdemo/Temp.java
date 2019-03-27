@@ -5,6 +5,7 @@ import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
 
+
 public class Temp {
   private void fun(){
     Observable<Long> one = Observable.interval(2, TimeUnit.SECONDS);
@@ -12,4 +13,6 @@ public class Temp {
     Observable.merge(one, two)
         .subscribe();
   }
+
+
 }
