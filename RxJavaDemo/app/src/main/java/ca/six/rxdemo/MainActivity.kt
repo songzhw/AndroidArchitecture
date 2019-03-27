@@ -20,16 +20,14 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun runRxDemo() {
-    val random = Random().nextInt(100)
     val sdf = SimpleDateFormat("hh:mm:ss")
     val one = Observable.interval(3, TimeUnit.SECONDS)
       .map { num -> "one$num" }
     val two = Observable.interval(2, TimeUnit.SECONDS)
       .map { num -> "two$num" }
-    disposable = Observable.merge(one, two)
+    Observable.merge(one, two)
       .doOnNext { str -> if (str.startsWith("one")) println("  szw doOnNext1($str)") }
       .doOnNext { str -> if (str.startsWith("two")) println("  szw doOnNext2($str)") }
-      .subscribe { anyData -> println("szw receives $anyData  -  ${sdf.format(Date())}\n") }
   }
 
   override fun onDestroy() {
