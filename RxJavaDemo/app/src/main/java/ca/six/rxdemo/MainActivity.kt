@@ -20,7 +20,38 @@ class MainActivity : AppCompatActivity() {
     runRxDemo()
   }
 
-  private fun runRxDemo() {
+  private fun runRxDemo() {}
+
+  fun runDebounce(){
+    disposable = Observable.interval(1000, TimeUnit.MILLISECONDS)
+      .doOnNext{num ->
+        val time = SimpleDateFormat("hh:mm:ss.SSS").format(Date())
+        println("szw onNext original = $num, at $time")
+      }
+      .filter {num -> num < 5}
+      .debounce(2000, TimeUnit.MILLISECONDS)
+      .subscribe { v ->
+        val time = SimpleDateFormat("hh:mm:ss.SSS").format(Date())
+        println("         szw receives ${v}, at ${time}")
+      }
+  }
+  /*
+  结果是:
+ szw onNext original = 0, at 04:31:28.343
+ szw onNext original = 1, at 04:31:29.342
+ szw onNext original = 2, at 04:31:30.342
+ szw onNext original = 3, at 04:31:31.343
+ szw onNext original = 4, at 04:31:32.342
+ szw onNext original = 5, at 04:31:33.343
+ szw onNext original = 6, at 04:31:34.343
+          szw receives 4, at 04:31:34.346
+ szw onNext original = 7, at 04:31:35.342
+
+  num4 发完2秒后, 因为这是最后一次满足filter的; 2秒之后还没有满足filter的, 所以就有了debounce出场了
+  (备注: 当然你只是不收了, 但是doOnNext()发现interval还在一直发; 不过发出来的num5, num6, num7都没有subscriber接受而已)
+   */
+
+  private fun runThrottle() {
     disposable = Observable.interval(1000, TimeUnit.MILLISECONDS)
       .doOnNext{num ->
         val time = SimpleDateFormat("hh:mm:ss.SSS").format(Date())
