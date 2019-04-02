@@ -2,9 +2,11 @@ package ca.six.rxdemo
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
@@ -20,6 +22,16 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun runRxDemo() {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
+
+    disposable = Observable.interval(250, TimeUnit.MILLISECONDS)
+      .subscribe { v ->
+        val time = SimpleDateFormat("hh:mm:ss").format(Date())
+        println("szw ${v}, at ${time}")
+      }
+  }
+
+  fun merge() {
     val sdf = SimpleDateFormat("hh:mm:ss")
     val one = Observable.interval(3, TimeUnit.SECONDS)
       .map { num -> "one$num" }
@@ -33,6 +45,10 @@ class MainActivity : AppCompatActivity() {
 
   override fun onDestroy() {
     super.onDestroy()
+    disposable.dispose()
+  }
+
+  fun onClick(view: View) {
     disposable.dispose()
   }
 }
