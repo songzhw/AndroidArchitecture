@@ -2,10 +2,7 @@ package ca.six.archi.cfl
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import ca.six.archi.cfl.core.Http
 import ca.six.archi.cfl.core.LoginResponse
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +15,12 @@ class MainActivity : AppCompatActivity() {
         val vm = ViewModelProvider(this).get(MainViewModel::class.java)
         vm.login().observe(this) { resp ->
             println("szw result = $resp")
-            println("szw main: ${Thread.currentThread().name}") //=> main线程
+            println("szw Actv: ${Thread.currentThread().name}") //=> main线程
+        }
+
+        vm.connect().observe(this) { resp ->
+            println("szw result2 = $resp")
+            println("szw Actv2: ${Thread.currentThread().name}") //=> main线程
         }
     }
 }
@@ -32,5 +34,10 @@ class MainViewModel : ViewModel() {
             val resp = Http.service.login()
             emit(resp)  //=> liveData{}其实是返回一个CoroutineLiveData. 这个emit()即是CoroutineLiveData的方法!
         }
+    }
+
+    fun connect(): LiveData<LoginResponse> {
+        return Http.service.connect()
+            .asLiveData()
     }
 }
