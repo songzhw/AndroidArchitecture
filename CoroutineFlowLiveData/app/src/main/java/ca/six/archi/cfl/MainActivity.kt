@@ -37,7 +37,8 @@ class MainViewModel : ViewModel() {
     }
 
     fun connect(): LiveData<LoginResponse> {
-        return Http.service.connect()
-            .asLiveData()
+        return liveData(Dispatchers.IO) {
+            emitSource(Http.service.connect().asLiveData())
+        }
     }
 }
