@@ -1,6 +1,7 @@
 package ca.six.archi.cfl.core
 
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 data class LoginResponse(val succ: Boolean, val session: String)
@@ -15,6 +16,7 @@ object Http {
     val service: IHttpService by lazy {
         Retrofit.Builder()
             .baseUrl("https://run.mocky.io/v3/")
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(IHttpService::class.java)
     }
