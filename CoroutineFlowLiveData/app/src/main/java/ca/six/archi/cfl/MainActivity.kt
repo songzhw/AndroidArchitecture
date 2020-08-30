@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val vm = ViewModelProvider(this).get(MainViewModel::class.java)
         vm.login().observe(this) { resp ->
             println("szw result = $resp")
+            println("szw main: ${Thread.currentThread().name}") //=> main线程
         }
     }
 }
@@ -25,10 +26,11 @@ class MainActivity : AppCompatActivity() {
 class MainViewModel : ViewModel() {
 
     fun login(): LiveData<LoginResponse> {
-        val loginLiveData = liveData(Dispatchers.IO) {
+        // liveData{}如果没有参数Dispatcher.IO的话, 那其lambda就是运行在主线程上!
+        return liveData(Dispatchers.IO) {
+            println("szw thread = ${Thread.currentThread().name}")
             val resp = Http.service.login()
-            emit(resp)
+            emit(resp)  //=> liveData{}其实是返回一个CoroutineLiveData. 这个emit()即是CoroutineLiveData的方法!
         }
-        return loginLiveData
     }
 }
