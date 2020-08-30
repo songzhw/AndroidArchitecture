@@ -18,10 +18,6 @@ class MainActivity : AppCompatActivity() {
             println("szw Actv: ${Thread.currentThread().name}") //=> main线程
         }
 
-        vm.connect().observe(this) { resp ->
-            println("szw result2 = $resp")
-            println("szw Actv2: ${Thread.currentThread().name}") //=> main线程
-        }
     }
 }
 
@@ -36,9 +32,4 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun connect(): LiveData<LoginResponse> {
-        return liveData(Dispatchers.IO) {
-            emitSource(Http.service.connect().asLiveData())
-        }
-    }
 }
