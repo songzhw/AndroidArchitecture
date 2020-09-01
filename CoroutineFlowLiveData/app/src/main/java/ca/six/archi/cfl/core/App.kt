@@ -1,7 +1,6 @@
 package ca.six.archi.cfl.core
 
 import android.app.Application
-import retrofit2.Retrofit
 
 class App : Application() {
     override fun onCreate() {
