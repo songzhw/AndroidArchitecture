@@ -10,8 +10,8 @@ import kotlinx.coroutines.Dispatchers
 
 class MainViewModel : ViewModel() {
     var isGrid = true
-    val gridDisplayLiveData = MutableLiveData(true)
-    val listDisplayLiveData = MutableLiveData(false)
+    val gridDisplayLiveData = MutableLiveData<Boolean>() //CF中不给初始值, 就不会页面一启动就先发送值
+    val listDisplayLiveData = MutableLiveData<Boolean>() //CF中不给初始值, 就不会页面一启动就先发送值
 
     fun getPlants(): LiveData<List<Plant>> {
         // liveData{}如果没有参数Dispatcher.IO的话, 那其lambda就是运行在主线程上!
