@@ -8,4 +8,10 @@
         android:title="grid"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/menuFilter"
+        android:icon="@drawable/ic_filter"
+        android:title="grid"
+        app:showAsAction="always" />
+
 </menu>

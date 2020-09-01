@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
         vm = ViewModelProvider(this).get(MainViewModel::class.java)
-        vm.getPlants().observe(this) { resp ->
+        vm.dataLiveData.observe(this) { resp ->
             adapter.refresh(resp)
         }
 
@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
         vm.listDisplayLiveData.observe(this) { isList ->
             rv.layoutManager = LinearLayoutManager(this)
         }
+
+        vm.fetchPlants()
 
     }
 
@@ -65,6 +67,10 @@ class MainActivity : AppCompatActivity() {
             R.id.menuDisplay -> {
                 vm.updateDisplay()
                 item.setIcon(vm.displayIcon)
+                true
+            }
+            R.id.menuFilter -> {
+                vm.filterData()
                 true
             }
             else -> super.onOptionsItemSelected(item)
