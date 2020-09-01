@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import ca.six.archi.cfl.core.Http
 import ca.six.archi.cfl.data.Plant
+import ca.six.oneadapter.lib.OneAdapter
 import ca.six.oneadapter.lib.OneDiffAdapter
 import ca.six.oneadapter.lib.RvViewHolder
 import com.squareup.picasso.Picasso
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 
 class MainActivity : AppCompatActivity() {
-    lateinit var adapter: OneDiffAdapter<Plant>
+    lateinit var adapter: OneAdapter<Plant>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +27,8 @@ class MainActivity : AppCompatActivity() {
             override fun areContentsTheSame(oldItem: Plant, newItem: Plant): Boolean = oldItem == newItem
         }
 
-        rv.layoutManager = GridLayoutManager(this, 3)
-        adapter = object : OneDiffAdapter<Plant>(diffCallback, R.layout.item_plants) {
+        rv.layoutManager = GridLayoutManager(this, 2)
+        adapter = object : OneAdapter<Plant>(R.layout.item_plants) {
             override fun apply(vh: RvViewHolder, value: Plant, position: Int) {
                 val iv = vh.getView<ImageView>(R.id.ivPlant)
                 Picasso.get().load(value.imageUrl).into(iv);
@@ -41,7 +42,9 @@ class MainActivity : AppCompatActivity() {
         val vm = ViewModelProvider(this).get(MainViewModel::class.java)
         vm.getPlants().observe(this) { resp ->
             println("szw Actv: ${Thread.currentThread().name}") //=> main线程
-            adapter.refresh(resp)
+            // adapter.refresh(resp)
+            adapter.data = resp
+            adapter.notifyDataSetChanged()
         }
 
     }
