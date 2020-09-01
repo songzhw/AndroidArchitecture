@@ -1,6 +1,7 @@
 package ca.six.archi.cfl
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DiffUtil
@@ -9,6 +10,7 @@ import ca.six.archi.cfl.core.Http
 import ca.six.archi.cfl.data.Plant
 import ca.six.oneadapter.lib.OneDiffAdapter
 import ca.six.oneadapter.lib.RvViewHolder
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 
@@ -27,7 +29,8 @@ class MainActivity : AppCompatActivity() {
         rv.layoutManager = GridLayoutManager(this, 3)
         adapter = object : OneDiffAdapter<Plant>(diffCallback, R.layout.item_plants) {
             override fun apply(vh: RvViewHolder, value: Plant, position: Int) {
-                //vh.setSrc(R.id.ivPlant, value.imageUrl)
+                val iv = vh.getView<ImageView>(R.id.ivPlant)
+                Picasso.get().load(value.imageUrl).into(iv);
                 vh.setText(R.id.tvPlant, value.name)
             }
 
