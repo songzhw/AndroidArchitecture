@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.menuDisplay -> {
                 vm.updateDisplay()
+                item.setIcon(vm.displayIcon)
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -1,5 +1,6 @@
 package ca.six.archi.cfl
 
+import androidx.annotation.DrawableRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,7 @@ class MainViewModel : ViewModel() {
     var isGrid = true
     val gridDisplayLiveData = MutableLiveData<Boolean>() //CF中不给初始值, 就不会页面一启动就先发送值
     val listDisplayLiveData = MutableLiveData<Boolean>() //CF中不给初始值, 就不会页面一启动就先发送值
+    @DrawableRes var displayIcon:  Int = R.drawable.ic_grid
 
     fun getPlants(): LiveData<List<Plant>> {
         // liveData{}如果没有参数Dispatcher.IO的话, 那其lambda就是运行在主线程上!
@@ -24,8 +26,10 @@ class MainViewModel : ViewModel() {
     fun updateDisplay() {
         if (isGrid) {
             listDisplayLiveData.postValue(true)
+            displayIcon = R.drawable.ic_list
         } else {
             gridDisplayLiveData.postValue(true)
+            displayIcon = R.drawable.ic_grid
         }
         isGrid = !isGrid
     }
