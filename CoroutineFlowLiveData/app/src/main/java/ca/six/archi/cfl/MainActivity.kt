@@ -1,21 +1,24 @@
 package ca.six.archi.cfl
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import ca.six.archi.cfl.core.Http
+import androidx.recyclerview.widget.LinearLayoutManager
 import ca.six.archi.cfl.data.Plant
 import ca.six.oneadapter.lib.OneDiffAdapter
 import ca.six.oneadapter.lib.RvViewHolder
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
 
 class MainActivity : AppCompatActivity() {
-    lateinit var adapter: OneDiffAdapter<Plant>
+    private lateinit var adapter: OneDiffAdapter<Plant>
+    private lateinit var vm: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,39 +32,46 @@ class MainActivity : AppCompatActivity() {
         rv.layoutManager = GridLayoutManager(this, 2)
         adapter = object : OneDiffAdapter<Plant>(diffCallback, R.layout.item_plants) {
             override fun apply(vh: RvViewHolder, value: Plant, position: Int) {
-//                println("szw apply vh")
                 val iv = vh.getView<ImageView>(R.id.ivPlant)
                 Glide.with(this@MainActivity).load(value.imageUrl).into(iv)
-//                iv.setImageResource(R.mipmap.ic_launcher)
-//                Picasso.get().load(value.imageUrl).into(iv);
-
+                // Picasso.get().load(value.imageUrl).into(iv); //让界面超级卡, 故我改为Glide
                 vh.setText(R.id.tvPlant, value.name)
             }
         }
         rv.adapter = adapter
 
 
-        val vm = ViewModelProvider(this).get(MainViewModel::class.java)
+        vm = ViewModelProvider(this).get(MainViewModel::class.java)
         vm.getPlants().observe(this) { resp ->
-            println("szw data = $resp")
-            println("szw Actv: ${Thread.currentThread().name}") //=> main线程
             adapter.refresh(resp)
-//            adapter.data = resp
-//            adapter.notifyDataSetChanged()
+        }
+
+        vm.gridDisplayLiveData.observe(this) { isGrid ->
+            if (isGrid) {
+                rv.layoutManager = GridLayoutManager(this, 2)
+            }
+        }
+        vm.listDisplayLiveData.observe(this) { isGrid ->
+            if (isGrid) {
+                rv.layoutManager = LinearLayoutManager(this)
+            }
         }
 
     }
-}
 
-class MainViewModel : ViewModel() {
-
-    fun getPlants(): LiveData<List<Plant>> {
-        // liveData{}如果没有参数Dispatcher.IO的话, 那其lambda就是运行在主线程上!
-        return liveData(Dispatchers.IO) {
-            println("szw thread = ${Thread.currentThread().name}")
-            val resp = Http.service.getAllPlants()
-            emit(resp)  //=> liveData{}其实是返回一个CoroutineLiveData. 这个emit()即是CoroutineLiveData的方法!
-        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menuDisplay -> {
+                vm.updateDisplay()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
+
