@@ -47,14 +47,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         vm.gridDisplayLiveData.observe(this) { isGrid ->
-            if (isGrid) {
-                rv.layoutManager = GridLayoutManager(this, 2)
-            }
+            rv.layoutManager = GridLayoutManager(this, 2)
         }
-        vm.listDisplayLiveData.observe(this) { isGrid ->
-            if (isGrid) {
-                rv.layoutManager = LinearLayoutManager(this)
-            }
+        vm.listDisplayLiveData.observe(this) { isList ->
+            rv.layoutManager = LinearLayoutManager(this)
         }
 
     }
