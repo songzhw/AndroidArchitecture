@@ -20,6 +20,8 @@ class MainViewModel : ViewModel() {
     val dataLiveData = MutableLiveData<List<Plant>>()
     val data = ArrayList<Plant>()
 
+
+
 //    fun getPlants(): LiveData<List<Plant>> {
 //        // liveData{}如果没有参数Dispatcher.IO的话, 那其lambda就是运行在主线程上!
 //        return liveData(Dispatchers.IO) {

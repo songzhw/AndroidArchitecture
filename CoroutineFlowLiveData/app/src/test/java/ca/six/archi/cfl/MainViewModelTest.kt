@@ -7,7 +7,8 @@ import org.junit.Rule
 import org.junit.Test
 
 class MainViewModelTest {
-    @get:Rule var rule = InstantTaskExecutorRule()
+    @get:Rule var rule1 = InstantTaskExecutorRule()
+    @get:Rule var rule2 = MainCoroutineRule()
 
     @Test
     fun updateDisplayThreeTimes_shouldFirstGridThenListThenGrid() {
@@ -40,5 +41,12 @@ class MainViewModelTest {
 
         vm.filterData()
         assertEquals(4, vm.dataLiveData.value?.size)
+    }
+
+    @Test
+    fun fetchPlants() {
+        val vm = MainViewModel()
+        vm.fetchPlants()
+        println(vm.data)
     }
 }
