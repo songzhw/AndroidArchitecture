@@ -84,6 +84,7 @@ class MainViewModelTest {
 
         vm.filterData()
         assertEquals(4, vm.dataLiveData.value?.size)
+        assertFalse(vm.isFiltered)
     }
 
 }
