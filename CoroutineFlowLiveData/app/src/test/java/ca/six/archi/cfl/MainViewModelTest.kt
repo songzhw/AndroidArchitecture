@@ -3,11 +3,14 @@ package ca.six.archi.cfl
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import ca.six.archi.cfl.data.Plant
 import junit.framework.Assert.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Rule
 import org.junit.Test
 
 class MainViewModelTest {
     @get:Rule var rule1 = InstantTaskExecutorRule()
+    @ExperimentalCoroutinesApi
     @get:Rule var rule2 = MainCoroutineRule()
 
     @Test
@@ -43,9 +46,12 @@ class MainViewModelTest {
         assertEquals(4, vm.dataLiveData.value?.size)
     }
 
+    @ExperimentalCoroutinesApi
     @Test
     fun fetchPlants() {
+        val testDispatcher = TestCoroutineDispatcher()
         val vm = MainViewModel()
+        vm.dispatch = testDispatcher
         vm.fetchPlants()
         println(vm.data)
     }
