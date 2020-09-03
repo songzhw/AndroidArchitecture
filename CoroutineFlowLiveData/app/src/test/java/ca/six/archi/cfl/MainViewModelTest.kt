@@ -12,9 +12,11 @@ class MainViewModelTest {
     fun updateDisplayThreeTimes_shouldFirstGridThenListThenGrid() {
         val vm = MainViewModel()
         assertTrue(vm.isGrid)
+        assertNull(vm.listDisplayLiveData.value)
 
         vm.updateDisplay()
         assertFalse(vm.isGrid)
+        assertTrue(vm.listDisplayLiveData.value!!)
 
         vm.updateDisplay()
         assertTrue(vm.isGrid)
