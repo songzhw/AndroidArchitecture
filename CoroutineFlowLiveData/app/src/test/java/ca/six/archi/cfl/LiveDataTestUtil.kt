@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ca.six.archi.cfl.utils
+package ca.six.archi.cfl
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
