@@ -3,9 +3,8 @@ package ca.six.archi.cfl
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import ca.six.archi.cfl.core.Http
+import ca.six.archi.cfl.core.DepProvider
 import ca.six.archi.cfl.data.Plant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +19,7 @@ class MainViewModel : ViewModel() {
     val dataLiveData = MutableLiveData<List<Plant>>()
     val data = ArrayList<Plant>()
 
-
+    var dispatch = Dispatchers.IO
 
 //    fun getPlants(): LiveData<List<Plant>> {
 //        // liveData{}如果没有参数Dispatcher.IO的话, 那其lambda就是运行在主线程上!
@@ -32,9 +31,9 @@ class MainViewModel : ViewModel() {
 
     fun fetchPlants() {
         // 若直接使用viewModelSceop.launch{..}, 那就是运行在main线程上了!!!
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatch) {
             println("szw vm: thread = ${Thread.currentThread().name}")
-            val resp = Http.service.getAllPlants()
+            val resp = DepProvider.http.getAllPlants()
             dataLiveData.postValue(resp)
 
             data.clear()
