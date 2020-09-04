@@ -10,6 +10,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.six.archi.cfl.data.Plant
 import ca.six.oneadapter.lib.OneDiffAdapter
 import ca.six.oneadapter.lib.RvViewHolder
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
                 vh.setText(R.id.tvPlant, value.name)
             }
         }
+        rv.addOnItemTouchListener(object : OnRvItemClickListener(rv) {
+            override fun onItemClick(vh: RecyclerView.ViewHolder) {
+                val position = vh.adapterPosition
+                println("szw click: ${vm.getPlant(position)}")
+            }
+        })
         rv.adapter = adapter
 
 

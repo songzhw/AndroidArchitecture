@@ -18,6 +18,7 @@ class MainViewModel : ViewModel() {
     var isFiltered = false
     val dataLiveData = MutableLiveData<List<Plant>>()
     val data = ArrayList<Plant>()
+    private var filteredData = ArrayList<Plant>()
 
     var dispatch = Dispatchers.IO
 
@@ -56,10 +57,19 @@ class MainViewModel : ViewModel() {
         if (isFiltered) {
             dataLiveData.postValue(data)
         } else {
-            val newData = data.filter { it.growZoneNumber == 3 }
-            dataLiveData.postValue(newData)
+            filteredData = data.filter { it.growZoneNumber == 3 } as ArrayList<Plant>
+            dataLiveData.postValue(filteredData)
         }
         isFiltered = !isFiltered
+    }
+
+    fun getPlant(index: Int): Plant {
+        if (isFiltered) {
+            val newData = data.filter { it.growZoneNumber == 3 }
+            return newData.get(index)
+        } else {
+            return data.get(index)
+        }
     }
 
 }
