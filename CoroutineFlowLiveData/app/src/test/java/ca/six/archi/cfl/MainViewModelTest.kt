@@ -17,8 +17,10 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 
 class MainViewModelTest {
+    // 应对LiveData
     @get:Rule var rule1 = InstantTaskExecutorRule()
 
+    // 应对Coroutine
     @ExperimentalCoroutinesApi
     @get:Rule var rule2 = MainCoroutineRule()
 
