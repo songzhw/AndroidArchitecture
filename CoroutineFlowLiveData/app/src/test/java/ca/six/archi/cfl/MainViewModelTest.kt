@@ -24,14 +24,15 @@ class MainViewModelTest {
     @ExperimentalCoroutinesApi
     @get:Rule var rule2 = MainCoroutineRule()
 
+    val data = arrayListOf(
+        Plant("1", "1", "1", 9),
+        Plant("2", "2", "2", 3),
+        Plant("3", "3", "3", 3),
+        Plant("5", "5", "5", 3)
+    )
+
     @Before
     fun setup() = runBlocking {
-        val data = arrayListOf(
-            Plant("1", "1", "1", 9),
-            Plant("2", "2", "2", 3),
-            Plant("3", "3", "3", 3),
-            Plant("5", "5", "5", 3)
-        )
         val mockHttp = mock(IHttpService::class.java)
         `when`(mockHttp.getAllPlants()).thenReturn(data)
         DepProvider.http = mockHttp
@@ -71,12 +72,6 @@ class MainViewModelTest {
 
     @Test
     fun filterData() {
-        val data = arrayListOf(
-            Plant("1", "1", "1", 9),
-            Plant("2", "2", "2", 3),
-            Plant("3", "3", "3", 3),
-            Plant("5", "5", "5", 3)
-        )
         val vm = MainViewModel()
         vm.data.clear()
         vm.data.addAll(data)
@@ -89,4 +84,23 @@ class MainViewModelTest {
         assertFalse(vm.isFiltered)
     }
 
+    // vm.fetchPlant needs the coroutine, so w eneed the `runBlocking` here
+    @Test
+    fun getPlant() = runBlocking{
+        val testDispatcher = TestCoroutineDispatcher()
+        val vm = MainViewModel()
+        vm.dispatch = testDispatcher
+        vm.fetchPlants()
+
+        val plant = vm.getPlant(0)
+        assertEquals(plant.description, "1")
+
+        vm.filterData()
+        val plant2 = vm.getPlant(0)
+        assertEquals(plant2.name, "2")
+
+        vm.filterData()
+        val plant3 = vm.getPlant(0)
+        assertEquals(plant3.plantId, "1")
+    }
 }
