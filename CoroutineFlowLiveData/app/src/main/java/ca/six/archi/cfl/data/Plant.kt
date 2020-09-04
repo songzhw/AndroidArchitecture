@@ -1,11 +1,14 @@
 package ca.six.archi.cfl.data
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity
 data class Plant(
-    val plantId: String,
+    @PrimaryKey val plantId: String,
     val name: String,
     val description: String,
     val growZoneNumber: Int,
