@@ -50,4 +50,14 @@
         android:textSize="23dp"
         tools:text="id-id" />
 
+    <ImageView
+        android:id="@+id/ivPrevPlant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_go_back"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+        />
+
 </RelativeLayout>
