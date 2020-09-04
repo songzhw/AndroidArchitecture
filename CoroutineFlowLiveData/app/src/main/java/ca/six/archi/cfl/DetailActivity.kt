@@ -18,7 +18,9 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
         tvDetailId.text = plant?.plantId
 
 
-        DepProvider.db.
+        DepProvider.db.getPreviousPlant().observe(this) {
+            println("szw db previous plant = $it")
+        }
 
     }
 }
