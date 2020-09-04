@@ -1,5 +1,6 @@
 package ca.six.archi.cfl
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -42,7 +43,10 @@ class MainActivity : AppCompatActivity() {
         rv.addOnItemTouchListener(object : OnRvItemClickListener(rv) {
             override fun onItemClick(vh: RecyclerView.ViewHolder) {
                 val position = vh.adapterPosition
-                println("szw click: ${vm.getPlant(position)}")
+                val plant = vm.getPlant(position)
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    .putExtra("plant", plant)
+                startActivity(intent)
             }
         })
         rv.adapter = adapter
