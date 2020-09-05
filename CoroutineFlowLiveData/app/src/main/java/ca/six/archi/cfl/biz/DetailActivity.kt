@@ -1,6 +1,8 @@
 package ca.six.archi.cfl.biz
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,8 +30,15 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
 
         vm = ViewModelProvider(this).get(DetailViewModel::class.java)
 
-        vm.previousPlantLiveData.observe(this) {
-            println("szw prevPlant = ${it.plant}")
+        vm.previousPlantLiveData.observe(this) { prevPlant ->
+            println("szw prevPlant = ${prevPlant.plant}")
+            ivPrevPlant.visibility = if (prevPlant == null) View.GONE else View.VISIBLE
+            ivPrevPlant.setOnClickListener {
+                val intent = Intent(this, DetailActivity::class.java)
+                    .putExtra("plant", prevPlant)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
         }
         vm.getPrevPlant(plant)
 
@@ -45,11 +54,12 @@ class DetailViewModel : ViewModel() {
             val plant = DepProvider.db.getPreviousPlant()
             previousPlantLiveData.postValue(plant);
 
+            //取到prevPlant后才写入新的prevPlant, 不然成了livedata中的prev与currentPlant一样了
             setPreviousPlant(currentPlant)
         }
     }
 
-    fun setPreviousPlant(prevPlant: Plant) {
+    private fun setPreviousPlant(prevPlant: Plant) {
         println("szw inset $prevPlant")
         viewModelScope.launch(Dispatchers.IO) {
             val plant = PrevPlant(1, prevPlant) //id故意取成都是1, 这样才会有replace效果
