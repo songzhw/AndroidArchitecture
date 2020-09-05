@@ -7,9 +7,8 @@ import androidx.room.PrimaryKey
 import ca.six.archi.cfl.data.Plant
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 @Entity(tableName = "prev_plant")
 class PrevPlant(
     @PrimaryKey val id: Int,
     @Embedded val plant: Plant
-): Parcelable
+)

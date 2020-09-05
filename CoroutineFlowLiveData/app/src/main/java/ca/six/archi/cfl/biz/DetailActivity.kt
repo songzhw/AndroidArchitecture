@@ -35,7 +35,7 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
             ivPrevPlant.visibility = if (prevPlant == null) View.GONE else View.VISIBLE
             ivPrevPlant.setOnClickListener {
                 val intent = Intent(this, DetailActivity::class.java)
-                    .putExtra("plant", prevPlant)
+                    .putExtra("plant", prevPlant.plant)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             }
