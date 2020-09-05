@@ -1,6 +1,7 @@
 package ca.six.archi.cfl
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import ca.six.archi.cfl.biz.MainViewModel
 import ca.six.archi.cfl.core.DepProvider
 import ca.six.archi.cfl.core.Http
 import ca.six.archi.cfl.core.IHttpService

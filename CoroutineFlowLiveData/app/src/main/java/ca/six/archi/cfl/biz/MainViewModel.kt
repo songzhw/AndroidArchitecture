@@ -1,9 +1,10 @@
-package ca.six.archi.cfl
+package ca.six.archi.cfl.biz
 
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ca.six.archi.cfl.R
 import ca.six.archi.cfl.core.DepProvider
 import ca.six.archi.cfl.data.Plant
 import kotlinx.coroutines.Dispatchers

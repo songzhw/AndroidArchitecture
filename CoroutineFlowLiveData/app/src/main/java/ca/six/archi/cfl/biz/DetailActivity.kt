@@ -1,11 +1,11 @@
-package ca.six.archi.cfl
+package ca.six.archi.cfl.biz
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import ca.six.archi.cfl.R
 import ca.six.archi.cfl.core.DepProvider
 import ca.six.archi.cfl.core.db.PrevPlant
 import ca.six.archi.cfl.data.Plant
@@ -16,9 +16,11 @@ import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
     lateinit var vm: DetailViewModel
+    var plant: Plant? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val plant = intent.getParcelableExtra<Plant>("plant")
+        plant = intent.getParcelableExtra<Plant>("plant")
         Glide.with(this).load(plant?.imageUrl).into(ivDetail)
         tvDetailTitle.text = plant?.name
         tvDetailDesp.text = plant?.description
@@ -27,12 +29,15 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
         vm = ViewModelProvider(this).get(DetailViewModel::class.java)
 
         vm.previousPlantLiveData.observe(this) {
-            ivPrevPlant.visibility = if (it == null) View.GONE else
-                if (it.plant.plantId == plant.plantId) View.GONE else View.VISIBLE
             println("szw prevPlant = ${it.plant}")
         }
-        vm.setPreviousPlant(plant)
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        if (plant != null) {
+            vm.setPreviousPlant(plant!!)
+        }
     }
 }
 

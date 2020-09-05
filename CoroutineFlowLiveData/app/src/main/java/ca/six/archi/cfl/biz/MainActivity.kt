@@ -1,4 +1,4 @@
-package ca.six.archi.cfl
+package ca.six.archi.cfl.biz
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ca.six.archi.cfl.ui.OnRvItemClickListener
+import ca.six.archi.cfl.R
 import ca.six.archi.cfl.data.Plant
 import ca.six.oneadapter.lib.OneDiffAdapter
 import ca.six.oneadapter.lib.RvViewHolder

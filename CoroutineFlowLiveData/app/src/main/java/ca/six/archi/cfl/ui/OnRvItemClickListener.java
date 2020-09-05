@@ -1,4 +1,4 @@
-package ca.six.archi.cfl;
+package ca.six.archi.cfl.ui;
 
 import android.view.GestureDetector;
 import android.view.MotionEvent;
