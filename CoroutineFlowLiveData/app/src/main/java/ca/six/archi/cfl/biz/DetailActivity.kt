@@ -2,6 +2,7 @@ package ca.six.archi.cfl.biz
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -31,18 +32,21 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
         vm.previousPlantLiveData.observe(this) {
             println("szw prevPlant = ${it.plant}")
         }
+        vm.getPrevPlant()
+        vm.setPreviousPlant(plant!!)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        if (plant != null) {
-            vm.setPreviousPlant(plant!!)
-        }
-    }
 }
 
 class DetailViewModel : ViewModel() {
-    var previousPlantLiveData = DepProvider.db.getPreviousPlant()
+    var previousPlantLiveData = MutableLiveData<PrevPlant>()
+
+    fun getPrevPlant() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val plant = DepProvider.db.getPreviousPlant()
+            previousPlantLiveData.postValue(plant);
+        }
+    }
 
     fun setPreviousPlant(prevPlant: Plant) {
         println("szw inset $prevPlant")
