@@ -15,6 +15,7 @@ import ca.six.archi.cfl.data.Plant
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
@@ -51,11 +52,13 @@ class DetailViewModel : ViewModel() {
 
     fun getPrevPlant(currentPlant: Plant) {
         viewModelScope.launch(Dispatchers.IO) {
-            val plant = DepProvider.db.getPreviousPlant()
-            previousPlantLiveData.postValue(plant);
+            val plantFlow = DepProvider.db.getPreviousPlantAsFlow()
+            plantFlow.collect {
+                previousPlantLiveData.postValue(it);
 
-            //取到prevPlant后才写入新的prevPlant, 不然成了livedata中的prev与currentPlant一样了
-            setPreviousPlant(currentPlant)
+                //取到prevPlant后才写入新的prevPlant, 不然成了livedata中的prev与currentPlant一样了
+                setPreviousPlant(currentPlant)
+            }
         }
     }
 
