@@ -17,11 +17,10 @@ import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
     lateinit var vm: DetailViewModel
-    var plant: Plant? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        plant = intent.getParcelableExtra<Plant>("plant")
+        val plant = intent.getParcelableExtra<Plant>("plant")
         Glide.with(this).load(plant?.imageUrl).into(ivDetail)
         tvDetailTitle.text = plant?.name
         tvDetailDesp.text = plant?.description
@@ -32,8 +31,8 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
         vm.previousPlantLiveData.observe(this) {
             println("szw prevPlant = ${it.plant}")
         }
-        vm.getPrevPlant()
-        vm.setPreviousPlant(plant!!)
+        vm.getPrevPlant(plant)
+
     }
 
 }
@@ -41,10 +40,12 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
 class DetailViewModel : ViewModel() {
     var previousPlantLiveData = MutableLiveData<PrevPlant>()
 
-    fun getPrevPlant() {
+    fun getPrevPlant(currentPlant: Plant) {
         viewModelScope.launch(Dispatchers.IO) {
             val plant = DepProvider.db.getPreviousPlant()
             previousPlantLiveData.postValue(plant);
+
+            setPreviousPlant(currentPlant)
         }
     }
 
