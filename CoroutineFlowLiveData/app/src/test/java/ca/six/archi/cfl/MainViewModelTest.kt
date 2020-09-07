@@ -25,6 +25,8 @@ class MainViewModelTest {
     @ExperimentalCoroutinesApi
     @get:Rule var rule2 = MainCoroutineRule()
 
+    lateinit var depProvider: DepProvider
+
     val data = arrayListOf(
         Plant("1", "1", "1", 9),
         Plant("2", "2", "2", 3),
@@ -36,12 +38,7 @@ class MainViewModelTest {
     fun setup() = runBlocking {
         val mockHttp = mock(IHttpService::class.java)
         `when`(mockHttp.getAllPlants()).thenReturn(data)
-//        DepProvider.http = mockHttp
-    }
-
-    @After
-    fun clear() {
-//        DepProvider.http = Http.service
+        `when`(depProvider.http).thenReturn(mockHttp)
     }
 
     @ExperimentalCoroutinesApi
@@ -91,6 +88,7 @@ class MainViewModelTest {
     fun getPlant() = runBlocking{
         val testDispatcher = TestCoroutineDispatcher()
         val vm = MainViewModel()
+        vm.injector = depProvider
         vm.dispatch = testDispatcher
         vm.fetchPlants()
 
