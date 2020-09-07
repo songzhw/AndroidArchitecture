@@ -14,6 +14,8 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 
@@ -34,19 +36,30 @@ class MainViewModelTest {
         Plant("5", "5", "5", 3)
     )
 
-    @Before
-    fun setup() = runBlocking {
-        val mockHttp = mock(IHttpService::class.java)
-        `when`(mockHttp.getAllPlants()).thenReturn(data)
-        `when`(depProvider.http).thenReturn(mockHttp)
-    }
+    // 备注: 2020.09.07
+    // 我晕, 后来发现, 这里会报错"method setUp() should be void), 是说它要返回void, 但有了runnBlocking后,它返回的不是void.
+    // 麻烦就麻烦在, 这个@before以前也成功了. 现在反而失败了.
+    // 于是我把runBlocking移到下面方法中, 竟然又不检查 返回要为void了. 我也是晕!!
+//    @Before
+//    fun setUp() = runBlocking {
+//        val mockHttp = mock(IHttpService::class.java)
+//        `when`(mockHttp.getAllPlants()).thenReturn(data)
+//        `when`(depProvider.http).thenReturn(mockHttp)
+//    }
+
 
     @ExperimentalCoroutinesApi
     @Test
-    fun fetchPlants() {
+    fun fetchPlants() = runBlocking{
+        depProvider = mock(DepProvider::class.java)
+        val mockHttp = mock(IHttpService::class.java)
+        `when`(mockHttp.getAllPlants()).thenReturn(data)
+        `when`(depProvider.http).thenReturn(mockHttp)
+
         // 应对viewModelScope.launch(dispatch)
         val testDispatcher = TestCoroutineDispatcher()
         val vm = MainViewModel()
+        vm.injector = depProvider
         vm.dispatch = testDispatcher
         assertEquals(0, vm.data.size)
 
@@ -86,6 +99,12 @@ class MainViewModelTest {
     // vm.fetchPlant needs the coroutine, so w eneed the `runBlocking` here
     @Test
     fun getPlant() = runBlocking{
+        depProvider = mock(DepProvider::class.java)
+        val mockHttp = mock(IHttpService::class.java)
+        `when`(mockHttp.getAllPlants()).thenReturn(data)
+        `when`(depProvider.http).thenReturn(mockHttp)
+
+        // 应对viewModelScope.launch(dispatch)
         val testDispatcher = TestCoroutineDispatcher()
         val vm = MainViewModel()
         vm.injector = depProvider
