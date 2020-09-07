@@ -38,7 +38,6 @@ class DetailViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun getAndSetNewPreviousPlant() {
-        println("szw test0 : ${injector.db}")
         // 应对viewModelScope.launch(dispatch)
         val testDispatcher = TestCoroutineDispatcher()
         val vm = DetailViewModel()
@@ -48,8 +47,7 @@ class DetailViewModelTest {
         val curr = Plant("10", "10", "10", 5)
         vm.getPrevPlant(curr)
         val prev = vm.previousPlantLiveData.value
-        println("szw prev = $prev")
-        assertEquals(5, prev?.plant?.plantId)
+        assertEquals("5", prev?.plant?.plantId)
     }
 
 }
