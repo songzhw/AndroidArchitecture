@@ -11,6 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
+    var injector: DepProvider? = null
+
     var isGrid = true
     val gridDisplayLiveData = MutableLiveData<Boolean>() //CF中不给初始值, 就不会页面一启动就先发送值
     val listDisplayLiveData = MutableLiveData<Boolean>() //CF中不给初始值, 就不会页面一启动就先发送值
@@ -35,7 +37,7 @@ class MainViewModel : ViewModel() {
         // 若直接使用viewModelSceop.launch{..}, 那就是运行在main线程上了!!!
         viewModelScope.launch(dispatch) {
             println("szw vm: thread = ${Thread.currentThread().name}")
-            val resp = DepProvider.http.getAllPlants()
+            val resp = injector?.http?.getAllPlants() ?: emptyList()
             dataLiveData.postValue(resp)
 
             data.clear()

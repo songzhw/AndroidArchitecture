@@ -36,12 +36,12 @@ class MainViewModelTest {
     fun setup() = runBlocking {
         val mockHttp = mock(IHttpService::class.java)
         `when`(mockHttp.getAllPlants()).thenReturn(data)
-        DepProvider.http = mockHttp
+//        DepProvider.http = mockHttp
     }
 
     @After
     fun clear() {
-        DepProvider.http = Http.service
+//        DepProvider.http = Http.service
     }
 
     @ExperimentalCoroutinesApi

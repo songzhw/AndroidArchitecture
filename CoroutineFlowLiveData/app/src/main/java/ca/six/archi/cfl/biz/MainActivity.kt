@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ca.six.archi.cfl.ui.OnRvItemClickListener
 import ca.six.archi.cfl.R
+import ca.six.archi.cfl.core.App
 import ca.six.archi.cfl.data.Plant
 import ca.six.oneadapter.lib.OneDiffAdapter
 import ca.six.oneadapter.lib.RvViewHolder
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         vm.dataLiveData.observe(this) { resp ->
             adapter.refresh(resp)
         }
+        vm.injector = App.injector
 
         vm.gridDisplayLiveData.observe(this) { isGrid ->
             rv.layoutManager = GridLayoutManager(this, 2)

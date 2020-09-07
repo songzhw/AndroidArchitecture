@@ -10,5 +10,6 @@ class App : Application() {
 
     companion object {
         var app: App? = null
+        var injector: DepProvider = DepProvider()
     }
 }

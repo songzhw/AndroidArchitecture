@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import ca.six.archi.cfl.R
+import ca.six.archi.cfl.core.App
 import ca.six.archi.cfl.data.Plant
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -33,6 +34,7 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
                 startActivity(intent)
             }
         }
+        vm.injector = App.injector
         vm.getPrevPlant(plant)
 
     }
