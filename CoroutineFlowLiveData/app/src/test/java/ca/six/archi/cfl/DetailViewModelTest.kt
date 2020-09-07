@@ -32,12 +32,13 @@ class DetailViewModelTest {
         val prevPlant = PrevPlant(1, Plant("5", "5", "5", 3))
         val db = mock(PlantDao::class.java)
         `when`(db.getPreviousPlant()).thenReturn(prevPlant)
-        injector.db = db
+        `when`(injector.db).thenReturn(db)
     }
 
     @ExperimentalCoroutinesApi
     @Test
     fun getAndSetNewPreviousPlant() {
+        println("szw test0 : ${injector.db}")
         // 应对viewModelScope.launch(dispatch)
         val testDispatcher = TestCoroutineDispatcher()
         val vm = DetailViewModel()
