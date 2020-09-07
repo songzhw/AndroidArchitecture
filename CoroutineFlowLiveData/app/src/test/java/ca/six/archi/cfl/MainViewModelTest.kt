@@ -47,6 +47,7 @@ class MainViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun fetchPlants() {
+        // 应对viewModelScope.launch(dispatch)
         val testDispatcher = TestCoroutineDispatcher()
         val vm = MainViewModel()
         vm.dispatch = testDispatcher
