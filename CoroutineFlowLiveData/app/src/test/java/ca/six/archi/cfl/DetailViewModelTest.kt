@@ -2,6 +2,7 @@ package ca.six.archi.cfl
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import ca.six.archi.cfl.biz.DetailViewModel
+import ca.six.archi.cfl.core.App
 import ca.six.archi.cfl.core.DepProvider
 import ca.six.archi.cfl.core.db.PlantDao
 import ca.six.archi.cfl.core.db.PrevPlant
@@ -27,10 +28,13 @@ class DetailViewModelTest {
 
     @Before
     fun setup() {
+        val ctx = mock(App::class.java)
+        `when`(App.app).thenReturn(ctx)
+
         val prevPlant = PrevPlant(1, Plant("5", "5", "5", 3))
         val db = mock(PlantDao::class.java)
         `when`(db.getPreviousPlant()).thenReturn(prevPlant)
-        `when`(DepProvider.db()).thenReturn(db)
+        `when`(DepProvider.db).thenReturn(db)
     }
 
     @ExperimentalCoroutinesApi

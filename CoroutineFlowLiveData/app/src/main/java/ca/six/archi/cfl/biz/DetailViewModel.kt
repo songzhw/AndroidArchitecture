@@ -15,7 +15,7 @@ class DetailViewModel : ViewModel() {
 
     fun getPrevPlant(currentPlant: Plant) {
         viewModelScope.launch(dispatch) {
-            val plant = DepProvider.db().getPreviousPlant()
+            val plant = DepProvider.db.getPreviousPlant()
             previousPlantLiveData.postValue(plant);
 
             //取到prevPlant后才写入新的prevPlant, 不然成了livedata中的prev与currentPlant一样了
@@ -27,7 +27,7 @@ class DetailViewModel : ViewModel() {
         println("szw inset $prevPlant")
         viewModelScope.launch(dispatch) {
             val plant = PrevPlant(1, prevPlant) //id故意取成都是1, 这样才会有replace效果
-            DepProvider.db().insertPreviousPlant(plant)
+            DepProvider.db.insertPreviousPlant(plant)
         }
     }
 }
