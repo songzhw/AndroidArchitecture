@@ -16,7 +16,10 @@ class DetailViewModel : ViewModel() {
 
     fun getPrevPlant(currentPlant: Plant) {
         viewModelScope.launch(dispatch) {
+            println("szw plant1 = $injector")
+            println("szw plant2 = ${injector?.db}")
             val plant = injector?.db?.getPreviousPlant()
+            println("szw plant3 = $plant")
             previousPlantLiveData.postValue(plant);
 
             //取到prevPlant后才写入新的prevPlant, 不然成了livedata中的prev与currentPlant一样了

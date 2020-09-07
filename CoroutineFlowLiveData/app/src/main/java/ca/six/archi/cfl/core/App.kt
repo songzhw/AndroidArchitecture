@@ -6,10 +6,11 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         app = this
+        injector = DepProvider()
     }
 
     companion object {
-        var app: App? = null
-        var injector: DepProvider = DepProvider()
+        lateinit var app: App
+        lateinit var injector: DepProvider
     }
 }
