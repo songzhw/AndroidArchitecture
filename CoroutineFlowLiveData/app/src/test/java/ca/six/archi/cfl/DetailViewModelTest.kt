@@ -30,9 +30,7 @@ class DetailViewModelTest {
         val prevPlant = PrevPlant(1, Plant("5", "5", "5", 3))
         val db = mock(PlantDao::class.java)
         `when`(db.getPreviousPlant()).thenReturn(prevPlant)
-        println("szw pro = $DepProvider")
-        println("szw db  = ${DepProvider.db}")
-        DepProvider.db = db;
+        `when`(DepProvider.db()).thenReturn(db)
     }
 
     @ExperimentalCoroutinesApi
