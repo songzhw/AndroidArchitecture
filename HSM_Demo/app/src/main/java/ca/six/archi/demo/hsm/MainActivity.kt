@@ -10,15 +10,66 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val ary : Array<Int> = arrayOf()
-        ary.set(2, 20)
-        println("szw ary = $ary") //=> crash : ArrayIndexOutOfBoundsException: length=0; index=2
+
     }
 }
 
-interface IState {
-    val parents: Array<IState>
-        get() = arrayOf()
+object UserState {
+    var state = LoggedOut
 }
 
-object LoggedOut: IState
+interface IState {
+    val parents: ArrayList<IState>
+        get() = arrayListOf()
+}
+
+object LoggedOut : IState
+
+object LoggedIn : IState
+
+// = = = = = = = = = = =
+object AbnormalUser : IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn)
+}
+
+object InsecureUser : IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn, AbnormalUser)
+}
+
+object LockedUser : IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn, AbnormalUser)
+}
+
+// = = = = = = = = = = =
+object DepositUser: IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn)
+}
+
+object InvestUser: IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn)
+}
+
+object DepositRegularUser: IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn, DepositUser)
+}
+
+object DepositVipUser: IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn, DepositUser)
+}
+
+object InvestRegularUser: IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn, InvestUser)
+}
+
+object InvestVipUser: IState {
+    override val parents: ArrayList<IState>
+        get() = arrayListOf(LoggedIn, InvestUser)
+}
