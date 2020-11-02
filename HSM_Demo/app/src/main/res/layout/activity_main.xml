@@ -1,18 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView android:id="@+id/tvUser"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="23dp" android:textColor="#00f" android:text="(null)"
+        android:layout_centerHorizontal="true"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView android:id="@+id/tvState"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="21dp" android:textColor="#f0f" android:text="unlogged"
+        android:layout_centerHorizontal="true" android:layout_below="@id/tvUser"
+        />
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#ccc"
+        android:layout_below="@id/tvState" android:layout_margin="10dp"
+        />
+    <TextView android:id="@+id/tvTitleLogin"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="Login" android:textColor="#f50057" android:textSize="24dp"
+        android:layout_below="@id/tvState" android:layout_marginLeft="10dp" android:layout_marginTop="20dp"
+        />
+
+    <Button android:id="@+id/btnLogin1"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="正常|投资|普通用户" android:textAllCaps="false"
+        android:layout_below="@id/tvTitleLogin" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnLogin2"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="正常|消费|普通用户" android:textAllCaps="false"
+        android:layout_below="@id/tvTitleLogin" android:layout_toRightOf="@id/btnLogin1" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnLogin3"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="正常|投资|vip用户" android:textAllCaps="false"
+        android:layout_below="@id/btnLogin1" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnLogin4"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="正常|消费|vip用户" android:textAllCaps="false"
+        android:layout_below="@id/btnLogin1" android:layout_toRightOf="@id/btnLogin1" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnLogin5"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="不安全用户" android:textAllCaps="false"
+        android:layout_below="@id/btnLogin3" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnLogin6"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="被锁用户" android:textAllCaps="false"
+        android:layout_below="@id/btnLogin3" android:layout_toRightOf="@id/btnLogin1" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+
+
+    <!--    =============================================    -->
+
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#ccc"
+        android:layout_below="@id/btnLogin6" android:layout_margin="10dp"
+        />
+    <TextView android:id="@+id/tvTitleBusiness"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:text="业务" android:textColor="#f50057" android:textSize="24dp"
+        android:layout_below="@id/btnLogin6" android:layout_marginLeft="10dp" android:layout_marginTop="20dp"
+        />
+    <Button android:id="@+id/btnBiz1"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="查看存储" android:textAllCaps="false"
+        android:layout_below="@id/tvTitleBusiness" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnBiz2"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="买阿里股票" android:textAllCaps="false"
+        android:layout_below="@id/tvTitleBusiness" android:layout_toRightOf="@id/btnBiz1" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnBiz3"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="我的VIP" android:textAllCaps="false"
+        android:layout_below="@id/tvTitleBusiness" android:layout_toRightOf="@id/btnBiz2" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+
+    <Button android:id="@+id/btnBiz4"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="签约投资" android:textAllCaps="false"
+        android:layout_below="@id/btnBiz1" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnBiz5"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="成为VIP" android:textAllCaps="false"
+        android:layout_below="@id/btnBiz1" android:layout_toRightOf="@id/btnBiz1" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnBiz6"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="安全验证" android:textAllCaps="false"
+        android:layout_below="@id/btnBiz1" android:layout_toRightOf="@id/btnBiz2" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+    <Button android:id="@+id/btnBiz7"
+        android:layout_width="wrap_content"  android:layout_height="wrap_content"
+        android:backgroundTint="#f1e6f3" android:textColor="#4a148c"
+        android:text="解锁" android:textAllCaps="false"
+        android:layout_below="@id/btnBiz1" android:layout_toRightOf="@id/btnBiz6" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+        />
+
+</RelativeLayout>
