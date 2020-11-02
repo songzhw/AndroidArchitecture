@@ -9,3 +9,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+
+interface IState {
+
+}
+
+object LoggedOut : IState
+object LoggedIn: IState
+object LoggedIn_Abnormal: LoggedIn
