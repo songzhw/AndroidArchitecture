@@ -23,6 +23,7 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
         tvDetailId.text = plant?.plantId
 
         vm = ViewModelProvider(this).get(DetailViewModel::class.java)
+        vm.injector = App.injector
 
         vm.previousPlantLiveData.observe(this) { prevPlant ->
             println("szw prevPlant = ${prevPlant.plant}")
@@ -34,7 +35,7 @@ class DetailActivity : AppCompatActivity(R.layout.activity_detail) {
                 startActivity(intent)
             }
         }
-        vm.injector = App.injector
+
         vm.getPrevPlant(plant)
 
     }

@@ -56,10 +56,11 @@ class MainActivity : AppCompatActivity() {
 
 
         vm = ViewModelProvider(this).get(MainViewModel::class.java)
+        vm.injector = App.injector
         vm.dataLiveData.observe(this) { resp ->
             adapter.refresh(resp)
         }
-        vm.injector = App.injector
+
 
         vm.gridDisplayLiveData.observe(this) { isGrid ->
             rv.layoutManager = GridLayoutManager(this, 2)
