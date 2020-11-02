@@ -28,6 +28,9 @@ object LoggedOut : IState
 object LoggedIn : IState
 
 // = = = = = = = = = = =
+object RegularUser: IState
+object VipUser: IState
+
 object AbnormalUser : IState {
     override val parents: ArrayList<IState>
         get() = arrayListOf(LoggedIn)
@@ -56,20 +59,20 @@ object InvestUser: IState {
 
 object DepositRegularUser: IState {
     override val parents: ArrayList<IState>
-        get() = arrayListOf(LoggedIn, DepositUser)
+        get() = arrayListOf(LoggedIn, DepositUser, RegularUser)
 }
 
 object DepositVipUser: IState {
     override val parents: ArrayList<IState>
-        get() = arrayListOf(LoggedIn, DepositUser)
+        get() = arrayListOf(LoggedIn, DepositUser, VipUser)
 }
 
 object InvestRegularUser: IState {
     override val parents: ArrayList<IState>
-        get() = arrayListOf(LoggedIn, InvestUser)
+        get() = arrayListOf(LoggedIn, InvestUser, RegularUser)
 }
 
 object InvestVipUser: IState {
     override val parents: ArrayList<IState>
-        get() = arrayListOf(LoggedIn, InvestUser)
+        get() = arrayListOf(LoggedIn, InvestUser, VipUser)
 }
