@@ -18,8 +18,8 @@ class HomeActivity : AppCompatActivity(R.layout.activity_main), HttpInjected {
         http.getChapters()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { chapters ->
-                println("szw chapters = $chapters")
+            .subscribe { detail ->
+                println("szw chapters = ${detail.chapters?.size}")
             }
             .clearedBy(_allSubscriptions)
     }
