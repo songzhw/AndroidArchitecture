@@ -39,7 +39,7 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     //coroutine还没有rxjava这么强大, 而且侵入性一样. 使用起来不如rxjava方便(如没有subject), 故没有使用coroutine
     implementation "io.reactivex.rxjava2:rxjava:2.2.21"
