@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 /* 依赖集中处, 方便集成测试*/
 object DepStore {
     var http: HttpService = Retrofit.Builder()
-        .baseUrl("https://run.mocky.io/v3")
+        .baseUrl("https://run.mocky.io/v3/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
         .build()
