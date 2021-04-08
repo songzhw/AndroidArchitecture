@@ -29,6 +29,7 @@ android {
     }
 }
 
+def retrofitVersion = "2.9.0"
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -36,7 +37,8 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     //coroutine还没有rxjava这么强大, 而且侵入性一样. 使用起来不如rxjava方便(如没有subject), 故没有使用coroutine
     implementation "io.reactivex.rxjava2:rxjava:2.2.21"
