@@ -5,14 +5,21 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import io.reactivex.disposables.CompositeDisposable
 
-interface RxDisposableCleaner : LifecycleObserver {
-    val _allSubscriptions: CompositeDisposable
+class RxDisposableCleaner : LifecycleObserver {
+    val disposables: CompositeDisposable
         get() = CompositeDisposable()
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy(){
-        println("szw onDestroy()")
-        _allSubscriptions.clear()
+    fun onDestroy() {
+        disposables.clear()
     }
+}
+
+interface RxCleanerInjected {
+    val rxCleaner: RxDisposableCleaner
+        get() = RxDisposableCleaner()
+
+    val disposables: CompositeDisposable
+        get() = rxCleaner.disposables
 }
