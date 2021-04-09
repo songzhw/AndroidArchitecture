@@ -14,5 +14,4 @@ object DepStore {
         .build()
         .create(HttpService::class.java)
 
-
 }
