@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <TextView android:id="@+id/tvHomeTitle"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"  android:layout_marginVertical="20dp"
+        android:text="JP APP" android:textColor="#000"  android:textSize="30dp"/>
+
+    <ImageView android:id="@+id/ivHomeBook"
+        android:layout_width="200dp" android:layout_height="200dp" android:layout_margin="10dp"
+        android:src="@drawable/book_jp" android:layout_below="@id/tvHomeTitle"
+        android:transitionName="book_cover"
+        />
+
+    <ImageView android:id="@+id/ivDownload"
+        android:layout_width="50dp" android:layout_height="50dp"
+        android:layout_alignBottom="@id/ivHomeBook" android:layout_alignRight="@id/ivHomeBook"
+        android:src="@drawable/ic_download" app:tint="@color/colorPrimary"
+        android:transitionName="book_cover"
+        />
+
+    <ImageView android:id="@+id/ivHomeBook2"
+        android:layout_width="200dp" android:layout_height="200dp" android:layout_margin="10dp"
+        android:src="@drawable/book_jp_two" android:layout_below="@id/ivHomeBook"
+        android:transitionName="book_cover"
+        />
+
+    <ImageView android:id="@+id/ivDownload2"
+        android:layout_width="50dp" android:layout_height="50dp"
+        android:layout_alignBottom="@id/ivHomeBook2" android:layout_alignRight="@id/ivHomeBook"
+        android:src="@drawable/ic_download" app:tint="@color/colorAccent"
+        android:transitionName="book_cover"
+        />
+</RelativeLayout>
