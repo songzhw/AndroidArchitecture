@@ -18,8 +18,9 @@ class HomeActivity : AppCompatActivity(R.layout.activity_main), HttpInjected, Rx
         http.getChapters()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { detail ->
-                println("szw chapters = ${detail.chapters.size}")
+            .flatMapIterable { resp -> resp.chapters }
+            .subscribe { cahpter ->
+                println("szw chapters = $cahpter")
             }
             .clearedBy(disposables)
     }

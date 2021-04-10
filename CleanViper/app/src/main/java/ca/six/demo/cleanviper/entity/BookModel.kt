@@ -1,5 +1,5 @@
 package ca.six.demo.cleanviper.entity
 
-class BookDetail(var chapters: List<BookChapter>)
+data class BookDetail(var chapters: List<BookChapter>)
 
-class BookChapter(var name: String, var url: String)
+data class BookChapter(var name: String, var audio: String, var notebook: String)

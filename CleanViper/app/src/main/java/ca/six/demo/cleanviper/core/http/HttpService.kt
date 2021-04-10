@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface HttpService {
-    @GET("dbfd6809-d551-4c23-94a5-696b3d4f7efd")
+    @GET("4c1785a5-723f-4985-95e2-cf5ce2fd9d50")
     fun getChapters() : Observable<BookDetail>
 }
 

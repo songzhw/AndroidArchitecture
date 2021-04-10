@@ -13,6 +13,7 @@ class RxDisposableCleaner : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
         disposables.clear()
+        println("szw onDestory() compositeDisposable.clear()")
     }
 }
 
