@@ -1,10 +1,9 @@
-package ca.six.demo.cleanviper.biz.boook_detail
+package ca.six.demo.cleanviper.biz.session
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ca.six.demo.cleanviper.R
 
-class BookDetailActivity: AppCompatActivity(R.layout.activity_book_detail) {
+class LogoutActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
