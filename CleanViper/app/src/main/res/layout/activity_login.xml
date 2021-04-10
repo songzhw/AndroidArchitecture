@@ -6,4 +6,45 @@
         android:layout_width="match_parent"  android:layout_height="match_parent"
         android:src="@drawable/aurora1" android:scaleType="centerCrop"
         />
+
+    <ImageView android:id="@+id/ivLoginLogo"
+        android:layout_width="80dp" android:layout_height="80dp"
+        android:src="@drawable/book_jp"
+        android:layout_marginTop="80dp" android:layout_centerHorizontal="true"
+        />
+
+    <EditText android:id="@+id/etLoginName"
+        android:layout_width="300dp" android:layout_height="40dp"
+        android:layout_below="@id/ivLoginLogo"
+        android:layout_marginTop="50dp" android:layout_centerHorizontal="true"
+        android:hint="user name" android:textColorHint="#5fff"
+        android:textColor="#fff" android:singleLine="true"
+        android:paddingLeft="14dp"
+        android:background="@drawable/et_bg_rect"
+        />
+    <EditText android:id="@+id/etLoginPwd"
+        android:layout_width="300dp" android:layout_height="40dp"
+        android:layout_below="@id/etLoginName"
+        android:layout_marginTop="14dp" android:layout_centerHorizontal="true"
+        android:hint="password" android:textColorHint="#5fff"
+        android:textColor="#fff" android:singleLine="true"
+        android:paddingLeft="14dp"
+        android:background="@drawable/et_bg_rect"
+        />
+
+    <Button android:id="@+id/btnLogin"
+        android:layout_width="300dp" android:layout_height="40dp"
+        android:layout_below="@id/etLoginPwd"
+        android:layout_marginTop="20dp" android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_bg_rect" android:textColor="#1a1a1a"
+        android:text="Login"
+        />
+
+    <TextView android:id="@+id/tvLoginForgetPwd"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="#fff" android:textSize="18dp" android:text="forget password?"
+        android:layout_below="@id/btnLogin"
+        android:layout_marginTop="40dp" android:layout_centerHorizontal="true"
+        />
+
 </RelativeLayout>
