@@ -13,5 +13,5 @@ object DepStore {
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
         .create(HttpService::class.java)
-
 }
+

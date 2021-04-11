@@ -2,11 +2,22 @@ package ca.six.demo.cleanviper.core.http
 
 import ca.six.demo.cleanviper.entity.BookDetail
 import io.reactivex.Observable
+import retrofit2.Response
 import retrofit2.http.GET
 
 interface HttpService {
     @GET("4c1785a5-723f-4985-95e2-cf5ce2fd9d50")
-    fun getChapters() : Observable<BookDetail>
+    fun getChapters(): Observable<BookDetail>
+
+    @GET("f93dbffb-69f6-4d2d-9ce2-3b334d79cf19")
+    fun loginAndFail(): Observable<Response<Any>>
+
+    @GET("41a8da41-d4c7-436d-a476-c0f6330c27ea")
+    fun LoginUser()
+
+    @GET("f6d5bdd7-2cd5-444f-bf26-e711caa18b9c")
+    fun loginVIPUser()
+
 }
 
 
