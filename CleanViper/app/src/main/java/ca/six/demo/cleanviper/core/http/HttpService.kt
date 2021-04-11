@@ -26,4 +26,8 @@ interface HttpService {
  1. 备注: 若response是:  { "chapters": [...] },
  那这里的的getChapter不能是返回: Observable<List<BookChapter>>. 得是返回一个对象.
  不然会报错:  Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $
+
+ 2. 备注: 要看status code, 就得返回带Response的类型, 如Call<Response<?>>, 或Observable<Response<?>>
+
+
  */

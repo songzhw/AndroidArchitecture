@@ -36,3 +36,9 @@ class LoginPresenter : HttpInjected {
         }
     }
 }
+
+/*
+1. 这里我并没有采用Interactor. 因为感觉这里逻辑较简单, 用了interactor, 那presenter基本就是个空壳子, 来回传递而已.
+    => 所以我个人觉得, 设计并不是一成不变的, 得因地制宜
+
+ */
