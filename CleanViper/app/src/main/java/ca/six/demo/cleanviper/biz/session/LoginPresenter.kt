@@ -7,11 +7,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class LoginPresenter : HttpInjected {
-    private val disposables = CompositeDisposable()
-
-    fun clear() {
-        disposables.clear()
-    }
+    lateinit var disposables : CompositeDisposable
 
     fun login(name: String, password: String) {
         //TODO password -> sha128
