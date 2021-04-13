@@ -1,6 +1,7 @@
 package ca.six.demo.cleanviper.biz.session
 
 import ca.six.demo.cleanviper.core.di.HttpInjected
+import ca.six.demo.cleanviper.core.session.UserSession
 import ca.six.demo.cleanviper.ext.clearedBy
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -22,15 +23,16 @@ class LoginPresenter : HttpInjected {
             http.loginAndFail()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { resp -> println("szw resp = ${resp.code()}") }
+                .subscribe { resp -> println("szw resp = ${resp.code()}, $UserSession") }
                 .clearedBy(disposables)
         } else {
             httpReqeust
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { session -> println("szw $session") }
+                .subscribe { session -> println("szw $session, $UserSession") }
                 .clearedBy(disposables)
         }
+
     }
 }
 
