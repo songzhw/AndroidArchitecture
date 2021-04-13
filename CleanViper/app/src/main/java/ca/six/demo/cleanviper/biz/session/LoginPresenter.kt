@@ -7,8 +7,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class LoginPresenter : HttpInjected {
-    lateinit var disposables : CompositeDisposable
+class LoginPresenter(val view: ILoginView) : HttpInjected {
+    lateinit var disposables: CompositeDisposable
 
     fun login(name: String, password: String) {
         //TODO password -> sha128
@@ -29,8 +29,8 @@ class LoginPresenter : HttpInjected {
             httpReqeust
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext{ resp -> UserSession.convertFrom(resp)}
-                .subscribe { session -> println("szw $session, $UserSession") }
+                .doOnNext { resp -> UserSession.convertFrom(resp) }
+                .subscribe { view.continueNav() }
                 .clearedBy(disposables)
         }
 
