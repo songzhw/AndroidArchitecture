@@ -29,6 +29,7 @@ class LoginPresenter : HttpInjected {
             httpReqeust
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext{ resp -> UserSession.convertFrom(resp)}
                 .subscribe { session -> println("szw $session, $UserSession") }
                 .clearedBy(disposables)
         }
