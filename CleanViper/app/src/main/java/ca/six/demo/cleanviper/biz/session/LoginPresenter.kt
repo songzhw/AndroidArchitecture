@@ -23,7 +23,7 @@ class LoginPresenter(val view: ILoginView) : HttpInjected {
             http.loginAndFail()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { resp -> println("szw resp = ${resp.code()}, $UserSession") }
+                .subscribe { resp -> view.toast("szw Something is wrong (#${resp.code()})") }
                 .clearedBy(disposables)
         } else {
             httpReqeust

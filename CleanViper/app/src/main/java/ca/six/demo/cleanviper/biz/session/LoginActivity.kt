@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 interface ILoginView {
     fun continueNav()
+    fun toast(msg: String)
 }
 
 class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
@@ -35,6 +36,10 @@ class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
 
     override fun continueNav() {
         Router.continueNav(this)
+    }
+
+    override fun toast(msg: String) {
+        this.toast(msg)
     }
 
 }
