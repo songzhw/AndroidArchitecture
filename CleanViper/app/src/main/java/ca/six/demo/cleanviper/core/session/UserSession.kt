@@ -6,4 +6,10 @@ object UserSession {
 
     fun hasLoggedIn() = session != null
 
+    override fun toString(): String {
+        return "[UserSession : isVip = $isVip, session = $session]"
+    }
 }
+
+
+data class UserHttpResponse(val session: String, val permissions: Array<String>)
