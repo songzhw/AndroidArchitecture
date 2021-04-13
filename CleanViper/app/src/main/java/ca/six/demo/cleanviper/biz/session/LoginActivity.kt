@@ -12,6 +12,7 @@ import ca.six.demo.cleanviper.router.core.Router
 import kotlinx.android.synthetic.main.activity_login.*
 
 interface ILoginView {
+    fun progress()
     fun continueNav()
     fun toast(msg: String)
 }
@@ -35,8 +36,13 @@ class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
         }
     }
 
+    override fun progress() {
+
+    }
+
     override fun continueNav() {
         Router.continueNav(this)
+        this.finish()
     }
 
     override fun toast(msg: String) {
