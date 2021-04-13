@@ -25,3 +25,8 @@ fun Activity.showProgress(): SpinKitView {
 
     return spinView
 }
+
+fun Activity.hideProgress(spinView: SpinKitView) {
+    val decorView = this.window.decorView as FrameLayout
+    decorView.removeView(spinView)
+}

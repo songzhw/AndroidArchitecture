@@ -5,20 +5,19 @@ import android.view.Window
 import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
 import androidx.appcompat.app.AppCompatActivity
 import ca.six.demo.cleanviper.R
-import ca.six.demo.cleanviper.ext.RxCleanerInjected
-import ca.six.demo.cleanviper.ext.showToast
-import ca.six.demo.cleanviper.ext.stringContent
+import ca.six.demo.cleanviper.ext.*
 import ca.six.demo.cleanviper.router.core.Router
+import com.github.ybq.android.spinkit.SpinKitView
 import kotlinx.android.synthetic.main.activity_login.*
 
 interface ILoginView {
-    fun progress()
     fun continueNav()
     fun toast(msg: String)
 }
 
 class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
     lateinit var presenter: LoginPresenter
+    lateinit var spinView: SpinKitView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,20 +31,19 @@ class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
         presenter.disposables = disposables
 
         btnLogin.setOnClickListener {
+            spinView = showProgress()
             presenter.login(etLoginName.stringContent(), etLoginPwd.stringContent())
         }
     }
 
-    override fun progress() {
-
-    }
-
     override fun continueNav() {
+        hideProgress(spinView)
         Router.continueNav(this)
         this.finish()
     }
 
     override fun toast(msg: String) {
+        hideProgress(spinView)
         this.showToast(msg)
     }
 

@@ -15,7 +15,5 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
         ivHomeBook.setOnClickListener {
             Router.nav(this, BOOK_DETAIL)
         }
-
-        showProgress()
     }
 }
