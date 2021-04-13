@@ -6,6 +6,7 @@ import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
 import androidx.appcompat.app.AppCompatActivity
 import ca.six.demo.cleanviper.R
 import ca.six.demo.cleanviper.ext.RxCleanerInjected
+import ca.six.demo.cleanviper.ext.showToast
 import ca.six.demo.cleanviper.ext.stringContent
 import ca.six.demo.cleanviper.router.core.Router
 import kotlinx.android.synthetic.main.activity_login.*
@@ -39,7 +40,7 @@ class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
     }
 
     override fun toast(msg: String) {
-        this.toast(msg)
+        this.showToast(msg)
     }
 
 }
