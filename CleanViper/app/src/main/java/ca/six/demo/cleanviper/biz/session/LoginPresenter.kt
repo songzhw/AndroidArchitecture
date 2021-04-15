@@ -15,7 +15,7 @@ class LoginPresenter(val view: ILoginView) : HttpInjected {
 
         // 这里是个模拟后台的过程, 根据name来决定login是否成功
         // name为空就直接失败; name为szw就直接是vip; 其它name全是普通用户登录成功
-        val httpReqeust = if (name == "szw") http.loginVIPUser()
+        val httpRequest = if (name == "szw") http.loginVIPUser()
         else http.LoginUser()
 
 
@@ -26,7 +26,7 @@ class LoginPresenter(val view: ILoginView) : HttpInjected {
                 .subscribe { resp -> view.toast("szw Something is wrong (#${resp.code()})") }
                 .clearedBy(disposables)
         } else {
-            httpReqeust
+            httpRequest
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext { resp -> UserSession.convertFrom(resp) }

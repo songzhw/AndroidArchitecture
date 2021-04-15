@@ -3,10 +3,13 @@ package ca.six.demo.cleanviper.biz.session
 import ca.six.demo.cleanviper.core.di.DepStore
 import ca.six.demo.cleanviper.core.http.HttpService
 import ca.six.demo.cleanviper.core.session.UserHttpResponse
+import ca.six.demo.cleanviper.utils.RxImmediateSchedulerRule
 import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
 import okhttp3.ResponseBody
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.*
 import retrofit2.Response
@@ -14,6 +17,10 @@ import retrofit2.Response
 class LoginPresenterTest {
     lateinit var originalRetrofit: HttpService
     lateinit var view: ILoginView
+
+    @Rule
+    @JvmField
+    var rxTestRule = RxImmediateSchedulerRule()
 
     @Before
     fun before() {
@@ -39,8 +46,10 @@ class LoginPresenterTest {
         `when`(DepStore.http.loginAndFail()).thenReturn(Observable.just(resp))
 
         val presenter = LoginPresenter(view)
+        presenter.disposables = CompositeDisposable()
         presenter.login("", "")
-        verify(originalRetrofit).loginAndFail()
+        verify(DepStore.http).loginAndFail()
+        // verify(DepStore.http).loginVIPUser()  // 在我意料之内的error: Wanted but not invoked:          httpService.loginVIPUser();
     }
 
     @Test
