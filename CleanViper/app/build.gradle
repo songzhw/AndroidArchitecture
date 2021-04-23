@@ -44,6 +44,7 @@ dependencies {
     //coroutine还没有rxjava这么强大, 而且侵入性一样. 使用起来不如rxjava方便(如没有subject), 故没有使用coroutine
     implementation "io.reactivex.rxjava2:rxjava:2.2.21"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation 'com.uber.autodispose2:autodispose:2.0.0'
 
     implementation 'com.github.ybq:Android-SpinKit:1.4.0' // https://github.com/ybq/Android-SpinKit
 
