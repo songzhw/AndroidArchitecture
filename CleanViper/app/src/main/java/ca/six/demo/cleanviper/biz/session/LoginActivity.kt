@@ -5,6 +5,7 @@ import android.view.Window
 import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
 import androidx.appcompat.app.AppCompatActivity
 import ca.six.demo.cleanviper.R
+import ca.six.demo.cleanviper.core.base.BaseActivity
 import ca.six.demo.cleanviper.ext.*
 import ca.six.demo.cleanviper.router.core.Router
 import com.github.ybq.android.spinkit.SpinKitView
@@ -15,7 +16,7 @@ interface ILoginView {
     fun toast(msg: String)
 }
 
-class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
+class LoginActivity : BaseActivity(), ILoginView {
     lateinit var presenter: LoginPresenter
     lateinit var spinView: SpinKitView
 
@@ -26,7 +27,6 @@ class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
         window.setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN)
         setContentView(R.layout.activity_login) //上面两个得在加载layout文件之前
 
-        lifecycle.addObserver(rxCleaner)
         presenter = LoginPresenter(this) //TODO 改为DI
         presenter.disposables = disposables
 
