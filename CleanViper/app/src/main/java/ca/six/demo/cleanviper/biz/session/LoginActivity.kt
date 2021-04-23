@@ -15,7 +15,7 @@ interface ILoginView {
     fun toast(msg: String)
 }
 
-class LoginActivity : AppCompatActivity(), ILoginView {
+class LoginActivity : AppCompatActivity(), RxCleanerInjected, ILoginView {
     lateinit var presenter: LoginPresenter
     lateinit var spinView: SpinKitView
 
@@ -26,7 +26,9 @@ class LoginActivity : AppCompatActivity(), ILoginView {
         window.setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN)
         setContentView(R.layout.activity_login) //上面两个得在加载layout文件之前
 
+        lifecycle.addObserver(rxCleaner)
         presenter = LoginPresenter(this) //TODO 改为DI
+        presenter.disposables = disposables
 
         btnLogin.setOnClickListener {
             spinView = showProgress()

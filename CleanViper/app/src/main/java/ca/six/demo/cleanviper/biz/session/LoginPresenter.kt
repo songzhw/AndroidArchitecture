@@ -1,6 +1,5 @@
 package ca.six.demo.cleanviper.biz.session
 
-import autodispose2.AutoDispose.autoDisposable
 import ca.six.demo.cleanviper.core.di.HttpInjected
 import ca.six.demo.cleanviper.core.session.UserSession
 import ca.six.demo.cleanviper.ext.clearedBy
@@ -9,6 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class LoginPresenter(val view: ILoginView) : HttpInjected {
+    lateinit var disposables: CompositeDisposable
 
     fun login(name: String, password: String) {
         //TODO password -> sha128
@@ -23,14 +23,15 @@ class LoginPresenter(val view: ILoginView) : HttpInjected {
             http.loginAndFail()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .to()
                 .subscribe { resp -> view.toast("szw Something is wrong (#${resp.code()})") }
+                .clearedBy(disposables)
         } else {
             httpRequest
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext { resp -> UserSession.convertFrom(resp) }
                 .subscribe { view.continueNav() }
+                .clearedBy(disposables)
         }
 
     }
