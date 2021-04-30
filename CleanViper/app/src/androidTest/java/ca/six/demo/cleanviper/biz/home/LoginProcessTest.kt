@@ -7,8 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import ca.six.demo.cleanviper.R
 import ca.six.demo.cleanviper.utils.onViewById
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_login.*
+import ca.six.demo.cleanviper.utils.shouldBeVisible
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,6 +27,7 @@ class RefreshLaterPageTest {
         onViewById(R.id.ivHomeBook)
             .perform(click())
 
-
+        onViewById(R.id.btnLogin)
+            .shouldBeVisible()
     }
 }
