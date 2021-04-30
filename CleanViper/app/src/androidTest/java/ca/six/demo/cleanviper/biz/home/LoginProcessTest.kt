@@ -3,10 +3,10 @@ package ca.six.demo.cleanviper.biz.home
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import ca.six.demo.cleanviper.R
+import ca.six.demo.cleanviper.utils.input
 import ca.six.demo.cleanviper.utils.onViewById
 import ca.six.demo.cleanviper.utils.shouldBeVisible
 import org.junit.Before
@@ -38,7 +38,7 @@ class RefreshLaterPageTest {
             .perform(click())
 
         onViewById(R.id.etLoginName)
-            .perform(typeText("szw"))
+            .perform(*input("szw"))
 
         onViewById(R.id.btnLogin)
             .perform(click())
