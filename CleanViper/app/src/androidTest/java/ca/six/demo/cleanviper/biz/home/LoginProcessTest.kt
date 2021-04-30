@@ -3,6 +3,7 @@ package ca.six.demo.cleanviper.biz.home
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import ca.six.demo.cleanviper.R
@@ -23,11 +24,26 @@ class RefreshLaterPageTest {
     }
 
     @Test
-    fun testOriginalText() {
+    fun testNavigateToDetailPage_shouldGoToLoginPage_whenNotLoggedIn() {
         onViewById(R.id.ivHomeBook)
             .perform(click())
 
         onViewById(R.id.btnLogin)
+            .shouldBeVisible()
+    }
+
+    @Test
+    fun testNavigateToDetailPage_shouldSucceed_afterLogIn() {
+        onViewById(R.id.ivHomeBook)
+            .perform(click())
+
+        onViewById(R.id.etLoginName)
+            .perform(typeText("szw"))
+
+        onViewById(R.id.btnLogin)
+            .perform(click())
+
+        onViewById(R.id.rlayBookDetail)
             .shouldBeVisible()
     }
 }
