@@ -3,9 +3,8 @@ package ca.six.demo.cleanviper.biz.session
 import ca.six.demo.cleanviper.core.di.HttpInjected
 import ca.six.demo.cleanviper.core.session.UserSession
 import ca.six.demo.cleanviper.ext.clearedBy
-import io.reactivex.android.schedulers.AndroidSchedulers
+import ca.six.demo.cleanviper.test.threadAndCleaner
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 
 class LoginPresenter(val view: ILoginView) : HttpInjected {
     lateinit var disposables: CompositeDisposable
@@ -21,14 +20,12 @@ class LoginPresenter(val view: ILoginView) : HttpInjected {
 
         if (name == "") {
             http.loginAndFail()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(threadAndCleaner.obsv())
                 .subscribe { resp -> view.toast("szw Something is wrong (#${resp.code()})") }
                 .clearedBy(disposables)
         } else {
             httpRequest
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(threadAndCleaner.obsv())
                 .doOnNext { resp -> UserSession.convertFrom(resp) }
                 .subscribe { view.continueNav() }
                 .clearedBy(disposables)
