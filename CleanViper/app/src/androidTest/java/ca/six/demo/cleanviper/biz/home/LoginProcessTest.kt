@@ -6,6 +6,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import ca.six.demo.cleanviper.R
+import ca.six.demo.cleanviper.core.session.UserSession
 import ca.six.demo.cleanviper.utils.input
 import ca.six.demo.cleanviper.utils.onViewById
 import ca.six.demo.cleanviper.utils.shouldBeVisible
@@ -25,6 +26,8 @@ class RefreshLaterPageTest {
 
     @Test
     fun testNavigateToDetailPage_shouldGoToLoginPage_whenNotLoggedIn() {
+        UserSession.reset()
+
         onViewById(R.id.ivHomeBook)
             .perform(click())
 
@@ -34,6 +37,8 @@ class RefreshLaterPageTest {
 
     @Test
     fun testNavigateToDetailPage_shouldSucceed_afterLogIn() {
+        UserSession.reset()
+
         onViewById(R.id.ivHomeBook)
             .perform(click())
 

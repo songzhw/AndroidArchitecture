@@ -11,6 +11,11 @@ object UserSession {
         isVip = response.permissions.contains("vip")
     }
 
+    fun reset () {
+        session = null
+        isVip = false
+    }
+
     override fun toString(): String {
         return "[UserSession : isVip = $isVip, session = $session]"
     }
