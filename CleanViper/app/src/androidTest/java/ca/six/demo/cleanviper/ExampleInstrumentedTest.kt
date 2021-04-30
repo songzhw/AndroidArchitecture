@@ -20,5 +20,6 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("ca.six.demo.cleanviper", appContext.packageName)
+        println("szw thread = ${Thread.currentThread().name}") //=> szw thread = Instr: androidx.test.runner.AndroidJUnitRunner
     }
 }
