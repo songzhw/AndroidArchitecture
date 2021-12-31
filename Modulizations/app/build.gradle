@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk Versions.compileSDK
 
     defaultConfig {
         applicationId "ca.six.modulizations"
         minSdk 23
-        targetSdk 31
+        targetSdk Versions.compileSDK
         versionCode 1
         versionName "1.0"
 
