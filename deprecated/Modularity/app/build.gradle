@@ -21,15 +21,15 @@ android {
 
 
 dependencies {
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
 
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:24.2.1'
 
     // if it is not debug mode, add all the biz module to build
     if(! isDev.toBoolean()){
@@ -39,7 +39,7 @@ dependencies {
         debugCompile project(path: ':biz2', configuration: 'debug')
     }
     // always needs common library
-    releaseCompile project(path: ':common', configuration: 'release')
-    debugCompile project(path: ':common', configuration: 'debug')
+    releaseImplementation project(path: ':common', configuration: 'release')
+    debugImplementation project(path: ':common', configuration: 'debug')
 
 }
