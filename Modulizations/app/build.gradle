@@ -1,16 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    simplePlugin {
-        implementationClass = "MyPlugin"
-    }
-}
-class MyPlugin implements Plugin<Project>{
-    void apply(Project proj){
-        project.task('myTask') {
-            doLast{ println("hello MyPlugin")}
-        }
-    }
+    id "ca.six.g1"
 }
 
 android {
