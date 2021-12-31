@@ -3,6 +3,17 @@ plugins {
     id 'kotlin-android'
 }
 
+class MyPlugin implements Plugin<Project>{
+    void apply(Project proj){
+        project.task('myTask') {
+            doLast{ println("hello MyPlugin")}
+        }
+    }
+}
+apply plugin: MyPlugin
+
+
+
 android {
     compileSdk 31
 
